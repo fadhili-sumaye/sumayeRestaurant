@@ -67,9 +67,9 @@ public class KitchenOrderAdapter extends RecyclerView.Adapter<KitchenOrderAdapte
             holder.card.setStrokeColor(ContextCompat.getColor(context, R.color.error_color));
             holder.card.setStrokeWidth(2);
         } else {
-            holder.tvElapsedTime.setBackgroundColor(0xFFECEFF1);
-            holder.tvElapsedTime.setTextColor(0xFF37474F);
-            holder.card.setStrokeColor(0xFFE0E0E0);
+            holder.tvElapsedTime.setBackgroundColor(ContextCompat.getColor(context, R.color.surface_raised));
+            holder.tvElapsedTime.setTextColor(ContextCompat.getColor(context, R.color.text_primary));
+            holder.card.setStrokeColor(ContextCompat.getColor(context, R.color.divider));
             holder.card.setStrokeWidth(1);
         }
 

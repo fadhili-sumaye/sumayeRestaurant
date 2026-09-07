@@ -6,7 +6,7 @@
     android:layout_marginBottom="6dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="1dp"
-    app:strokeColor="#EEEEEE"
+    app:strokeColor="@color/divider"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -44,7 +44,7 @@
             android:id="@+id/tvDetailItemQtyPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Idadi: 2 × TZS 12,000"
+            android:text="Idadi: 2 Ã— TZS 12,000"
             android:textSize="13sp"
             android:textColor="@color/secondary_text"
             android:layout_marginTop="2dp" />
@@ -55,8 +55,8 @@
             android:layout_height="wrap_content"
             android:text="Maelezo: Bila pilipili"
             android:textSize="12sp"
-            android:textColor="#D84315"
-            android:background="#FBE9E7"
+            android:textColor="@color/warning_color"
+            android:background="@color/status_warning_background"
             android:padding="6dp"
             android:layout_marginTop="6dp"
             android:visibility="gone" />

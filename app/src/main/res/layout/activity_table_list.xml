@@ -24,7 +24,7 @@
         android:textColor="@color/secondary_text"
         android:textSize="14sp"
         android:padding="16dp"
-        android:background="#EFEFEF" />
+        android:background="@color/card_secondary" />
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -9,6 +9,7 @@ import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.local.TokenManager;
 import com.example.sumayerestaurant.data.model.User;
 import com.example.sumayerestaurant.ui.login.LoginActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AdminDashboardActivity extends AppCompatActivity {
     private TokenManager tokenManager;
@@ -72,6 +73,32 @@ public class AdminDashboardActivity extends AppCompatActivity {
         findViewById(R.id.btnResetStaffPassword).setOnClickListener(v -> com.example.sumayerestaurant.util.PasswordDialogHelper.showResetStaffPasswordDialog(this));
 
         logoutButton.setOnClickListener(v -> logout());
+        setupBottomNav();
+    }
+
+    private void setupBottomNav() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        bottomNav.setSelectedItemId(R.id.nav_home);
+        bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_reports) {
+                Intent intent = new Intent(this, com.example.sumayerestaurant.ui.finance.ReportActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_cashier) {
+                Intent intent = new Intent(this, CashierDashboardActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_kitchen) {
+                Intent intent = new Intent(this, KitchenDashboardActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                return true;
+            }
+            return true;
+        });
     }
 
     private void logout() {

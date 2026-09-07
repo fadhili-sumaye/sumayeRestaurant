@@ -13,6 +13,7 @@ import com.example.sumayerestaurant.data.api.RetrofitClient;
 import com.example.sumayerestaurant.data.local.TokenManager;
 import com.example.sumayerestaurant.data.model.DailyClosing;
 import com.example.sumayerestaurant.data.model.User;
+import com.example.sumayerestaurant.util.ThemeUtil;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -41,8 +42,10 @@ public class DailyClosingActivity extends AppCompatActivity {
         LinearLayout root = new LinearLayout(this);
         root.setPadding(32, 32, 32, 32);
         root.setOrientation(LinearLayout.VERTICAL);
+        ThemeUtil.applyRootTheme(root);
         TextView guidance = new TextView(this);
         guidance.setText("Hesabu fedha taslimu zilizopo kabla ya kufunga siku. Tofauti yoyote lazima ielezwe.");
+        ThemeUtil.styleLabel(guidance, 14); guidance.setTextColor(ThemeUtil.textSecondary(this));
         root.addView(guidance);
         businessDate = field("Tarehe (YYYY-MM-DD)");
         businessDate.setText(LocalDate.now().toString());
@@ -57,9 +60,10 @@ public class DailyClosingActivity extends AppCompatActivity {
         root.addView(notes);
         closeButton = new Button(this);
         closeButton.setText("Thibitisha kufunga siku");
+        ThemeUtil.stylePrimaryButton(closeButton);
         root.addView(closeButton);
         summary = new TextView(this);
-        summary.setTextSize(16);
+        ThemeUtil.styleLabel(summary, 16); summary.setTextColor(ThemeUtil.greenBright(this));
         root.addView(summary);
         setContentView(root);
         closeButton.setOnClickListener(view -> confirm());
@@ -69,7 +73,7 @@ public class DailyClosingActivity extends AppCompatActivity {
     private EditText field(String hint) {
         EditText field = new EditText(this);
         field.setHint(hint);
-        field.setMinHeight(84);
+        ThemeUtil.styleEditText(field);
         return field;
     }
 

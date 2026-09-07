@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ECEFF1">
+    android:background="@color/card_secondary">
 
     <!-- Toolbar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarReceipt"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#263238"
-        app:title="🧾 Risiti ya Mauzo"
+        android:background="@color/surface"
+        app:title="ðŸ§¾ Risiti ya Mauzo"
         app:titleTextColor="@color/white"
         app:navigationIcon="@android:drawable/ic_menu_revert"
         app:navigationIconTint="@color/white" />
@@ -29,9 +29,9 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
-            app:strokeColor="#B0BEC5"
+            app:strokeColor="@color/divider"
             app:strokeWidth="1dp"
-            android:backgroundTint="@color/white">
+            android:backgroundTint="@color/surface">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,16 +48,16 @@
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="#212121" />
+                    android:textColor="@color/text_primary" />
 
                 <TextView
                     android:id="@+id/tvReceiptBranchInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tawi la Kati • Dar es Salaam, Tanzania\nSimu: +255 700 000 000"
+                    android:text="Tawi la Kati â€¢ Dar es Salaam, Tanzania\nSimu: +255 700 000 000"
                     android:textAlignment="center"
                     android:textSize="12sp"
-                    android:textColor="#616161"
+                    android:textColor="@color/secondary_text"
                     android:layout_marginTop="2dp" />
 
                 <TextView
@@ -67,7 +67,7 @@
                     android:text="TIN: 123-456-789 | VRN: 40-001234-Z"
                     android:textAlignment="center"
                     android:textSize="11sp"
-                    android:textColor="#757575"
+                    android:textColor="@color/secondary_text"
                     android:layout_marginTop="2dp" />
 
                 <TextView
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:text="--------------------------------------------------"
                     android:textAlignment="center"
-                    android:textColor="#9E9E9E"
+                    android:textColor="@color/disabled_text"
                     android:layout_marginTop="6dp" />
 
                 <!-- Metadata Row -->
@@ -91,14 +91,14 @@
                         android:text="Risiti: REC-0001"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:id="@+id/tvReceiptDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="02/09/2026 12:30"
                         android:textSize="12sp"
-                        android:textColor="#616161" />
+                        android:textColor="@color/secondary_text" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -111,16 +111,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Meza: 8 • Oda: ORD-00025"
+                        android:text="Meza: 8 â€¢ Oda: ORD-00025"
                         android:textSize="12sp"
-                        android:textColor="#424242" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:id="@+id/tvReceiptCashier"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hazina: Cashier"
                         android:textSize="12sp"
-                        android:textColor="#424242" />
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
 
                 <TextView
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:text="--------------------------------------------------"
                     android:textAlignment="center"
-                    android:textColor="#9E9E9E"
+                    android:textColor="@color/disabled_text"
                     android:layout_marginTop="6dp" />
 
                 <!-- Column Titles -->
@@ -145,7 +145,7 @@
                         android:text="Bidhaa"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                         android:textAlignment="center"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                         android:textAlignment="viewEnd"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
                         android:textAlignment="viewEnd"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
 
                 <!-- Food Items List -->
@@ -187,7 +187,7 @@
                     android:layout_height="wrap_content"
                     android:text="--------------------------------------------------"
                     android:textAlignment="center"
-                    android:textColor="#9E9E9E"
+                    android:textColor="@color/disabled_text"
                     android:layout_marginTop="6dp" />
 
                 <!-- Subtotal, Discount, Tax, Total -->
@@ -202,14 +202,14 @@
                         android:layout_weight="1"
                         android:text="Jumla Ndogo (Subtotal):"
                         android:textSize="13sp"
-                        android:textColor="#424242" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:id="@+id/tvReceiptSubtotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TZS 25,000"
                         android:textSize="13sp"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -225,14 +225,14 @@
                         android:layout_weight="1"
                         android:text="Punguzo (Discount):"
                         android:textSize="13sp"
-                        android:textColor="#C62828" />
+                        android:textColor="@color/error_color" />
                     <TextView
                         android:id="@+id/tvReceiptDiscount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="-TZS 2,500"
                         android:textSize="13sp"
-                        android:textColor="#C62828" />
+                        android:textColor="@color/error_color" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -249,14 +249,14 @@
                         android:layout_weight="1"
                         android:text="Kodi (VAT 18%):"
                         android:textSize="13sp"
-                        android:textColor="#424242" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:id="@+id/tvReceiptTax"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TZS 0"
                         android:textSize="13sp"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -271,7 +271,7 @@
                         android:text="JUMLA KUU:"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:id="@+id/tvReceiptTotal"
                         android:layout_width="wrap_content"
@@ -279,7 +279,7 @@
                         android:text="TZS 25,000"
                         android:textSize="17sp"
                         android:textStyle="bold"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
 
                 <TextView
@@ -287,7 +287,7 @@
                     android:layout_height="wrap_content"
                     android:text="--------------------------------------------------"
                     android:textAlignment="center"
-                    android:textColor="#9E9E9E"
+                    android:textColor="@color/disabled_text"
                     android:layout_marginTop="4dp" />
 
                 <!-- Payment Breakdown & Change -->
@@ -302,7 +302,7 @@
                         android:layout_weight="1"
                         android:text="Kiasi Kilicholipwa:"
                         android:textSize="13sp"
-                        android:textColor="#2E7D32" />
+                        android:textColor="@color/primary_dark" />
                     <TextView
                         android:id="@+id/tvReceiptPaid"
                         android:layout_width="wrap_content"
@@ -310,7 +310,7 @@
                         android:text="TZS 25,000"
                         android:textSize="13sp"
                         android:textStyle="bold"
-                        android:textColor="#2E7D32" />
+                        android:textColor="@color/primary_dark" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -325,7 +325,7 @@
                         android:layout_weight="1"
                         android:text="Chenji ya Mteja:"
                         android:textSize="13sp"
-                        android:textColor="#424242" />
+                        android:textColor="@color/text_primary" />
                     <TextView
                         android:id="@+id/tvReceiptChange"
                         android:layout_width="wrap_content"
@@ -333,7 +333,7 @@
                         android:text="TZS 5,000"
                         android:textSize="13sp"
                         android:textStyle="bold"
-                        android:textColor="#212121" />
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
 
                 <TextView
@@ -342,7 +342,7 @@
                     android:layout_height="wrap_content"
                     android:text="Njia ya Malipo: CASH (TZS 25,000)"
                     android:textSize="12sp"
-                    android:textColor="#616161"
+                    android:textColor="@color/secondary_text"
                     android:layout_marginTop="4dp" />
 
                 <TextView
@@ -350,7 +350,7 @@
                     android:layout_height="wrap_content"
                     android:text="==============================================="
                     android:textAlignment="center"
-                    android:textColor="#9E9E9E"
+                    android:textColor="@color/disabled_text"
                     android:layout_marginTop="8dp" />
 
                 <!-- Footer -->
@@ -362,7 +362,7 @@
                     android:textAlignment="center"
                     android:textSize="13sp"
                     android:textStyle="italic"
-                    android:textColor="#424242"
+                    android:textColor="@color/text_primary"
                     android:layout_marginTop="4dp" />
 
             </LinearLayout>
@@ -382,11 +382,11 @@
             android:id="@+id/btnShareReceipt"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="📤 Shiriki / Chapisha Risiti"
+            android:text="ðŸ“¤ Shiriki / Chapisha Risiti"
             android:textSize="15sp"
             android:textStyle="bold"
             app:cornerRadius="10dp"
-            android:backgroundTint="#263238" />
+            android:backgroundTint="@color/surface" />
     </LinearLayout>
 
 </LinearLayout>

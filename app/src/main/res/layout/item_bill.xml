@@ -10,7 +10,7 @@
     android:layout_marginBottom="6dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="3dp"
-    app:strokeColor="#E0E0E0"
+    app:strokeColor="@color/divider"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -56,11 +56,11 @@
             android:id="@+id/tvBillRequestedBanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🔔 Mhudumu Ameomba Ankara!"
+            android:text="ðŸ”” Mhudumu Ameomba Ankara!"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="#E65100"
-            android:background="#FFF3E0"
+            android:textColor="@color/warning_color"
+            android:background="@color/status_warning_background"
             android:padding="6dp"
             android:layout_marginTop="6dp"
             android:visibility="gone" />
@@ -78,7 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="🍽️ Meza 8 • Oda #ORD-00025"
+                android:text="ðŸ½ï¸ Meza 8 â€¢ Oda #ORD-00025"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/brand_green_dark" />
@@ -87,7 +87,7 @@
                 android:id="@+id/tvBillWaiter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="👤 John Doe"
+                android:text="ðŸ‘¤ John Doe"
                 android:textSize="12sp"
                 android:textColor="@color/secondary_text" />
         </LinearLayout>

@@ -18,7 +18,7 @@
             android:background="@color/brand_green"
             app:title="@string/choose_food"
             app:titleTextColor="@color/white"
-            app:subtitleTextColor="#C8E6C9"
+            app:subtitleTextColor="@color/primary_light"
             app:navigationIcon="@android:drawable/ic_menu_revert"
             app:navigationIconTint="@color/white" />
 
@@ -32,7 +32,7 @@
             android:paddingEnd="16dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:background="#E8F5E9"
+            android:background="@color/status_success_background"
             android:gravity="center_vertical">
 
             <TextView
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vyakula 2"
-                    android:textColor="#C8E6C9"
+                    android:textColor="@color/primary_light"
                     android:textSize="12sp" />
 
                 <TextView

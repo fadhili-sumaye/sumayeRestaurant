@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="2 × Wali wa Kuku"
+            android:text="2 Ã— Wali wa Kuku"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/text_color" />
@@ -37,11 +37,11 @@
         android:id="@+id/tvKotItemInstructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="⚠️ Maelekezo: Usiweke pilipili"
+        android:text="âš ï¸ Maelekezo: Usiweke pilipili"
         android:textSize="13sp"
         android:textStyle="bold"
-        android:textColor="#C62828"
-        android:background="#FFEBEE"
+        android:textColor="@color/error_color"
+        android:background="@color/status_error_background"
         android:padding="6dp"
         android:layout_marginTop="4dp"
         android:visibility="gone" />

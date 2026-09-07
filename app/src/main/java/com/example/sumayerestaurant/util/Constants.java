@@ -22,7 +22,7 @@ public class Constants {
     // =========================================================
     //  ENVIRONMENT SELECTOR  ← CHANGE THIS ONE LINE ONLY
     // =========================================================
-    public static final Env ENV = Env.DEV_LAN;
+    public static final Env ENV = Env.PRODUCTION;
  
     // =========================================================
     //  URLs — Only edit these, not other files
@@ -31,7 +31,7 @@ public class Constants {
     private static final String LAN_IP          = "192.168.118.71";         // ← Your PC's local Wi-Fi IP
     private static final String ACTIVE_LAN_IP   = "172.20.10.2";
     private static final String LAN_URL         = "http://" + ACTIVE_LAN_IP + ":8080/";
-    private static final String PRODUCTION_URL  = "https://api.yourdomain.com/"; // ← Edit: your cloud domain
+    private static final String PRODUCTION_URL  = "https://sumaye-backdb.onrender.com/";
 
     // Derived BASE_URL (used by RetrofitClient and WebSocketManager)
     public static final String BASE_URL;
@@ -60,9 +60,11 @@ public class Constants {
     // =========================================================
     //  Timeout settings
     // =========================================================
-    public static final int CONNECT_TIMEOUT = 15; // seconds
-    public static final int READ_TIMEOUT    = 30;
-    public static final int WRITE_TIMEOUT   = 30;
+    // Render free tier sleeps when idle and takes ~30-50s to cold-start,
+    // so timeouts must comfortably cover that first (waking) request.
+    public static final int CONNECT_TIMEOUT = 45; // seconds
+    public static final int READ_TIMEOUT    = 60;
+    public static final int WRITE_TIMEOUT   = 60;
 
     // =========================================================
     //  SharedPreferences Keys

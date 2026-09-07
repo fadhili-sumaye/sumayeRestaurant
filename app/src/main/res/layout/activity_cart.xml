@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="12dp"
-        android:background="#E8F5E9"
+        android:background="@color/status_success_background"
         android:gravity="center_vertical">
 
         <TextView

@@ -2,26 +2,28 @@
 <resources>
     <color name="black">#FF050505</color>
     <color name="white">#FFFFFFFF</color>
-    
-    <!-- Primary Colors -->
+
+    <!-- ============ Primary / Brand ============ -->
     <color name="primary">#FF00C853</color>
-    <color name="primary_dark">#FF008C3A</color>
+    <color name="primary_dark">#FF00A844</color>
     <color name="primary_light">#FF00E676</color>
     <color name="brand_green">#FF00C853</color>
-    <color name="brand_green_dark">#FF008C3A</color>
-    <color name="brand_green_light">#FF1A1A1A</color>
-    
-    <!-- Secondary Colors -->
+    <color name="brand_green_dark">#FF00A844</color>
+    <color name="brand_green_light">#FF12291C</color>
+
+    <!-- ============ Secondary ============ -->
     <color name="secondary">#FF00E676</color>
-    <color name="secondary_dark">#FF008C3A</color>
-    <color name="secondary_light">#FF1A1A1A</color>
-    
-    <!-- Text Colors -->
+    <color name="secondary_dark">#FF00A844</color>
+    <color name="secondary_light">#FF12291C</color>
+
+    <!-- ============ Text ============ -->
     <color name="text_color">#FFFFFFFF</color>
+    <color name="text_primary">#FFFFFFFF</color>
     <color name="secondary_text">#FFBDBDBD</color>
-    <color name="hint_color">#FF777777</color>
-    
-    <!-- Status Colors -->
+    <color name="hint_color">#FF8A8A8A</color>
+    <color name="disabled_text">#FF777777</color>
+
+    <!-- ============ Status ============ -->
     <color name="success_color">#FF00E676</color>
     <color name="error_color">#FFFF5252</color>
     <color name="warning_color">#FFFFD740</color>
@@ -30,26 +32,36 @@
     <color name="status_occupied">#FFFF5252</color>
     <color name="status_reserved">#FFFFD740</color>
     <color name="status_cleaning">#FFBDBDBD</color>
-    
-    <!-- Dark Blue Palette -->
-    <color name="dark_blue">#FF0A192F</color>
-    <color name="dark_blue_surface">#FF112240</color>
-    <color name="dark_blue_card">#FF172A45</color>
-    <color name="dark_blue_card_secondary">#FF1F3A60</color>
-    <color name="dark_blue_divider">#FF233554</color>
 
-    <!-- Background Colors (Dark Blue / Midnight Navy) -->
-    <color name="background">#FF0A192F</color>
-    <color name="surface">#FF112240</color>
-    <color name="divider">#FF233554</color>
-    <color name="secondary_background">#FF0B1528</color>
-    <color name="card_background">#FF112240</color>
-    <color name="card_secondary">#FF172A45</color>
-    <color name="text_primary">#FFFFFFFF</color>
-    <color name="disabled_text">#FF777777</color>
+    <!-- ============ Neutral surfaces (legacy dark-blue names retained) ============ -->
+    <color name="dark_blue">#FF121212</color>
+    <color name="dark_blue_surface">#FF1E1E1E</color>
+    <color name="dark_blue_card">#FF242424</color>
+    <color name="dark_blue_card_secondary">#FF2A2A2A</color>
+    <color name="dark_blue_divider">#FF303030</color>
+
+    <!-- ============ Core design tokens ============ -->
+    <color name="background">#FF121212</color>
+    <color name="surface">#FF1E1E1E</color>
+    <color name="divider">#FF303030</color>
+    <color name="secondary_background">#FF161616</color>
+    <color name="card_background">#FF1E1E1E</color>
+    <color name="card_secondary">#FF242424</color>
     <color name="green_bright">#FF00E676</color>
     <color name="color_on_primary">#FF050505</color>
-    <color name="status_success_background">#FF102519</color>
-    <color name="status_warning_background">#FF292512</color>
-    <color name="status_error_background">#FF291414</color>
+    <color name="status_success_background">#FF13281B</color>
+    <color name="status_warning_background">#FF2A2410</color>
+    <color name="status_error_background">#FF2A1313</color>
+
+    <!-- ============ Extended palette ============ -->
+    <color name="surface_neutral">#FF2A2A2A</color>
+    <color name="surface_raised">#FF303030</color>
+    <color name="elevated_surface">#FF262626</color>
+    <color name="on_primary_dark">#FF050505</color>
+    <color name="green_chip">#FF1B4A2E</color>
+    <color name="green_outline">#FF00C853</color>
+
+    <color name="nav_item_selected">#FF00C853</color>
+    <color name="nav_item_unselected">#FF8A8A8A</color>
+    <color name="nav_ripple">#3300C853</color>
 </resources>

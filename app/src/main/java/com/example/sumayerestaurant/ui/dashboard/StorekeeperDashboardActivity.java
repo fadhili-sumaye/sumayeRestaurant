@@ -16,6 +16,7 @@ import com.example.sumayerestaurant.ui.inventory.RecipePurchaseActivity;
 import com.example.sumayerestaurant.ui.inventory.StockActionActivity;
 import com.example.sumayerestaurant.ui.login.LoginActivity;
 import com.example.sumayerestaurant.util.PasswordDialogHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -113,6 +114,26 @@ public class StorekeeperDashboardActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btnLogout).setOnClickListener(v -> logout());
+
+        setupBottomNav();
+    }
+
+    private void setupBottomNav() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        bottomNav.setSelectedItemId(R.id.nav_home);
+        bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_stock) {
+                startActivity(new Intent(this, InventoryActivity.class));
+                return true;
+            } else if (id == R.id.nav_purchases) {
+                Intent intent = new Intent(this, RecipePurchaseActivity.class);
+                intent.putExtra(RecipePurchaseActivity.EXTRA_MODE, "PURCHASE");
+                startActivity(intent);
+                return true;
+            }
+            return true;
+        });
     }
 
     private void loadInventorySummary() {

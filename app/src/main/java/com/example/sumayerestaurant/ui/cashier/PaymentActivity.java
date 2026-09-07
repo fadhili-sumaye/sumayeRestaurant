@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.model.ApplyDiscountRequest;
 import com.example.sumayerestaurant.data.model.Bill;
@@ -178,10 +179,10 @@ public class PaymentActivity extends AppCompatActivity {
             BigDecimal change = cashReceived.subtract(amountToPay);
             if (change.compareTo(BigDecimal.ZERO) >= 0) {
                 tvCalculatedChange.setText(formatCurrency(change));
-                tvCalculatedChange.setTextColor(0xFF2E7D32);
+                tvCalculatedChange.setTextColor(ContextCompat.getColor(this, R.color.success_color));
             } else {
                 tvCalculatedChange.setText("Pesa Haitoshi (" + formatCurrency(change) + ")");
-                tvCalculatedChange.setTextColor(0xFFC62828);
+                tvCalculatedChange.setTextColor(ContextCompat.getColor(this, R.color.error_color));
             }
         } catch (Exception e) {
             tvCalculatedChange.setText("TZS 0");

@@ -17,6 +17,7 @@ import com.example.sumayerestaurant.ui.inventory.InventoryDashboardActivity;
 import com.example.sumayerestaurant.ui.login.LoginActivity;
 import com.example.sumayerestaurant.ui.reservation.ReservationActivity;
 import com.example.sumayerestaurant.util.PasswordDialogHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ManagerDashboardActivity extends AppCompatActivity {
     private TokenManager tokenManager;
@@ -60,6 +61,26 @@ public class ManagerDashboardActivity extends AppCompatActivity {
         findViewById(R.id.btnResetStaffPassword).setOnClickListener(v -> PasswordDialogHelper.showResetStaffPasswordDialog(this));
 
         logoutButton.setOnClickListener(v -> logout());
+        setupBottomNav();
+    }
+
+    private void setupBottomNav() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        bottomNav.setSelectedItemId(R.id.nav_home);
+        bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_reports) {
+                startActivity(new Intent(this, ReportActivity.class));
+                return true;
+            } else if (id == R.id.nav_expenses) {
+                startActivity(new Intent(this, ExpenseActivity.class));
+                return true;
+            } else if (id == R.id.nav_inventory) {
+                startActivity(new Intent(this, InventoryDashboardActivity.class));
+                return true;
+            }
+            return true;
+        });
     }
     
     private void logout() {

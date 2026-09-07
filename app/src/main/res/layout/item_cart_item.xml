@@ -6,7 +6,7 @@
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="14dp"
     app:cardElevation="2dp"
-    app:strokeColor="#E0E0E0"
+    app:strokeColor="@color/divider"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -46,7 +46,7 @@
             android:id="@+id/tvCartItemInstructions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="✍️ Weka maelezo ya pekee"
+            android:text="âœï¸ Weka maelezo ya pekee"
             android:textColor="@color/primary"
             android:textSize="12sp"
             android:layout_marginTop="4dp"

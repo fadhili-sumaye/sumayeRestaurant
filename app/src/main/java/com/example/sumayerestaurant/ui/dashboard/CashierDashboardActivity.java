@@ -159,17 +159,17 @@ public class CashierDashboardActivity extends AppCompatActivity {
         // Connection status
         viewModel.getConnectionState().observe(this, state -> {
             if (state == StompClient.ConnectionState.CONNECTED) {
-                layoutConnectionStatus.setBackgroundColor(0xFFE8F5E9);
+                layoutConnectionStatus.setBackgroundColor(ContextCompat.getColor(this, R.color.status_success_background));
                 tvConnectionStatus.setText("🟢 Mtandao umeunganishwa");
-                tvConnectionStatus.setTextColor(0xFF2E7D32);
+                tvConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.success_color));
             } else if (state == StompClient.ConnectionState.CONNECTING) {
-                layoutConnectionStatus.setBackgroundColor(0xFFFFF3E0);
+                layoutConnectionStatus.setBackgroundColor(ContextCompat.getColor(this, R.color.status_warning_background));
                 tvConnectionStatus.setText("🟡 Inajaribu kuunganishwa tena...");
-                tvConnectionStatus.setTextColor(0xFFE65100);
+                tvConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.warning_color));
             } else {
-                layoutConnectionStatus.setBackgroundColor(0xFFFFEBEE);
+                layoutConnectionStatus.setBackgroundColor(ContextCompat.getColor(this, R.color.status_error_background));
                 tvConnectionStatus.setText("🔴 Muunganisho umepotea");
-                tvConnectionStatus.setTextColor(0xFFC62828);
+                tvConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.error_color));
             }
         });
 

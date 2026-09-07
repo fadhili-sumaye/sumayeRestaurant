@@ -11,8 +11,8 @@
         android:id="@+id/toolbarKitchen"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#263238"
-        app:title="👨‍🍳 Jikoni - KOT Queue"
+        android:background="@color/surface"
+        app:title="ðŸ‘¨â€ðŸ³ Jikoni - KOT Queue"
         app:titleTextColor="@color/white" />
 
     <!-- Connection Status Banner -->
@@ -25,7 +25,7 @@
         android:paddingEnd="16dp"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
-        android:background="#E8F5E9"
+        android:background="@color/status_success_background"
         android:gravity="center_vertical">
 
         <TextView
@@ -33,8 +33,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🟢 Mtandao umeunganishwa"
-            android:textColor="#2E7D32"
+            android:text="ðŸŸ¢ Mtandao umeunganishwa"
+            android:textColor="@color/primary_dark"
             android:textSize="13sp"
             android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_lock_silent_mode_off"
             android:contentDescription="Sauti"
-            android:tint="#263238" />
+            android:tint="@color/surface" />
 
         <ImageButton
             android:id="@+id/btnPasswordKitchen"
@@ -174,7 +174,7 @@
                 android:id="@+id/btnToggleSort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="⏱️ Ya Zamani Kwanza"
+                android:text="â±ï¸ Ya Zamani Kwanza"
                 android:textColor="@color/primary"
                 android:textSize="13sp"
                 android:textStyle="bold"

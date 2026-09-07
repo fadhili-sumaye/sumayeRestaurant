@@ -16,6 +16,7 @@ import com.example.sumayerestaurant.ui.login.LoginActivity;
 import com.example.sumayerestaurant.ui.waiter.OrderHistoryActivity;
 import com.example.sumayerestaurant.ui.waiter.TableListActivity;
 import com.example.sumayerestaurant.util.SoundUtil;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.gson.Gson;
 
@@ -68,6 +69,23 @@ public class WaiterDashboardActivity extends AppCompatActivity {
         findViewById(R.id.btnChangePassword).setOnClickListener(v -> com.example.sumayerestaurant.util.PasswordDialogHelper.showChangePasswordDialog(this));
         
         logoutButton.setOnClickListener(v -> logout());
+        setupBottomNav();
+    }
+
+    private void setupBottomNav() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        bottomNav.setSelectedItemId(R.id.nav_home);
+        bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_tables) {
+                startActivity(new Intent(this, TableListActivity.class));
+                return true;
+            } else if (id == R.id.nav_orders) {
+                startActivity(new Intent(this, OrderHistoryActivity.class));
+                return true;
+            }
+            return true;
+        });
     }
 
     private void initRealTimeNotifications() {

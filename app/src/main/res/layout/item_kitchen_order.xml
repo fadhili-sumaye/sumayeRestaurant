@@ -10,7 +10,7 @@
     android:layout_marginBottom="6dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="3dp"
-    app:strokeColor="#E0E0E0"
+    app:strokeColor="@color/divider"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -40,15 +40,15 @@
                 android:id="@+id/tvKotElapsedTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="⏱️ Dakika 8"
+                android:text="â±ï¸ Dakika 8"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:paddingTop="3dp"
                 android:paddingBottom="3dp"
-                android:background="#ECEFF1"
-                android:textColor="#37474F" />
+                android:background="@color/card_secondary"
+                android:textColor="@color/secondary_text" />
         </LinearLayout>
 
         <!-- Subtitle: Table & Waiter & Status Badge -->
@@ -69,7 +69,7 @@
                     android:id="@+id/tvKotTable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🍽️ Meza: 8 (Kula Hapa)"
+                    android:text="ðŸ½ï¸ Meza: 8 (Kula Hapa)"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/brand_green_dark" />
@@ -78,7 +78,7 @@
                     android:id="@+id/tvKotWaiter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="👤 Mhudumu: John Doe"
+                    android:text="ðŸ‘¤ Mhudumu: John Doe"
                     android:textSize="12sp"
                     android:textColor="@color/secondary_text"
                     android:layout_marginTop="2dp" />
@@ -120,8 +120,8 @@
             android:layout_height="wrap_content"
             android:text="Dokezo: Wahi haraka sana"
             android:textSize="13sp"
-            android:textColor="#E65100"
-            android:background="#FFF3E0"
+            android:textColor="@color/warning_color"
+            android:background="@color/status_warning_background"
             android:padding="8dp"
             android:layout_marginTop="8dp"
             android:visibility="gone" />

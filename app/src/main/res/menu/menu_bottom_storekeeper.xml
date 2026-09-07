@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_nav_blank"
+        android:title="Nyumbani" />
+    <item
+        android:id="@+id/nav_stock"
+        android:icon="@drawable/ic_nav_blank"
+        android:title="Orodha" />
+    <item
+        android:id="@+id/nav_purchases"
+        android:icon="@drawable/ic_nav_blank"
+        android:title="Ununuzi" />
+</menu>

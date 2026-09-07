@@ -1,7 +1,6 @@
 package com.example.sumayerestaurant.ui.inventory;
 
 import android.os.Bundle;
-import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -17,6 +16,7 @@ import com.example.sumayerestaurant.data.api.RetrofitClient;
 import com.example.sumayerestaurant.data.local.TokenManager;
 import com.example.sumayerestaurant.data.model.InventoryStock;
 import com.example.sumayerestaurant.data.model.User;
+import com.example.sumayerestaurant.util.ThemeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +37,16 @@ public class InventoryActivity extends AppCompatActivity {
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
         root.setPadding(32, 32, 32, 32);
+        ThemeUtil.applyRootTheme(root);
         TextView title = new TextView(this);
-        title.setText("Hisa za tawi"); title.setTextSize(24); title.setTextColor(Color.BLACK);
+        title.setText("Hisa za tawi"); ThemeUtil.styleTitle(title, 24);
         root.addView(title);
         EditText search = new EditText(this);
-        search.setHint("Tafuta kiungo, mfano mchele"); search.setMinHeight(96);
+        search.setHint("Tafuta kiungo, mfano mchele"); ThemeUtil.styleEditText(search);
         root.addView(search);
         loading = new ProgressBar(this); root.addView(loading);
         emptyState = new TextView(this);
-        emptyState.setText("Hakuna bidhaa zilizopatikana."); emptyState.setTextSize(16);
+        emptyState.setText("Hakuna bidhaa zilizopatikana."); ThemeUtil.styleLabel(emptyState, 16); emptyState.setTextColor(ThemeUtil.textSecondary(this));
         emptyState.setVisibility(View.GONE); root.addView(emptyState);
         stockList = new LinearLayout(this); stockList.setOrientation(LinearLayout.VERTICAL); root.addView(stockList);
         setContentView(root);
@@ -86,7 +87,7 @@ public class InventoryActivity extends AppCompatActivity {
             item.setText(stock.getIngredientName() + "\n" + stock.getQuantityOnHand() + " " + stock.getUnit()
                     + "  •  Kiwango cha chini: " + stock.getMinimumStockLevel() + "\n" + badge);
             item.setTextSize(17); item.setMinHeight(128); item.setPadding(20, 20, 20, 20);
-            item.setTextColor("STOCK NDOGO".equals(badge) || "IMEISHA".equals(badge) ? Color.rgb(180, 60, 0) : Color.DKGRAY);
+            item.setTextColor("STOCK NDOGO".equals(badge) || "IMEISHA".equals(badge) ? ThemeUtil.warning(this) : ThemeUtil.textPrimary(this));
             stockList.addView(item); visible++;
         }
         emptyState.setVisibility(visible == 0 ? View.VISIBLE : View.GONE);

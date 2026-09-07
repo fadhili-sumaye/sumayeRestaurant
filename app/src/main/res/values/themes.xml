@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="Theme.SUMAYERESTAURANT" parent="Theme.Material3.DayNight.NoActionBar">
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.SUMAYERESTAURANT" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Brand -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/color_on_primary</item>
         <item name="colorPrimaryContainer">@color/card_secondary</item>
         <item name="colorOnPrimaryContainer">@color/text_primary</item>
         <item name="colorSecondary">@color/green_bright</item>
+        <item name="colorOnSecondary">@color/color_on_primary</item>
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/text_primary</item>
         <item name="colorSurfaceVariant">@color/card_secondary</item>
         <item name="colorOnSurfaceVariant">@color/secondary_text</item>
         <item name="colorOutline">@color/divider</item>
+        <item name="colorOutlineVariant">@color/dark_blue_divider</item>
         <item name="colorError">@color/error_color</item>
+        <item name="colorOnError">@color/black</item>
+        <item name="colorSurfaceContainer">@color/surface</item>
+        <item name="colorSurfaceContainerHigh">@color/elevated_surface</item>
+        <item name="colorSurfaceContainerHighest">@color/surface_neutral</item>
+
+        <!-- Windows -->
         <item name="android:windowBackground">@color/background</item>
         <item name="android:statusBarColor">@color/background</item>
         <item name="android:navigationBarColor">@color/background</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
-        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="27">shortEdges</item>
+
+        <!-- Typography -->
+        <item name="android:fontFamily">@font/poppins_regular</item>
+
+        <!-- Components -->
         <item name="materialButtonStyle">@style/Widget.Sumaye.Button.Primary</item>
         <item name="materialCardViewStyle">@style/Widget.Sumaye.Card</item>
         <item name="textInputStyle">@style/Widget.Sumaye.TextInput</item>
+        <item name="android:datePickerDialogTheme" tools:targetApi="24">@style/ThemeOverlay.Sumaye.DatePicker</item>
+    </style>
+
+    <style name="ThemeOverlay.Sumaye.DatePicker" parent="ThemeOverlay.Material3.Dialog">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:windowBackground">@color/surface</item>
     </style>
 </resources>
