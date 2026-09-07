@@ -2,6 +2,8 @@ package com.example.sumayerestaurant.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,8 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private LoginViewModel viewModel;
     private TokenManager tokenManager;
+    private final Handler uiHandler = new Handler(Looper.getMainLooper());
+    private Runnable wakingHint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +65,12 @@ public class LoginActivity extends AppCompatActivity {
             if (isLoading) {
                 binding.progressBar.setVisibility(View.VISIBLE);
                 binding.loginButton.setText("Inaprocessing...");
+                // If the backend is cold-starting it can take ~30-60s; tell the user
+                // instead of leaving them staring at a spinner.
+                wakingHint = () -> binding.loginButton.setText("Inaamsha server... Subiri kidogo");
+                uiHandler.postDelayed(wakingHint, 5000);
             } else {
+                if (wakingHint != null) uiHandler.removeCallbacks(wakingHint);
                 binding.progressBar.setVisibility(View.GONE);
                 binding.loginButton.setText("Ingia");
             }
@@ -79,6 +88,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     
+    @Override
+    protected void onDestroy() {
+        if (wakingHint != null) uiHandler.removeCallbacks(wakingHint);
+        super.onDestroy();
+    }
+
     private void goToDashboard() {
         User user = tokenManager.getUser();
         Intent intent = new Intent(this, DashboardActivity.class);
