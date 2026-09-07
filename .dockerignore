@@ -1,0 +1,56 @@
+# ============================
+# ROOT DOCKERIGNORE (Render build context = repo root)
+# Keep the image build small and never ship Android, caches, or secrets.
+# ============================
+
+.git
+.gitignore
+.gitattributes
+
+# Android (not needed to build the backend image)
+app/
+gradle/
+gradlew
+gradlew.bat
+build.gradle.kts
+settings.gradle.kts
+gradle.properties
+playstore_icon_512.png
+
+# Backend build caches
+restaurant-management-api/target/
+restaurant-management-api/.m2-cache/
+.m2-cache/
+
+# Local Maven / Gradle user caches
+.gradle-user/
+.gradle/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Docs & deployment helpers (not needed in the image)
+*.md
+nginx/
+systemd/
+deploy.sh
+docker-compose.yml
+run-backend.bat
+*.sql
+
+# Secrets / env
+.env
+*.env
+.env.local
+.env.*.local
+*.env.*
+*.pem
+!restaurant-management-api/src/main/resources/aiven-ca.pem
+
+# OS junk
+.DS_Store
+Thumbs.db
+*.log
+logs/
