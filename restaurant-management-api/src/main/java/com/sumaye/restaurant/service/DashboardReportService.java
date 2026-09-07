@@ -334,9 +334,8 @@ public class DashboardReportService {
     }
 
     private OwnerInventorySummary inventory(Long branchId, LocalDateTime from, LocalDateTime to) {
-        Object[] was = wastage.countAndQuantityBetween(branchId, from, to);
-        long wastageCount = ((Number) was[0]).longValue();
-        BigDecimal wastageQty = was[1] == null ? ZERO : (BigDecimal) was[1];
+        long wastageCount = wastage.countBetween(branchId, from, to);
+        BigDecimal wastageQty = wastage.quantityBetween(branchId, from, to);
 
         List<OwnerInventoryItem> recent = inventoryTransactions.findByBranchIdOrderByCreatedAtDesc(branchId, PageRequest.of(0, 10))
                 .stream().map(t -> OwnerInventoryItem.builder()
