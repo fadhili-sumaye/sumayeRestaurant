@@ -25,4 +25,16 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
             @Param("method") Payment.PaymentMethod method,
             @Param("from") LocalDate from,
             @Param("to") LocalDate to);
+
+    @Query("select e.category.id, e.category.name, coalesce(sum(e.amount), 0) from Expense e "
+            + "where e.branch.id = :branchId and e.status = 'POSTED' and e.expenseDate between :from and :to "
+            + "group by e.category.id, e.category.name order by coalesce(sum(e.amount), 0) desc")
+    List<Object[]> totalByCategory(@Param("branchId") Long branchId, @Param("from") LocalDate from, @Param("to") LocalDate to);
+
+    @Query("select e.expenseDate, e.amount from Expense e "
+            + "where e.branch.id = :branchId and e.status = 'POSTED' and e.expenseDate between :from and :to")
+    List<Object[]> expensesBetween(@Param("branchId") Long branchId, @Param("from") LocalDate from, @Param("to") LocalDate to);
+
+    @Query("select count(e) from Expense e where e.branch.id = :branchId and e.status = 'POSTED' and e.expenseDate between :from and :to")
+    long countBetween(@Param("branchId") Long branchId, @Param("from") LocalDate from, @Param("to") LocalDate to);
 }

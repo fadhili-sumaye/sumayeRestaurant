@@ -3,6 +3,7 @@ package com.sumaye.restaurant.config;
 import com.sumaye.restaurant.security.CustomUserDetailsService;
 import com.sumaye.restaurant.security.JwtAuthenticationFilter;
 import com.sumaye.restaurant.security.JwtTokenProvider;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -46,9 +47,23 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login", "/api/auth/health", "/api/health", "/api/health/**", "/api/public/**", "/ws/**", "/error").permitAll()
                         .anyRequest().authenticated())
-                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, authException) ->
+                                writeJson(response, HttpServletResponse.SC_UNAUTHORIZED,
+                                        "Uthibitishaji umeshindwa. Tafadhali ingia tena."))
+                        .accessDeniedHandler((request, response, accessDeniedException) ->
+                                writeJson(response, HttpServletResponse.SC_FORBIDDEN,
+                                        "Huna idhini ya kufanya kitendo hiki.")));
 
         return http.build();
+    }
+
+    private void writeJson(HttpServletResponse response, int status, String message) throws java.io.IOException {
+        response.setStatus(status);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("{\"success\":false,\"message\":\"" + message + "\"}");
     }
 
     @Bean

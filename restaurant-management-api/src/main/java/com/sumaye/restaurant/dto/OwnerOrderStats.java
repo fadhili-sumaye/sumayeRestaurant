@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import lombok.*; import java.util.Map; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class OwnerOrderStats { private long total; private long completed; private long pending; private long cancelled; private Map<String, Long> byStatus; private Integer busyHour; private String busyHourLabel; }

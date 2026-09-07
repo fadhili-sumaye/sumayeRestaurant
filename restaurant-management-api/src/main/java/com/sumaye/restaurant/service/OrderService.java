@@ -34,6 +34,8 @@ public class OrderService {
     private final KitchenService kitchenService;
     @Lazy
     private final InventoryService inventoryService;
+    @Lazy
+    private final org.springframework.messaging.simp.SimpMessagingTemplate messagingTemplate;
 
     @Transactional
     public OrderResponse createOrder(CreateOrderRequest request, String username) {
@@ -170,6 +172,19 @@ public class OrderService {
         // Broadcast to Kitchen in real time
         kitchenService.broadcastNewOrder(savedKot);
 
+        // Notify the management dashboard in real time so the Owner sees a new order
+        messagingTemplate.convertAndSend("/topic/branches/" + branch.getId() + "/management",
+                RealTimeEvent.builder()
+                        .eventType("ORDER_CREATED")
+                        .branchId(branch.getId())
+                        .orderId(savedOrder.getId())
+                        .orderNumber(savedOrder.getOrderNumber())
+                        .waiterUsername(username)
+                        .status(savedOrder.getStatus().name())
+                        .message("Oda mpya #" + savedOrder.getOrderNumber() + " imeingizwa")
+                        .timestamp(LocalDateTime.now())
+                        .build());
+
         // Phase 7: reserve stock atomically with the order/KOT.  A stock failure
         // rolls back the complete request so no kitchen ticket is created without stock.
         inventoryService.deductStockForOrder(savedOrder);
@@ -271,6 +286,16 @@ public class OrderService {
         kitchenOrder.setItems(kitchenItems);
         KitchenOrder savedKot = kitchenOrderRepository.save(kitchenOrder);
         kitchenService.broadcastNewOrder(savedKot);
+        messagingTemplate.convertAndSend("/topic/branches/" + table.getBranch().getId() + "/management",
+                RealTimeEvent.builder()
+                        .eventType("ORDER_CREATED")
+                        .branchId(table.getBranch().getId())
+                        .orderId(savedOrder.getId())
+                        .orderNumber(savedOrder.getOrderNumber())
+                        .status(savedOrder.getStatus().name())
+                        .message("Oda mpya ya QR #" + savedOrder.getOrderNumber() + " imeingizwa")
+                        .timestamp(LocalDateTime.now())
+                        .build());
         inventoryService.deductStockForOrder(savedOrder);
         return mapToResponse(savedOrder);
     }

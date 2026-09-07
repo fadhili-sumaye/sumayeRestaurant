@@ -14,6 +14,7 @@ public interface InventoryTransactionRepository extends JpaRepository<InventoryT
     List<InventoryTransaction> findByBranchAndIngredientOrderByCreatedAtDesc(Branch branch, Ingredient ingredient);
     List<InventoryTransaction> findByBranchOrderByCreatedAtDesc(Branch branch, Pageable pageable);
     List<InventoryTransaction> findByBranchIdOrderByCreatedAtDesc(Long branchId);
+    List<InventoryTransaction> findByBranchIdOrderByCreatedAtDesc(Long branchId, Pageable pageable);
     boolean existsByReferenceTypeAndReferenceId(String referenceType, Long referenceId);
     List<InventoryTransaction> findByReferenceTypeAndReferenceId(String referenceType, Long referenceId);
 }

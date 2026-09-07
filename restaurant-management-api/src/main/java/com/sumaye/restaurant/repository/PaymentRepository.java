@@ -25,4 +25,17 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
     BigDecimal totalSuccessful(@Param("branchId") Long branchId,@Param("from") LocalDateTime from,@Param("to") LocalDateTime to);
     @Query("select coalesce(sum(p.amount),0) from Payment p where p.branch.id=:branchId and p.status='SUCCESS' and p.paymentMethod=:method and p.createdAt between :from and :to")
     BigDecimal totalSuccessfulByMethod(@Param("branchId") Long branchId,@Param("method") Payment.PaymentMethod method,@Param("from") LocalDateTime from,@Param("to") LocalDateTime to);
+    @Query("select p.paymentMethod, p.provider, count(p), coalesce(sum(p.amount),0) from Payment p " +
+            "where p.branch.id=:branchId and p.status='SUCCESS' and p.createdAt between :from and :to " +
+            "group by p.paymentMethod, p.provider order by coalesce(sum(p.amount),0) desc")
+    List<Object[]> paymentMethodStats(@Param("branchId") Long branchId, @Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
+    @Query("select p.createdAt, p.amount, p.paymentMethod, p.provider from Payment p " +
+            "where p.branch.id=:branchId and p.status='SUCCESS' and p.createdAt between :from and :to")
+    List<Object[]> revenuesBetween(@Param("branchId") Long branchId, @Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
+    @Query("select count(distinct p.order.id) from Payment p where p.branch.id=:branchId and p.status='SUCCESS' and p.createdAt between :from and :to")
+    long countPaidOrdersBetween(@Param("branchId") Long branchId, @Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
+    @Query("select p.cashier.username, count(p), coalesce(sum(p.amount),0) from Payment p " +
+            "where p.branch.id=:branchId and p.status='SUCCESS' and p.createdAt between :from and :to and p.cashier is not null " +
+            "group by p.cashier.username order by coalesce(sum(p.amount),0) desc")
+    List<Object[]> cashierStatsBetween(@Param("branchId") Long branchId, @Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
 }

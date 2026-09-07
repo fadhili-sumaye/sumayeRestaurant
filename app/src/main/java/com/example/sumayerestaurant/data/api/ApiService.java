@@ -157,4 +157,17 @@ public interface ApiService {
     @POST("/api/branches/{branchId}/daily-closings") Call<DailyClosing> closeDay(@Path("branchId") Long branchId, @Body Map<String,Object> request);
     @GET("/api/branches/{branchId}/daily-closings/{businessDate}") Call<DailyClosing> getDailyClosing(@Path("branchId") Long branchId, @Path("businessDate") String businessDate);
     @GET("/api/branches/{branchId}/reports/profit-loss") Call<ProfitLoss> profitLoss(@Path("branchId") Long branchId,@Query("from") String from,@Query("to") String to);
+
+    // Owner / Management Dashboard
+    @GET("/api/branches/{branchId}/dashboard")
+    Call<OwnerDashboard> getOwnerDashboard(@Path("branchId") Long branchId,
+                                           @Query("from") String from,
+                                           @Query("to") String to,
+                                           @Query("groupBy") String groupBy);
+
+    @GET("/api/branches/{branchId}/dashboard/export")
+    Call<okhttp3.ResponseBody> exportOwnerReport(@Path("branchId") Long branchId,
+                                                 @Query("from") String from,
+                                                 @Query("to") String to,
+                                                 @Query("format") String format);
 }

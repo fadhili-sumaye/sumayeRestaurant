@@ -2,6 +2,7 @@ package com.sumaye.restaurant.service;
 
 import com.sumaye.restaurant.dto.ExpenseCategoryRequest;
 import com.sumaye.restaurant.dto.ExpenseRequest;
+import com.sumaye.restaurant.dto.RealTimeEvent;
 import com.sumaye.restaurant.exception.ApiException;
 import com.sumaye.restaurant.exception.ResourceNotFoundException;
 import com.sumaye.restaurant.model.AuditLog;
@@ -16,6 +17,7 @@ import com.sumaye.restaurant.repository.ExpenseRepository;
 import com.sumaye.restaurant.repository.UserRepository;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +29,7 @@ public class ExpenseService {
     private final BranchRepository branches;
     private final UserRepository users;
     private final AuditLogRepository audit;
+    private final SimpMessagingTemplate messagingTemplate;
 
     @Transactional
     public Expense create(Long branchId, ExpenseRequest request, String username) {
@@ -50,6 +53,14 @@ public class ExpenseService {
         Expense saved = expenses.save(expense);
         recordAudit("EXPENSE_CREATED", saved.getId(), user, branch,
                 "Gharama TZS " + saved.getAmount() + " imehifadhiwa");
+        messagingTemplate.convertAndSend("/topic/branches/" + branchId + "/management",
+                RealTimeEvent.builder()
+                        .eventType("EXPENSE_RECORDED")
+                        .branchId(branchId)
+                        .message("Gharama mpya imeingizwa: " + saved.getDescription()
+                                + " TZS " + saved.getAmount())
+                        .timestamp(LocalDateTime.now())
+                        .build());
         return saved;
     }
 
@@ -89,6 +100,13 @@ public class ExpenseService {
         expenses.save(expense);
         recordAudit("EXPENSE_VOIDED", expense.getId(), user, expense.getBranch(),
                 "Gharama TZS " + expense.getAmount() + " imebatilishwa: " + expense.getVoidReason());
+        messagingTemplate.convertAndSend("/topic/branches/" + expense.getBranch().getId() + "/management",
+                RealTimeEvent.builder()
+                        .eventType("EXPENSE_VOIDED")
+                        .branchId(expense.getBranch().getId())
+                        .message("Gharama imebatilishwa: " + expense.getDescription())
+                        .timestamp(LocalDateTime.now())
+                        .build());
     }
 
     private Branch branch(Long branchId) {

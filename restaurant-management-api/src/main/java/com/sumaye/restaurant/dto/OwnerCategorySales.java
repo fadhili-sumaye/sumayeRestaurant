@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import lombok.*; import java.math.BigDecimal; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class OwnerCategorySales { private String category; private BigDecimal sales; }

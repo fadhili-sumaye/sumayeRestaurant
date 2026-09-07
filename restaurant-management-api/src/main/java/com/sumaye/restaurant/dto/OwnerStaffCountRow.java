@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import lombok.*; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class OwnerStaffCountRow { private String username; private long count; }

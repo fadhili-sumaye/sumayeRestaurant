@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import lombok.*; import java.math.BigDecimal; import java.util.List; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class OwnerExpenseStats { private BigDecimal total; private long count; private List<OwnerExpenseCategoryStat> byCategory; }

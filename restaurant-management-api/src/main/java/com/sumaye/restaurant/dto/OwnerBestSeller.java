@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import lombok.*; import java.math.BigDecimal; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class OwnerBestSeller { private Long menuItemId; private String name; private String categoryName; private long quantity; private BigDecimal revenue; }

@@ -147,6 +147,17 @@
         <activity android:name=".ui.finance.DailyClosingActivity" android:exported="false" android:label="Funga Siku" />
         <activity android:name=".ui.finance.ReportActivity" android:exported="false" android:label="Ripoti" />
 
+        <!-- Shares generated PDF/CSV owner reports to other apps -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.sumayerestaurant.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name=".ui.cashier.PaymentActivity"
             android:exported="false"
