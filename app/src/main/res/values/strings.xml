@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">SUMAYE RESTAURANT</string>
+    
+    <!-- Login Screen -->
+    <string name="username">Jina la mtumiaji</string>
+    <string name="password">password</string>
+    <string name="login">Ingia</string>
+    <string name="forgot_password">forgot password?</string>
+    
+    <!-- Dashboard -->
+    <string name="logout">logout</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="features">Sifa</string>
+    <string name="coming_soon">Sehemu hii inasubiriwa. Karibu tena baadaye.</string>
+    
+    <!-- Roles -->
+    <string name="owner">Mmiliki</string>
+    <string name="admin">Msimamizi</string>
+    <string name="manager">Meneja</string>
+    <string name="waiter">Mhudumu</string>
+    <string name="cashier">Mweka Hazina</string>
+    <string name="kitchen">Jikoni</string>
+    
+    <!-- Messages & Errors -->
+    <string name="test_credentials">Jina: admin, password: admin123</string>
+    <string name="login_success">login successful!</string>
+    <string name="login_failed">Jina la mtumiaji au password si sahihi</string>
+    <string name="no_network">Hakuna muunganisho wa mtandao</string>
+    <string name="server_error">Hitilafu ya server</string>
+    <string name="timeout_error">Muda umekwisha</string>
+    <string name="unauthorized_error">Samahani, hujaruhusiwa kufanya kitendo hiki.</string>
+    <string name="empty_cart_error">Oda yako haina bidhaa.</string>
+    <string name="food_unavailable_error">Chakula hiki hakipatikani kwa sasa.</string>
+    <string name="table_occupied_error">Meza hii tayari ina mteja.</string>
+    <string name="order_sent_to_kitchen">Oda imetumwa jikoni.</string>
+
+    <!-- Waiter Actions & Labels -->
+    <string name="select_table">Chagua Meza</string>
+    <string name="tables">Meza</string>
+    <string name="all_tables">Meza Zote</string>
+    <string name="new_order">Oda Mpya</string>
+    <string name="my_orders">Oda Zangu</string>
+    <string name="choose_food">Chagua Chakula</string>
+    <string name="search_food">Tafuta chakula...</string>
+    <string name="all_categories">Vyote</string>
+    <string name="add_to_cart">Ongeza</string>
+    <string name="remove">Ondoa</string>
+    <string name="price">Bei</string>
+    <string name="quantity">Idadi</string>
+    <string name="subtotal">Jumla Ndogo</string>
+    <string name="total">Jumla</string>
+    <string name="cart">Kikapu</string>
+    <string name="view_cart">Angalia Kikapu</string>
+    <string name="submit_order">Tuma Oda</string>
+    <string name="submitting_order">Inatuma Oda...</string>
+    <string name="order_details">Maelezo ya Oda</string>
+    <string name="cancel_order">Ghairi Oda</string>
+    <string name="confirm_cancel_order">Thibitisha Kughairi Oda</string>
+    <string name="cancel_reason_prompt">Andika sababu ya kughairi oda hii:</string>
+    <string name="special_instructions">Maelekezo Maalumu</string>
+    <string name="special_instructions_hint">Mfano: Usiweke pilipili, Ongeza mchuzi...</string>
+    <string name="add_instructions">Weka Maelezo</string>
+    <string name="edit_instructions">Badili Maelezo</string>
+    <string name="notes">Dokezo la Oda</string>
+    <string name="notes_hint">Dokezo la jumla kwa jiko...</string>
+    <string name="save">Hifadhi</string>
+    <string name="cancel">Ghairi</string>
+    <string name="close">Funga</string>
+    <string name="currency">TZS</string>
+    <string name="capacity_format">Watu %d</string>
+    <string name="table_number_format">Meza %d</string>
+    <string name="available">Wazi</string>
+    <string name="occupied">Ina Mteja</string>
+    <string name="reserved">Imehifadhiwa</string>
+    <string name="cleaning">Inasafishwa</string>
+    <string name="order_number_label">Nambari ya Oda</string>
+    <string name="order_status_label">Hali</string>
+    <string name="date_label">Tarehe</string>
+    <string name="no_orders_found">Bado hujaweka oda yoyote leo.</string>
+    <string name="no_tables_found">Hakuna meza zilizopatikana.</string>
+    <string name="no_menu_items_found">Hakuna vyakula vilivyopatikana.</string>
+    <string name="dine_in">Kula Hapa</string>
+    <string name="takeaway">Kufunga</string>
+    <string name="delivery">Kupeleka</string>
+</resources>

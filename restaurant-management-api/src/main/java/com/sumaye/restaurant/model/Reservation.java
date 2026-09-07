@@ -1,0 +1,5 @@
+package com.sumaye.restaurant.model; import jakarta.persistence.*; import lombok.Data; import java.time.*;
+@Entity @Table(name="reservations") @Data public class Reservation { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id;
+ @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="customer_id",nullable=false) private Customer customer; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="branch_id",nullable=false) private Branch branch; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="table_id",nullable=false) private RestaurantTable table;
+ private LocalDate reservationDate; private LocalTime startTime; private LocalTime endTime; private Integer guestCount; @Enumerated(EnumType.STRING) private Status status=Status.PENDING; @Column(length=500) private String notes; @ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="created_by_id",nullable=false) private User createdBy; private LocalDateTime createdAt=LocalDateTime.now(); private LocalDateTime updatedAt;
+ public enum Status {PENDING,CONFIRMED,SEATED,COMPLETED,CANCELLED,NO_SHOW} }

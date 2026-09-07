@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Top App Bar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarCashier"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#1B5E20"
+        app:title="💰 Hazina - Ankara na Malipo"
+        app:titleTextColor="@color/white" />
+
+    <!-- Connection Status Banner -->
+    <LinearLayout
+        android:id="@+id/layoutCashierConnectionStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="#E8F5E9"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvCashierConnectionStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🟢 Mtandao umeunganishwa"
+            android:textColor="#2E7D32"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnRefreshCashier"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_popup_sync"
+            android:contentDescription="Refresh"
+            android:tint="#1B5E20" />
+
+        <ImageButton
+            android:id="@+id/btnPasswordCashier"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_lock_idle_lock"
+            android:contentDescription="Badilisha Nenosiri"
+            android:tint="@color/primary" />
+
+        <ImageButton
+            android:id="@+id/btnLogoutCashier"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_lock_power_off"
+            android:contentDescription="@string/logout"
+            android:tint="@color/error_color" />
+    </LinearLayout>
+
+    <!-- Metrics Cards Banner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/dark_blue_surface"
+        android:weightSum="3">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:strokeColor="#C8E6C9"
+            app:strokeWidth="1dp"
+            android:backgroundTint="#F1F8E9">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mauzo ya Leo"
+                    android:textSize="11sp"
+                    android:textColor="#33691E" />
+
+                <TextView
+                    android:id="@+id/tvTodaySales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TZS 0"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#1B5E20"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:strokeColor="#FFCDD2"
+            app:strokeWidth="1dp"
+            android:backgroundTint="#FFEBEE">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hazijalipwa"
+                    android:textSize="11sp"
+                    android:textColor="#B71C1C" />
+
+                <TextView
+                    android:id="@+id/tvUnpaidBillsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#C62828"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:strokeColor="#BBDEFB"
+            app:strokeWidth="1dp"
+            android:backgroundTint="#E3F2FD">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zilizolipwa"
+                    android:textSize="11sp"
+                    android:textColor="#0D47A1" />
+
+                <TextView
+                    android:id="@+id/tvPaidBillsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#1565C0"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- Search & Filter Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="6dp"
+        android:background="@color/dark_blue_surface">
+
+        <!-- Filter Chips Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/chipFilterUnpaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zisizolipwa"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_chip_selected"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/chipFilterPaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zilizolipwa"
+                android:textColor="@color/text_color"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_chip_unselected"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/chipFilterAllBills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zote"
+                android:textColor="@color/text_color"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_chip_unselected"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp" />
+        </LinearLayout>
+
+        <!-- Search Input -->
+        <EditText
+            android:id="@+id/etSearchBills"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="🔍 Tafuta kwa Meza au Namba ya Oda..."
+            android:background="@drawable/bg_search_edittext"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- Progress Indicator -->
+    <ProgressBar
+        android:id="@+id/progressBarCashier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:visibility="gone" />
+
+    <!-- Empty State -->
+    <TextView
+        android:id="@+id/tvEmptyBills"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hakuna ankara katika kundi hili."
+        android:textAlignment="center"
+        android:textColor="@color/secondary_text"
+        android:textSize="16sp"
+        android:layout_marginTop="64dp"
+        android:visibility="gone" />
+
+    <!-- Bills Queue RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewBills"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="6dp"
+        android:clipToPadding="false" />
+
+</LinearLayout>

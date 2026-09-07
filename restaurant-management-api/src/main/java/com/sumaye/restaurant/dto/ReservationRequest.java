@@ -1,0 +1,2 @@
+package com.sumaye.restaurant.dto; import jakarta.validation.constraints.*; import lombok.Data; import java.time.*;
+@Data public class ReservationRequest {@NotNull private Long customerId; @NotNull private Long tableId; @NotNull @FutureOrPresent private LocalDate reservationDate; @NotNull private LocalTime startTime; @NotNull private LocalTime endTime; @NotNull @Min(1) private Integer guestCount; private String notes;}

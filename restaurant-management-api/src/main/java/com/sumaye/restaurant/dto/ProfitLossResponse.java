@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import lombok.*; import java.math.BigDecimal; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class ProfitLossResponse{private BigDecimal sales;private BigDecimal operatingExpenses;private BigDecimal estimatedProfit;private String label;}

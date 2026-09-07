@@ -1,0 +1,4 @@
+package com.example.sumayerestaurant.data.model;
+import com.google.gson.annotations.SerializedName; import java.math.BigDecimal;
+public class DeliveryOrder {@SerializedName("id") private Long id; @SerializedName("order") private Order order; @SerializedName("customer") private Customer customer; @SerializedName("deliveryAddress") private String deliveryAddress; @SerializedName("deliveryFee") private BigDecimal deliveryFee; @SerializedName("status") private String status; @SerializedName("rider") private User rider;
+ public Long getId(){return id;} public Order getOrder(){return order;} public Customer getCustomer(){return customer;} public String getDeliveryAddress(){return deliveryAddress;} public BigDecimal getDeliveryFee(){return deliveryFee==null?BigDecimal.ZERO:deliveryFee;} public String getStatus(){return status;} public User getRider(){return rider;} }

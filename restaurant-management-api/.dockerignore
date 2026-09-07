@@ -1,0 +1,11 @@
+.git
+.gitignore
+.idea
+*.iml
+target
+build
+.gradle
+.env
+*.env
+*.log
+.DS_Store

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android Network Security Configuration
+    - Allows cleartext HTTP only to local/development addresses (emulator, LAN)
+    - Requires HTTPS for all production cloud domains
+    - Add your production domain to the 'domain' entry to enforce HTTPS automatically
+-->
+<network-security-config>
+
+    <!-- Allow cleartext (HTTP) for local development and LAN IP connections -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Enforce HTTPS for the production cloud API -->
+    <domain-config cleartextTrafficPermitted="false">
+        <!-- Replace with your actual domain when deploying to cloud -->
+        <domain includeSubdomains="true">yourdomain.com</domain>
+    </domain-config>
+
+</network-security-config>

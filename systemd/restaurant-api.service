@@ -1,0 +1,56 @@
+# =========================================================
+# Systemd Service Unit: restaurant-api
+# File location on server: /etc/systemd/system/restaurant-api.service
+#
+# Features:
+#   - Starts automatically on server boot
+#   - Restarts if the application crashes
+#   - Reads sensitive credentials from a protected env file
+#   - Runs as a non-root user (spring)
+#   - Writes logs accessible via: journalctl -u restaurant-api -f
+# =========================================================
+
+[Unit]
+Description=Sumaye Restaurant Management API (Spring Boot)
+Documentation=https://github.com/yourorg/sumayerestaurant
+After=network.target mysql.service
+Wants=mysql.service
+
+[Service]
+Type=simple
+
+# Run as a non-root user for security
+User=spring
+Group=spring
+
+# Load sensitive environment variables from a protected file
+# File permissions must be: chmod 600 /etc/restaurant-api.env
+# Owner: root. Only root can read it; systemd reads it on behalf of the service.
+EnvironmentFile=/etc/restaurant-api.env
+
+# Working directory for the application
+WorkingDirectory=/opt/restaurant-api
+
+# Startup command — runs the production JAR
+ExecStart=/usr/bin/java \
+  -XX:+UseContainerSupport \
+  -XX:MaxRAMPercentage=75.0 \
+  -Djava.security.egd=file:/dev/./urandom \
+  -jar /opt/restaurant-api/restaurant-management-api.jar
+
+# Restart policy
+Restart=on-failure
+RestartSec=15s
+StartLimitIntervalSec=120s
+StartLimitBurst=5
+
+# Output
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=restaurant-api
+
+# Shutdown grace period
+TimeoutStopSec=30s
+
+[Install]
+WantedBy=multi-user.target

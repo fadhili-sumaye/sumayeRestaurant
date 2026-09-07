@@ -1,0 +1,111 @@
+# ===================================================================
+# DOCKER COMPOSE - CLOUD & LOCAL PRODUCTION-READY STACK
+# Starts: Spring Boot backend + MySQL (+ optional Nginx container)
+# Usage:
+#   Behind host Nginx:               docker compose up -d
+#   With containerized Nginx:        docker compose --profile with-nginx up -d
+# ===================================================================
+
+version: '3.8'
+
+services:
+
+  # ------------------------------------------------------------------
+  # MySQL Database (Internal only, port 3306 never exposed publicly)
+  # ------------------------------------------------------------------
+  db:
+    image: mysql:8.0
+    container_name: restaurant_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME:-restaurant_management}
+      MYSQL_USER: ${DB_USERNAME:-restaurant}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    expose:
+      - "3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database_schema_phase1.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./database_schema_phase4.sql:/docker-entrypoint-initdb.d/04_phase4.sql:ro
+      - ./database_schema_phase5.sql:/docker-entrypoint-initdb.d/05_phase5.sql:ro
+      - ./database_schema_phase6.sql:/docker-entrypoint-initdb.d/06_phase6.sql:ro
+      - ./database_schema_phase7.sql:/docker-entrypoint-initdb.d/07_phase7.sql:ro
+      - ./database_schema_phase8.sql:/docker-entrypoint-initdb.d/08_phase8.sql:ro
+      - ./database_schema_phase9.sql:/docker-entrypoint-initdb.d/09_phase9.sql:ro
+      - ./database_schema_phase10.sql:/docker-entrypoint-initdb.d/10_phase10.sql:ro
+    networks:
+      - restaurant_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # ------------------------------------------------------------------
+  # Spring Boot Backend
+  # ------------------------------------------------------------------
+  api:
+    build:
+      context: ./restaurant-management-api
+      dockerfile: Dockerfile
+    container_name: restaurant_api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      SERVER_PORT: ${SERVER_PORT:-8080}
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-restaurant_management}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-86400000}
+      APP_CORS_ALLOWED_ORIGINS: ${APP_CORS_ALLOWED_ORIGINS:-*}
+      WS_ALLOWED_ORIGINS: ${WS_ALLOWED_ORIGINS:-*}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO:-update}
+    ports:
+      # Bound to 127.0.0.1 by default so only Nginx reverse proxy can reach port 8080
+      - "${SERVER_BIND_IP:-127.0.0.1}:${SERVER_PORT:-8080}:8080"
+    networks:
+      - restaurant_network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/api/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 45s
+      retries: 3
+
+  # ------------------------------------------------------------------
+  # Nginx Reverse Proxy (Optional containerized profile)
+  # ------------------------------------------------------------------
+  nginx:
+    image: nginx:alpine
+    container_name: restaurant_nginx
+    restart: unless-stopped
+    profiles:
+      - with-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/docker-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - api
+    networks:
+      - restaurant_network
+
+# ------------------------------------------------------------------
+# Volumes & Networks
+# ------------------------------------------------------------------
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  restaurant_network:
+    driver: bridge

@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import jakarta.validation.constraints.NotBlank; import lombok.Data; @Data public class ExpenseCategoryRequest{@NotBlank private String name;private String description;}

@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import jakarta.validation.constraints.*; import lombok.Data; import java.math.BigDecimal; import java.time.LocalDate; @Data public class DailyClosingRequest{@NotNull private LocalDate businessDate;@NotNull @DecimalMin("0.0")private BigDecimal actualCash;private String differenceReason;private String notes;}

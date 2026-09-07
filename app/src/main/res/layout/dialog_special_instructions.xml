@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/dialogItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maelekezo Maalumu"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_color" />
+
+    <TextView
+        android:id="@+id/dialogItemSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biryani ya Kuku"
+        android:textSize="14sp"
+        android:textColor="@color/brand_green"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/special_instructions"
+        app:boxStrokeColor="@color/brand_green"
+        app:hintTextColor="@color/brand_green">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSpecialInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:gravity="top"
+            android:hint="@string/special_instructions_hint"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

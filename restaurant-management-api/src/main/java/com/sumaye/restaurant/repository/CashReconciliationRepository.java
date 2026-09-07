@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.repository; import com.sumaye.restaurant.model.CashReconciliation; import org.springframework.data.jpa.repository.JpaRepository; public interface CashReconciliationRepository extends JpaRepository<CashReconciliation,Long>{}

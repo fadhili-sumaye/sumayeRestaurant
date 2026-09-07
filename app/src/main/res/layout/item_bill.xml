@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardBill"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp"
+    app:strokeColor="#E0E0E0"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top Header Row: Bill Number & Status Badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvBillNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ANKARA #BILL-0001"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_color" />
+
+            <TextView
+                android:id="@+id/tvBillStatusBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Haijalipwa"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:background="@drawable/bg_badge_occupied"
+                android:textColor="@color/status_occupied" />
+        </LinearLayout>
+
+        <!-- Bill Requested Ribbon if applicable -->
+        <TextView
+            android:id="@+id/tvBillRequestedBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔔 Mhudumu Ameomba Ankara!"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#E65100"
+            android:background="#FFF3E0"
+            android:padding="6dp"
+            android:layout_marginTop="6dp"
+            android:visibility="gone" />
+
+        <!-- Subtitle: Order number & Table & Waiter -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvBillOrderTable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🍽️ Meza 8 • Oda #ORD-00025"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/brand_green_dark" />
+
+            <TextView
+                android:id="@+id/tvBillWaiter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👤 John Doe"
+                android:textSize="12sp"
+                android:textColor="@color/secondary_text" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Financial Breakdown Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jumla Kuu"
+                    android:textSize="11sp"
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/tvBillTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TZS 25,000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kilicholipwa"
+                    android:textSize="11sp"
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/tvBillAmountPaid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TZS 0"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/brand_green"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salio (Deni)"
+                    android:textSize="11sp"
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/tvBillBalanceDue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TZS 25,000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/error_color"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Action Buttons Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewReceipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Risiti"
+                android:textColor="@color/primary"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="10dp"
+                android:layout_marginEnd="8dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnProcessPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lipa Malipo"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="10dp"
+                android:backgroundTint="@color/brand_green" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

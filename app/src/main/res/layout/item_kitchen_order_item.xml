@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvKotItemNameQty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2 × Wali wa Kuku"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_color" />
+
+        <TextView
+            android:id="@+id/tvKotItemStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tayari"
+            android:textSize="11sp"
+            android:textColor="@color/brand_green"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Special instructions -->
+    <TextView
+        android:id="@+id/tvKotItemInstructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="⚠️ Maelekezo: Usiweke pilipili"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#C62828"
+        android:background="#FFEBEE"
+        android:padding="6dp"
+        android:layout_marginTop="4dp"
+        android:visibility="gone" />
+
+</LinearLayout>

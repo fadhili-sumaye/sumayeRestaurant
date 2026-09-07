@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardTable"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvTableNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meza 1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_color" />
+
+        <TextView
+            android:id="@+id/tvCapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Watu 4"
+            android:textSize="13sp"
+            android:textColor="@color/secondary_text"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/tvTableStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wazi"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="@drawable/bg_badge_available"
+            android:textColor="@color/status_available"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

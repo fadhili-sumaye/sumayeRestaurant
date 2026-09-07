@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp">
+
+    <TextView
+        android:id="@+id/tvReceiptFoodName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="Wali wa Kuku"
+        android:textSize="13sp"
+        android:textColor="#212121" />
+
+    <TextView
+        android:id="@+id/tvReceiptFoodQty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="2"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textColor="#212121" />
+
+    <TextView
+        android:id="@+id/tvReceiptFoodPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="10,000"
+        android:textAlignment="viewEnd"
+        android:textSize="13sp"
+        android:textColor="#212121" />
+
+    <TextView
+        android:id="@+id/tvReceiptFoodSubtotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="20,000"
+        android:textAlignment="viewEnd"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#212121" />
+
+</LinearLayout>

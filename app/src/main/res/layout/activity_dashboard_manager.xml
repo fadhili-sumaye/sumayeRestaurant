@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/dark_blue">
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Karibu!"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/roleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meneja wa Tawi"
+        android:textSize="14sp"
+        android:textColor="@color/secondary_text"
+        android:layout_marginBottom="16dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usimamizi wa Shughuli za Mgahawa"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_color"
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/inventoryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="52dp"
+                app:cornerRadius="10dp"
+                android:text="📦 Hisa &amp; Usimamizi wa Stoo" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/customersButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="52dp"
+                app:cornerRadius="10dp"
+                android:text="👥 Orodha ya Wateja (CRM)" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reservationsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="52dp"
+                app:cornerRadius="10dp"
+                android:text="📅 Uhifadhi wa Meza" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deliveryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="52dp"
+                app:cornerRadius="10dp"
+                android:text="🚚 Oda za Delivery" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/expenseButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="52dp"
+                app:cornerRadius="10dp"
+                android:text="💰 Rekodi Gharama" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dailyClosingButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="52dp"
+                app:cornerRadius="10dp"
+                android:text="🔒 Funga Siku ya Biashara (Z-Report)" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reportsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:minHeight="52dp"
+                app:cornerRadius="10dp"
+                android:text="📊 Ripoti za Mauzo na Faida" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Password Management Actions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangePassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:text="🔑 Badili Nenosiri"
+            android:textSize="13sp"
+            android:padding="12dp"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/dark_blue_surface"
+            android:textColor="@color/primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnResetStaffPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="👤 Weka Upya Staff"
+            android:textSize="13sp"
+            android:padding="12dp"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/brand_green"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/dark_blue_surface"
+            android:textColor="@color/brand_green" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:textSize="15sp"
+        android:padding="14dp"
+        app:cornerRadius="10dp"
+        android:backgroundTint="@color/error_color" />
+
+</LinearLayout>

@@ -1,0 +1,4 @@
+package com.sumaye.restaurant.repository;
+import com.sumaye.restaurant.model.Customer; import org.springframework.data.domain.Page; import org.springframework.data.domain.Pageable; import org.springframework.data.jpa.repository.JpaRepository; import org.springframework.data.jpa.repository.Query; import org.springframework.data.repository.query.Param; import java.util.Optional;
+public interface CustomerRepository extends JpaRepository<Customer,Long>{ Optional<Customer> findByRestaurantIdAndPhoneNumber(Long restaurantId,String phoneNumber);
+ @Query("select c from Customer c where c.restaurant.id=:restaurantId and c.active=true and (lower(c.fullName) like lower(concat('%',:q,'%')) or c.phoneNumber like concat('%',:q,'%'))") Page<Customer> search(@Param("restaurantId")Long restaurantId,@Param("q")String q,Pageable p); }

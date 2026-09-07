@@ -1,0 +1,1 @@
+package com.sumaye.restaurant.dto; import jakarta.validation.constraints.*; import lombok.Data; import java.math.BigDecimal; @Data public class DeliveryRequest{@NotNull private Long orderId;@NotNull private Long customerId;@NotBlank private String deliveryAddress;private String locationNotes;@DecimalMin("0.0")private BigDecimal deliveryFee;private Long riderId;}

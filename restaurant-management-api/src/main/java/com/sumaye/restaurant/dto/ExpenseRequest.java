@@ -1,0 +1,2 @@
+package com.sumaye.restaurant.dto; import com.sumaye.restaurant.model.Payment; import jakarta.validation.constraints.*; import lombok.Data; import java.math.BigDecimal; import java.time.LocalDate;
+@Data public class ExpenseRequest{@NotNull private Long categoryId;@NotBlank private String description;@NotNull @DecimalMin("0.01")private BigDecimal amount;@NotNull private Payment.PaymentMethod paymentMethod;@NotNull private LocalDate expenseDate;private String referenceNumber;private String notes;}

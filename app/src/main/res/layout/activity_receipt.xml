@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ECEFF1">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarReceipt"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#263238"
+        app:title="🧾 Risiti ya Mauzo"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:navigationIconTint="@color/white" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardReceiptContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:strokeColor="#B0BEC5"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header: Restaurant Name & Branch -->
+                <TextView
+                    android:id="@+id/tvReceiptRestaurantName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SUMAYE RESTAURANT"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#212121" />
+
+                <TextView
+                    android:id="@+id/tvReceiptBranchInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tawi la Kati • Dar es Salaam, Tanzania\nSimu: +255 700 000 000"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    android:textColor="#616161"
+                    android:layout_marginTop="2dp" />
+
+                <TextView
+                    android:id="@+id/tvReceiptTaxInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TIN: 123-456-789 | VRN: 40-001234-Z"
+                    android:textAlignment="center"
+                    android:textSize="11sp"
+                    android:textColor="#757575"
+                    android:layout_marginTop="2dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--------------------------------------------------"
+                    android:textAlignment="center"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="6dp" />
+
+                <!-- Metadata Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvReceiptNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Risiti: REC-0001"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+                    <TextView
+                        android:id="@+id/tvReceiptDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="02/09/2026 12:30"
+                        android:textSize="12sp"
+                        android:textColor="#616161" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp">
+                    <TextView
+                        android:id="@+id/tvReceiptOrderTable"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Meza: 8 • Oda: ORD-00025"
+                        android:textSize="12sp"
+                        android:textColor="#424242" />
+                    <TextView
+                        android:id="@+id/tvReceiptCashier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hazina: Cashier"
+                        android:textSize="12sp"
+                        android:textColor="#424242" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--------------------------------------------------"
+                    android:textAlignment="center"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="6dp" />
+
+                <!-- Column Titles -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="Bidhaa"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Qty"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Bei"
+                        android:textAlignment="viewEnd"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Jumla"
+                        android:textAlignment="viewEnd"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+                </LinearLayout>
+
+                <!-- Food Items List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerReceiptItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--------------------------------------------------"
+                    android:textAlignment="center"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="6dp" />
+
+                <!-- Subtotal, Discount, Tax, Total -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Jumla Ndogo (Subtotal):"
+                        android:textSize="13sp"
+                        android:textColor="#424242" />
+                    <TextView
+                        android:id="@+id/tvReceiptSubtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TZS 25,000"
+                        android:textSize="13sp"
+                        android:textColor="#212121" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutReceiptDiscount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Punguzo (Discount):"
+                        android:textSize="13sp"
+                        android:textColor="#C62828" />
+                    <TextView
+                        android:id="@+id/tvReceiptDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-TZS 2,500"
+                        android:textSize="13sp"
+                        android:textColor="#C62828" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutReceiptTax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:id="@+id/tvReceiptTaxTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Kodi (VAT 18%):"
+                        android:textSize="13sp"
+                        android:textColor="#424242" />
+                    <TextView
+                        android:id="@+id/tvReceiptTax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TZS 0"
+                        android:textSize="13sp"
+                        android:textColor="#212121" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="JUMLA KUU:"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+                    <TextView
+                        android:id="@+id/tvReceiptTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TZS 25,000"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--------------------------------------------------"
+                    android:textAlignment="center"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="4dp" />
+
+                <!-- Payment Breakdown & Change -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Kiasi Kilicholipwa:"
+                        android:textSize="13sp"
+                        android:textColor="#2E7D32" />
+                    <TextView
+                        android:id="@+id/tvReceiptPaid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TZS 25,000"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#2E7D32" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutReceiptChange"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Chenji ya Mteja:"
+                        android:textSize="13sp"
+                        android:textColor="#424242" />
+                    <TextView
+                        android:id="@+id/tvReceiptChange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TZS 5,000"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#212121" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvReceiptPaymentMethods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Njia ya Malipo: CASH (TZS 25,000)"
+                    android:textSize="12sp"
+                    android:textColor="#616161"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="==============================================="
+                    android:textAlignment="center"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="8dp" />
+
+                <!-- Footer -->
+                <TextView
+                    android:id="@+id/tvReceiptFooter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Asante kwa kutuhudumia. Karibu Tena!"
+                    android:textAlignment="center"
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:textColor="#424242"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
+
+    <!-- Share / Print Action Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:background="@color/dark_blue_surface"
+        android:elevation="8dp"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShareReceipt"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="📤 Shiriki / Chapisha Risiti"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="10dp"
+            android:backgroundTint="#263238" />
+    </LinearLayout>
+
+</LinearLayout>
