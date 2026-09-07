@@ -88,7 +88,6 @@ public class OwnerDashboardActivity extends AppCompatActivity {
     private int selectedChip = 0;
     private boolean wsSubscribed = false;
 
-    private final SimpleDateFormat dateFmt = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     private final DecimalFormat moneyFmt = new DecimalFormat("#,##0.##");
     private final DecimalFormat pctFmt = new DecimalFormat("0.#");
 
@@ -250,7 +249,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         }
         loadingBar.setVisibility(View.VISIBLE);
         statusText.setText("Inapakia takwimu...");
-        repository.getDashboard(branchId, dateFmt.format(fromDate), dateFmt.format(toDate), groupBy,
+        repository.getDashboard(branchId, fromDate.toString(), toDate.toString(), groupBy,
                 new OwnerRepository.OwnerCallback<OwnerDashboard>() {
                     @Override
                     public void onSuccess(OwnerDashboard dashboard) {
@@ -534,7 +533,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         if (branchId == null) return;
         loadingBar.setVisibility(View.VISIBLE);
         statusText.setText(pdf ? "Inatayarisha PDF..." : "Inatayarisha CSV...");
-        repository.exportReport(branchId, dateFmt.format(fromDate), dateFmt.format(toDate),
+        repository.exportReport(branchId, fromDate.toString(), toDate.toString(),
                 pdf ? "pdf" : "csv", new OwnerRepository.ExportCallback() {
                     @Override
                     public void onSuccess(File file) {
