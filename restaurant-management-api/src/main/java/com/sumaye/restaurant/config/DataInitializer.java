@@ -97,18 +97,18 @@ public class DataInitializer {
             MenuCategory drinks     = findOrCreateCategory(branch, "Vinywaji", "Vinywaji baridi na moto");
             MenuCategory snacks     = findOrCreateCategory(branch, "Vitafunio", "Vitafunio mbalimbali");
 
-            createMenuItemIfMissing(branch, mainDishes, "Pilau Kuku", "Pilau ya kuku wa kienyeji na kachumbari", new BigDecimal("8000.00"), 20, "/images/pilau-kuku.png");
-            createMenuItemIfMissing(branch, mainDishes, "Ugali Samaki", "Ugali moto na samaki wa kukaanga na mboga za majani", new BigDecimal("10000.00"), 25, "/images/ugali-samaki.png");
-            createMenuItemIfMissing(branch, mainDishes, "Chips Kuku", "Chips kukaangwa na robo ya kuku choma", new BigDecimal("7000.00"), 15, "/images/chips-kuku.png");
-            createMenuItemIfMissing(branch, mainDishes, "Biryani Ng'ombe", "Biryani ya nyama ya ng'ombe na sosi ya kando", new BigDecimal("9000.00"), 20, "/images/biryani-ngombe.png");
+            createMenuItemIfMissing(branch, mainDishes, "Pilau Kuku", "Pilau ya kuku wa kienyeji na kachumbari", new BigDecimal("8000.00"), 20);
+            createMenuItemIfMissing(branch, mainDishes, "Ugali Samaki", "Ugali moto na samaki wa kukaanga na mboga za majani", new BigDecimal("10000.00"), 25);
+            createMenuItemIfMissing(branch, mainDishes, "Chips Kuku", "Chips kukaangwa na robo ya kuku choma", new BigDecimal("7000.00"), 15);
+            createMenuItemIfMissing(branch, mainDishes, "Biryani Ng'ombe", "Biryani ya nyama ya ng'ombe na sosi ya kando", new BigDecimal("9000.00"), 20);
 
-            createMenuItemIfMissing(branch, drinks, "Chai ya Maziwa", "Chai ya viungo na maziwa safi", new BigDecimal("1500.00"), 5, "/images/chai-ya-maziwa.png");
-            createMenuItemIfMissing(branch, drinks, "Juisi ya Embe", "Juisi safi ya embe baridi", new BigDecimal("2500.00"), 5, "/images/juisi-ya-embe.png");
-            createMenuItemIfMissing(branch, drinks, "Soda", "Soda baridi ya chupa (350ml)", new BigDecimal("1500.00"), 2, "/images/soda.png");
-            createMenuItemIfMissing(branch, drinks, "Maji ya Kunywa", "Maji safi ya chupa (500ml)", new BigDecimal("1000.00"), 1, "/images/maji-ya-kunywa.png");
+            createMenuItemIfMissing(branch, drinks, "Chai ya Maziwa", "Chai ya viungo na maziwa safi", new BigDecimal("1500.00"), 5);
+            createMenuItemIfMissing(branch, drinks, "Juisi ya Embe", "Juisi safi ya embe baridi", new BigDecimal("2500.00"), 5);
+            createMenuItemIfMissing(branch, drinks, "Soda", "Soda baridi ya chupa (350ml)", new BigDecimal("1500.00"), 2);
+            createMenuItemIfMissing(branch, drinks, "Maji ya Kunywa", "Maji safi ya chupa (500ml)", new BigDecimal("1000.00"), 1);
 
-            createMenuItemIfMissing(branch, snacks, "Sambusa ya Nyama", "Sambusa mbili zilizojazwa nyama ya kusaga", new BigDecimal("2000.00"), 10, "/images/sambusa-ya-nyama.png");
-            createMenuItemIfMissing(branch, snacks, "Mandazi", "Mandazi mawili ya nazi", new BigDecimal("1000.00"), 5, "/images/mandazi.png");
+            createMenuItemIfMissing(branch, snacks, "Sambusa ya Nyama", "Sambusa mbili zilizojazwa nyama ya kusaga", new BigDecimal("2000.00"), 10);
+            createMenuItemIfMissing(branch, snacks, "Mandazi", "Mandazi mawili ya nazi", new BigDecimal("1000.00"), 5);
 
             log.info("=== DataInitializer: Done. ===");
             log.info("Test credentials: admin/admin123 | manager/manager123 | waiter/waiter123 | cashier/cashier123 | kitchen/kitchen123 | owner/owner123 | storekeeper/store123 | delivery/delivery123");
@@ -178,19 +178,10 @@ public class DataInitializer {
     }
 
     private void createMenuItemIfMissing(Branch branch, MenuCategory category, String name, String description,
-                                         BigDecimal price, int prepTime, String imageUrl) {
-        MenuItem existing = menuItemRepository.findByBranchOrderByNameAsc(branch).stream()
-                .filter(m -> m.getName().equalsIgnoreCase(name))
-                .findFirst()
-                .orElse(null);
-        if (existing != null) {
-            // Backfill the photo on items created before images existed.
-            if (imageUrl != null && !imageUrl.isEmpty()
-                    && (existing.getImageUrl() == null || existing.getImageUrl().isEmpty())) {
-                existing.setImageUrl(imageUrl);
-                menuItemRepository.save(existing);
-                log.info("Backfilled image for menu item: {}", name);
-            }
+                                         BigDecimal price, int prepTime) {
+        boolean exists = menuItemRepository.findByBranchOrderByNameAsc(branch).stream()
+                .anyMatch(m -> m.getName().equalsIgnoreCase(name));
+        if (exists) {
             return;
         }
 
@@ -201,7 +192,6 @@ public class DataInitializer {
         item.setDescription(description);
         item.setPrice(price);
         item.setPreparationTimeMinutes(prepTime);
-        item.setImageUrl(imageUrl);
         item.setAvailable(true);
         item.setCreatedAt(LocalDateTime.now());
         menuItemRepository.save(item);
