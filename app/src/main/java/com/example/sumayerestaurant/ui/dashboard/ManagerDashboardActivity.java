@@ -41,7 +41,6 @@ public class ManagerDashboardActivity extends AppCompatActivity {
     private void initializeUI() {
         TextView welcomeTextView = findViewById(R.id.welcomeTextView);
         TextView roleTextView = findViewById(R.id.roleTextView);
-        Button logoutButton = findViewById(R.id.logoutButton);
         
         String firstName = (user != null && user.getFirstName() != null) ? user.getFirstName() : "Meneja";
         welcomeTextView.setText("Karibu, " + firstName + "!");
@@ -57,10 +56,10 @@ public class ManagerDashboardActivity extends AppCompatActivity {
         findViewById(R.id.reportsButton).setOnClickListener(v -> startActivity(new Intent(this, ReportActivity.class)));
         
         // Password Management
-        findViewById(R.id.btnChangePassword).setOnClickListener(v -> PasswordDialogHelper.showChangePasswordDialog(this));
         findViewById(R.id.btnResetStaffPassword).setOnClickListener(v -> PasswordDialogHelper.showResetStaffPasswordDialog(this));
 
-        logoutButton.setOnClickListener(v -> logout());
+        com.example.sumayerestaurant.util.RoleMenuUtil.attach(this,
+                findViewById(R.id.btnRoleMenu), this::logout);
         setupBottomNav();
     }
 

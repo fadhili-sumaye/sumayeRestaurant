@@ -3,7 +3,6 @@ package com.example.sumayerestaurant.ui.dashboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,7 +49,6 @@ public class WaiterDashboardActivity extends AppCompatActivity {
         TextView roleTextView = findViewById(R.id.roleTextView);
         MaterialCardView btnNewOrder = findViewById(R.id.btnNewOrder);
         MaterialCardView btnMyOrders = findViewById(R.id.btnMyOrders);
-        Button logoutButton = findViewById(R.id.logoutButton);
         
         String firstName = (user != null && user.getFirstName() != null) ? user.getFirstName() : "Mhudumu";
         welcomeTextView.setText("Karibu, " + firstName + "!");
@@ -66,9 +64,8 @@ public class WaiterDashboardActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        findViewById(R.id.btnChangePassword).setOnClickListener(v -> com.example.sumayerestaurant.util.PasswordDialogHelper.showChangePasswordDialog(this));
-        
-        logoutButton.setOnClickListener(v -> logout());
+        com.example.sumayerestaurant.util.RoleMenuUtil.attach(this,
+                findViewById(R.id.btnRoleMenu), this::logout);
         setupBottomNav();
     }
 

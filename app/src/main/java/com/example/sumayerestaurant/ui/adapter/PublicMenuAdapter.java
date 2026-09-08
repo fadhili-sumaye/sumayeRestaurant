@@ -21,15 +21,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Grid card adapter for the public customer menu. Cards show photo, name,
+ * category, prep time and price with a quick add-to-cart button.
+ */
 public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.MenuViewHolder> {
 
+    public interface ItemClickListener {
+        void onItemClick(MenuItem item);
+        void onAddClick(MenuItem item);
+    }
+
     private final Context context;
+    private final ItemClickListener listener;
     private final List<MenuItem> menuItems = new ArrayList<>();
     private final NumberFormat currencyFormat = NumberFormat.getNumberInstance(Locale.US);
     private int lastAnimatedPosition = -1;
 
-    public PublicMenuAdapter(Context context) {
+    public PublicMenuAdapter(Context context, ItemClickListener listener) {
         this.context = context;
+        this.listener = listener;
     }
 
     public void setItems(List<MenuItem> items) {
@@ -39,6 +50,10 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
         }
         lastAnimatedPosition = -1;
         notifyDataSetChanged();
+    }
+
+    public List<MenuItem> getItems() {
+        return new ArrayList<>(menuItems);
     }
 
     @NonNull
@@ -56,11 +71,18 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
         holder.itemPriceTextView.setText(String.format("TZS %s", currencyFormat.format(item.getPrice())));
 
         // Category name
-        if (item.getCategory() != null) {
+        if (item.getCategory() != null && item.getCategory().getName() != null) {
             holder.itemCategoryTextView.setText(item.getCategory().getName());
             holder.itemCategoryTextView.setVisibility(View.VISIBLE);
         } else {
             holder.itemCategoryTextView.setVisibility(View.GONE);
+        }
+
+        // Prep time
+        if (item.getPreparationTimeMinutes() != null && item.getPreparationTimeMinutes() > 0) {
+            holder.itemPrepTextView.setText(String.format("Dakika %d", item.getPreparationTimeMinutes()));
+        } else {
+            holder.itemPrepTextView.setText("Tayari kwa haraka");
         }
 
         // Availability badge (overlay on image)
@@ -80,7 +102,7 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
         if (item.getImageUrl() != null && !item.getImageUrl().isEmpty()) {
             Glide.with(context)
                     .load(resolveImageUrl(item.getImageUrl()))
-                    .transform(new CenterCrop(), new RoundedCorners(24))
+                    .transform(new CenterCrop(), new RoundedCorners(20))
                     .placeholder(R.drawable.placeholder_food)
                     .error(R.drawable.placeholder_food)
                     .transition(DrawableTransitionOptions.withCrossFade(300))
@@ -88,6 +110,13 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
         } else {
             holder.itemImage.setImageResource(R.drawable.placeholder_food);
         }
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) listener.onItemClick(item);
+        });
+        holder.addButton.setOnClickListener(v -> {
+            if (listener != null) listener.onAddClick(item);
+        });
 
         // Card entry animation
         animateCard(holder.itemView, position);
@@ -98,7 +127,7 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
      * portable across servers; Glide needs an absolute URL, so prefix the active
      * backend base URL when one is missing.
      */
-    private String resolveImageUrl(String url) {
+    public static String resolveImageUrl(String url) {
         if (url.startsWith("http://") || url.startsWith("https://")) {
             return url;
         }
@@ -135,16 +164,20 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
         ImageView itemImage;
         TextView itemNameTextView;
         TextView itemCategoryTextView;
+        TextView itemPrepTextView;
         TextView itemPriceTextView;
         TextView availabilityBadge;
+        View addButton;
 
         MenuViewHolder(@NonNull View itemView) {
             super(itemView);
             itemImage = itemView.findViewById(R.id.itemImage);
             itemNameTextView = itemView.findViewById(R.id.itemNameTextView);
             itemCategoryTextView = itemView.findViewById(R.id.itemCategoryTextView);
+            itemPrepTextView = itemView.findViewById(R.id.itemPrepTextView);
             itemPriceTextView = itemView.findViewById(R.id.itemPriceTextView);
             availabilityBadge = itemView.findViewById(R.id.availabilityBadge);
+            addButton = itemView.findViewById(R.id.addButton);
         }
     }
 }

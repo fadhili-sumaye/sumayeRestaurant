@@ -15,11 +15,23 @@
         android:gravity="center_vertical"
         android:layout_marginBottom="16dp">
 
+        <ImageButton
+            android:id="@+id/btnRoleMenu"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_menu_dots"
+            android:contentDescription="Menyu ya Akaunti"
+            android:tint="@color/primary"
+            android:scaleType="fitCenter"
+            android:padding="10dp" />
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="4dp">
 
             <TextView
                 android:id="@+id/welcomeTextView"
@@ -382,27 +394,6 @@
                         android:textColor="@color/secondary_text" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- Account Settings -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnChangePassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Badilisha Nenosiri"
-                android:layout_marginBottom="10dp"
-                app:cornerRadius="8dp"
-                app:backgroundTint="@color/dark_blue_card"
-                android:textColor="@color/text_color" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ondoka kwenye Mfumo (Logout)"
-                android:layout_marginBottom="24dp"
-                app:cornerRadius="8dp"
-                app:backgroundTint="@color/error_color"
-                android:textColor="@color/white" />
 
         </LinearLayout>
     </ScrollView>

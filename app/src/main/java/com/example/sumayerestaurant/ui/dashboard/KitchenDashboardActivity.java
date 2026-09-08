@@ -85,8 +85,9 @@ public class KitchenDashboardActivity extends AppCompatActivity {
             Toast.makeText(this, isSoundEnabled ? "Sauti ya oda imewashwa" : "Sauti ya oda imezimwa", Toast.LENGTH_SHORT).show();
         });
 
-        findViewById(R.id.btnPasswordKitchen).setOnClickListener(v -> com.example.sumayerestaurant.util.PasswordDialogHelper.showChangePasswordDialog(this));
-        findViewById(R.id.btnLogoutKitchen).setOnClickListener(v -> logout());
+        com.example.sumayerestaurant.util.RoleMenuUtil.attachToToolbar(this,
+                (com.google.android.material.appbar.MaterialToolbar) findViewById(R.id.toolbarKitchen),
+                this::logout);
 
         setupFilterChips();
 

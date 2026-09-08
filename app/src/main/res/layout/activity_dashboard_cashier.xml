@@ -12,8 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
-        app:title="ðŸ’° Hazina - Ankara na Malipo"
-        app:titleTextColor="@color/white" />
+        app:title="💰 Hazina - Ankara na Malipo"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_menu_dots"
+        app:navigationIconTint="@color/white" />
 
     <!-- Connection Status Banner -->
     <LinearLayout
@@ -33,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ðŸŸ¢ Mtandao umeunganishwa"
+            android:text="🟢 Mtandao umeunganishwa"
             android:textColor="@color/primary_dark"
             android:textSize="13sp"
             android:textStyle="bold" />
@@ -46,26 +48,6 @@
             android:src="@android:drawable/ic_popup_sync"
             android:contentDescription="Refresh"
             android:tint="@color/primary" />
-
-        <ImageButton
-            android:id="@+id/btnPasswordCashier"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_lock_idle_lock"
-            android:contentDescription="Badilisha Nenosiri"
-            android:tint="@color/primary" />
-
-        <ImageButton
-            android:id="@+id/btnLogoutCashier"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_lock_power_off"
-            android:contentDescription="@string/logout"
-            android:tint="@color/error_color" />
     </LinearLayout>
 
     <!-- Metrics Cards Banner -->
@@ -257,7 +239,7 @@
             android:id="@+id/etSearchBills"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="ðŸ” Tafuta kwa Meza au Namba ya Oda..."
+            android:hint="🔍 Tafuta kwa Meza au Namba ya Oda..."
             android:background="@drawable/bg_search_edittext"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"

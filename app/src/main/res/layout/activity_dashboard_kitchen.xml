@@ -6,14 +6,16 @@
     android:orientation="vertical"
     android:background="@color/background">
 
-    <!-- Top App Bar -->
+<!-- Top App Bar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarKitchen"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/surface"
-        app:title="ðŸ‘¨â€ðŸ³ Jikoni - KOT Queue"
-        app:titleTextColor="@color/white" />
+        app:title="👨‍🍳 Jikoni - KOT Queue"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_menu_dots"
+        app:navigationIconTint="@color/white" />
 
     <!-- Connection Status Banner -->
     <LinearLayout
@@ -33,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ðŸŸ¢ Mtandao umeunganishwa"
+            android:text="🟢 Mtandao umeunganishwa"
             android:textColor="@color/primary_dark"
             android:textSize="13sp"
             android:textStyle="bold" />
@@ -46,26 +48,6 @@
             android:src="@android:drawable/ic_lock_silent_mode_off"
             android:contentDescription="Sauti"
             android:tint="@color/surface" />
-
-        <ImageButton
-            android:id="@+id/btnPasswordKitchen"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_lock_idle_lock"
-            android:contentDescription="Badilisha Nenosiri"
-            android:tint="@color/primary" />
-
-        <ImageButton
-            android:id="@+id/btnLogoutKitchen"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_lock_power_off"
-            android:contentDescription="@string/logout"
-            android:tint="@color/error_color" />
     </LinearLayout>
 
     <!-- Filter & Sort Bar -->
@@ -174,7 +156,7 @@
                 android:id="@+id/btnToggleSort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="â±ï¸ Ya Zamani Kwanza"
+                android:text="⏱️ Ya Zamani Kwanza"
                 android:textColor="@color/primary"
                 android:textSize="13sp"
                 android:textStyle="bold"

@@ -30,7 +30,7 @@ public class BarChartView extends View {
         }
     }
 
-    private static final int DEFAULT_GREEN = Color.parseColor("#FF00C853");
+    private static final int DEFAULT_GREEN = Color.parseColor("#FFFF6B00");
     private static final int DEFAULT_RED = Color.parseColor("#FFFF5252");
     private static final int LABEL_GRAY = Color.parseColor("#FFBDBDBD");
     private static final int BASELINE = Color.parseColor("#FF303030");

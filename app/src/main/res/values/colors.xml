@@ -3,18 +3,18 @@
     <color name="black">#FF050505</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- ============ Primary / Brand ============ -->
-    <color name="primary">#FF00C853</color>
-    <color name="primary_dark">#FF00A844</color>
-    <color name="primary_light">#FF00E676</color>
-    <color name="brand_green">#FF00C853</color>
-    <color name="brand_green_dark">#FF00A844</color>
-    <color name="brand_green_light">#FF12291C</color>
+    <!-- ============ Primary / Brand (warm orange) ============ -->
+    <color name="primary">#FFFF6B00</color>
+    <color name="primary_dark">#FFFF5500</color>
+    <color name="primary_light">#FFFF8A3D</color>
+    <color name="brand_green">#FFFF6B00</color>
+    <color name="brand_green_dark">#FFFF5500</color>
+    <color name="brand_green_light">#FF2A1A0A</color>
 
     <!-- ============ Secondary ============ -->
-    <color name="secondary">#FF00E676</color>
-    <color name="secondary_dark">#FF00A844</color>
-    <color name="secondary_light">#FF12291C</color>
+    <color name="secondary">#FFFF6B00</color>
+    <color name="secondary_dark">#FFFF5500</color>
+    <color name="secondary_light">#FF2A1A0A</color>
 
     <!-- ============ Text ============ -->
     <color name="text_color">#FFFFFFFF</color>
@@ -24,11 +24,11 @@
     <color name="disabled_text">#FF777777</color>
 
     <!-- ============ Status ============ -->
-    <color name="success_color">#FF00E676</color>
+    <color name="success_color">#FFFF8A3D</color>
     <color name="error_color">#FFFF5252</color>
     <color name="warning_color">#FFFFD740</color>
-    <color name="info_color">#FF00C853</color>
-    <color name="status_available">#FF00E676</color>
+    <color name="info_color">#FFFF6B00</color>
+    <color name="status_available">#FFFF8A3D</color>
     <color name="status_occupied">#FFFF5252</color>
     <color name="status_reserved">#FFFFD740</color>
     <color name="status_cleaning">#FFBDBDBD</color>
@@ -47,9 +47,9 @@
     <color name="secondary_background">#FF161616</color>
     <color name="card_background">#FF1E1E1E</color>
     <color name="card_secondary">#FF242424</color>
-    <color name="green_bright">#FF00E676</color>
+    <color name="green_bright">#FFFF6B00</color>
     <color name="color_on_primary">#FF050505</color>
-    <color name="status_success_background">#FF13281B</color>
+    <color name="status_success_background">#FF2A1A0A</color>
     <color name="status_warning_background">#FF2A2410</color>
     <color name="status_error_background">#FF2A1313</color>
 
@@ -58,10 +58,18 @@
     <color name="surface_raised">#FF303030</color>
     <color name="elevated_surface">#FF262626</color>
     <color name="on_primary_dark">#FF050505</color>
-    <color name="green_chip">#FF1B4A2E</color>
-    <color name="green_outline">#FF00C853</color>
+    <color name="green_chip">#FF2A1A0A</color>
+    <color name="green_outline">#FFFF6B00</color>
 
-    <color name="nav_item_selected">#FF00C853</color>
+    <color name="nav_item_selected">#FFFF6B00</color>
     <color name="nav_item_unselected">#FF8A8A8A</color>
-    <color name="nav_ripple">#3300C853</color>
+    <color name="nav_ripple">#33FF6B00</color>
+
+    <!-- ============ Customer food UI (dark + warm orange) ============ -->
+    <color name="food_accent">#FFFF6B00</color>
+    <color name="food_accent_dark">#FFFF5500</color>
+    <color name="food_on_accent">#FF050505</color>
+    <color name="food_accent_soft">#FF2A1A0A</color>
+    <color name="food_nav_selected">#FFFF6B00</color>
+    <color name="food_overlay_dark">#B3000000</color>
 </resources>

@@ -2,7 +2,6 @@ package com.example.sumayerestaurant.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +14,6 @@ import com.example.sumayerestaurant.ui.inventory.InventoryActivity;
 import com.example.sumayerestaurant.ui.inventory.RecipePurchaseActivity;
 import com.example.sumayerestaurant.ui.inventory.StockActionActivity;
 import com.example.sumayerestaurant.ui.login.LoginActivity;
-import com.example.sumayerestaurant.util.PasswordDialogHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.math.BigDecimal;
@@ -109,11 +107,8 @@ public class StorekeeperDashboardActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        findViewById(R.id.btnChangePassword).setOnClickListener(v -> {
-            PasswordDialogHelper.showChangePasswordDialog(this);
-        });
-
-        findViewById(R.id.btnLogout).setOnClickListener(v -> logout());
+        com.example.sumayerestaurant.util.RoleMenuUtil.attach(this,
+                findViewById(R.id.btnRoleMenu), this::logout);
 
         setupBottomNav();
     }

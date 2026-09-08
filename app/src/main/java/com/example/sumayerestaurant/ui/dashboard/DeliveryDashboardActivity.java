@@ -19,7 +19,6 @@ import com.example.sumayerestaurant.data.model.User;
 import com.example.sumayerestaurant.data.websocket.WebSocketManager;
 import com.example.sumayerestaurant.ui.adapter.DeliveryOrderAdapter;
 import com.example.sumayerestaurant.ui.login.LoginActivity;
-import com.example.sumayerestaurant.util.PasswordDialogHelper;
 import com.example.sumayerestaurant.util.SoundUtil;
 import com.google.android.material.button.MaterialButton;
 
@@ -113,11 +112,8 @@ public class DeliveryDashboardActivity extends AppCompatActivity implements Deli
 
         findViewById(R.id.btnRefresh).setOnClickListener(v -> loadDeliveries());
 
-        findViewById(R.id.btnChangePassword).setOnClickListener(v -> {
-            PasswordDialogHelper.showChangePasswordDialog(this);
-        });
-
-        findViewById(R.id.btnLogout).setOnClickListener(v -> logout());
+        com.example.sumayerestaurant.util.RoleMenuUtil.attach(this,
+                findViewById(R.id.btnRoleMenu), this::logout);
     }
 
     private void updateFilterUi() {

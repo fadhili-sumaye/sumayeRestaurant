@@ -65,7 +65,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
 
     private static final String[] PERIOD_LABELS = {"Leo", "Jana", "Wiki Hii", "Mwezi Huu", "Mwezi Uliopita", "Kipindi"};
 
-    private static final int COLOR_GREEN = 0xFF00C853;
+    private static final int COLOR_ACCENT = 0xFFFF6B00;
     private static final int COLOR_RED = 0xFFFF5252;
     private static final int COLOR_AMBER = 0xFFFFD740;
     private static final int COLOR_WHITE = 0xFFFFFFFF;
@@ -137,11 +137,10 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         welcomeTextView.setText("Karibu, " + firstName + "!");
         roleTextView.setText("Dashibodi ya Mmiliki");
 
-        findViewById(R.id.btnChangePassword).setOnClickListener(v ->
-                com.example.sumayerestaurant.util.PasswordDialogHelper.showChangePasswordDialog(this));
         findViewById(R.id.btnResetStaffPassword).setOnClickListener(v ->
                 com.example.sumayerestaurant.util.PasswordDialogHelper.showResetStaffPasswordDialog(this));
-        findViewById(R.id.logoutButton).setOnClickListener(v -> logout());
+        com.example.sumayerestaurant.util.RoleMenuUtil.attach(this,
+                findViewById(R.id.btnRoleMenu), this::logout);
 
         statusText.setOnClickListener(v -> loadDashboard());
     }
@@ -233,9 +232,9 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         for (int i = 0; i < chips.size(); i++) {
             MaterialButton b = chips.get(i);
             boolean active = i == index;
-            b.setBackgroundTintList(ColorStateList.valueOf(active ? COLOR_GREEN : 0xFF1E1E1E));
-            b.setTextColor(active ? 0xFF050505 : COLOR_GREEN);
-            b.setStrokeColor(ColorStateList.valueOf(COLOR_GREEN));
+            b.setBackgroundTintList(ColorStateList.valueOf(active ? COLOR_ACCENT : 0xFF1E1E1E));
+            b.setTextColor(active ? 0xFF050505 : COLOR_ACCENT);
+            b.setStrokeColor(ColorStateList.valueOf(COLOR_ACCENT));
         }
     }
 
@@ -285,17 +284,17 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         OwnerSummary s = d.getSummary();
         if (s != null) {
             List<Stat> stats = new ArrayList<>();
-            stats.add(new Stat("Mauzo", money(s.getSales()), COLOR_GREEN));
+            stats.add(new Stat("Mauzo", money(s.getSales()), COLOR_ACCENT));
             stats.add(new Stat("Gharama", money(s.getExpenses()), COLOR_AMBER));
             BigDecimal profit = s.getProfit();
             if (profit != null && profit.signum() < 0) {
                 stats.add(new Stat("Faida / Hasara", "-" + money(profit.abs()), COLOR_RED));
             } else {
-                stats.add(new Stat("Faida / Hasara", money(profit), COLOR_GREEN));
+                stats.add(new Stat("Faida / Hasara", money(profit), COLOR_ACCENT));
             }
             stats.add(new Stat("Maagizo Yote", String.valueOf(s.getTotalOrders()), COLOR_WHITE));
             stats.add(new Stat("Yanayoendelea", String.valueOf(s.getPendingOrders()), COLOR_AMBER));
-            stats.add(new Stat("Yaliyokamilika", String.valueOf(s.getCompletedOrders()), COLOR_GREEN));
+            stats.add(new Stat("Yaliyokamilika", String.valueOf(s.getCompletedOrders()), COLOR_ACCENT));
             stats.add(new Stat("Yaliyoghairiwa", String.valueOf(s.getCancelledOrders()), COLOR_RED));
             stats.add(new Stat("Wastani wa Oda", money(s.getAvgOrderValue()), COLOR_MUTED));
             stats.add(new Stat("Chakula", money(s.getFoodSales()), COLOR_WHITE));
@@ -308,7 +307,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                 addSectionHeader("MAUZO KWA KATEGORIA");
                 for (com.example.sumayerestaurant.data.model.OwnerCategorySales c : s.getSalesByCategory()) {
                     if (c.getCategory() != null) {
-                        addValueRow(c.getCategory(), money(c.getSales()), COLOR_GREEN);
+                        addValueRow(c.getCategory(), money(c.getSales()), COLOR_ACCENT);
                     }
                 }
             }
@@ -320,7 +319,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             List<BarChartView.BarEntry> salesEntries = new ArrayList<>();
             for (com.example.sumayerestaurant.data.model.OwnerSeriesPoint p : d.getSalesSeries()) {
                 BigDecimal r = p.getRevenue() != null ? p.getRevenue() : BigDecimal.ZERO;
-                salesEntries.add(new BarChartView.BarEntry(p.getLabel(), r.floatValue(), COLOR_GREEN));
+                salesEntries.add(new BarChartView.BarEntry(p.getLabel(), r.floatValue(), COLOR_ACCENT));
             }
             BarChartView salesChart = new BarChartView(this);
             salesChart.setEntries(salesEntries);
@@ -337,7 +336,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             BigDecimal revenue = s.getSales() != null ? s.getSales() : BigDecimal.ZERO;
             BigDecimal expenses = s.getExpenses() != null ? s.getExpenses() : BigDecimal.ZERO;
             BigDecimal profit = s.getProfit() != null ? s.getProfit() : BigDecimal.ZERO;
-            pnlEntries.add(new BarChartView.BarEntry("Mauzo", revenue.floatValue(), COLOR_GREEN));
+            pnlEntries.add(new BarChartView.BarEntry("Mauzo", revenue.floatValue(), COLOR_ACCENT));
             pnlEntries.add(new BarChartView.BarEntry("Gharama", expenses.floatValue(), COLOR_AMBER));
             pnlEntries.add(new BarChartView.BarEntry("Faida", profit.floatValue(),
                     profit.signum() < 0 ? COLOR_RED : 0));
@@ -352,7 +351,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         if (d.getPayments() != null && !d.getPayments().isEmpty()) {
             for (OwnerPaymentMethodStat p : d.getPayments()) {
                 addValueRow(paymentName(p.getPaymentMethod(), p.getProvider()) + " (" + p.getCount() + ")",
-                        money(p.getTotal()), COLOR_GREEN);
+                        money(p.getTotal()), COLOR_ACCENT);
             }
         } else {
             addEmptyNote("Hakuna malipo kwa kipindi hiki");
@@ -376,7 +375,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             addSectionHeader("MAAGIZO KWA HALI");
             addValueRow("Jumla", String.valueOf(d.getOrders().getTotal()), COLOR_WHITE);
             addValueRow("Zinazoendelea", String.valueOf(d.getOrders().getPending()), COLOR_AMBER);
-            addValueRow("Zimekamilika", String.valueOf(d.getOrders().getCompleted()), COLOR_GREEN);
+            addValueRow("Zimekamilika", String.valueOf(d.getOrders().getCompleted()), COLOR_ACCENT);
             addValueRow("Zimeghairiwa", String.valueOf(d.getOrders().getCancelled()), COLOR_RED);
             if (d.getOrders().getByStatus() != null) {
                 for (Map.Entry<String, Long> e : d.getOrders().getByStatus().entrySet()) {
@@ -385,7 +384,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                 }
             }
             if (d.getOrders().getBusyHourLabel() != null) {
-                addValueRow("Saa yenye shughuli nyingi", d.getOrders().getBusyHourLabel(), COLOR_GREEN);
+                addValueRow("Saa yenye shughuli nyingi", d.getOrders().getBusyHourLabel(), COLOR_ACCENT);
             }
         }
 
@@ -397,7 +396,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                 String name = b.getName() != null ? b.getName() : ("#N/A-" + b.getMenuItemId());
                 if (b.getCategoryName() != null) name += " · " + b.getCategoryName();
                 addValueRow(rank + ". " + name + " (" + b.getQuantity() + ")",
-                        money(b.getRevenue()), COLOR_GREEN);
+                        money(b.getRevenue()), COLOR_ACCENT);
                 rank++;
             }
         } else {
@@ -438,7 +437,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             } else {
                 for (OwnerStaffSalesRow w : d.getStaff().getWaiters()) {
                     addValueRow(w.getUsername() != null ? w.getUsername() : "-" + " (" + w.getOrders() + " oda)",
-                            money(w.getSales()), COLOR_GREEN);
+                            money(w.getSales()), COLOR_ACCENT);
                 }
             }
 
@@ -448,7 +447,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             } else {
                 for (OwnerStaffPaymentRow c : d.getStaff().getCashiers()) {
                     addValueRow((c.getUsername() != null ? c.getUsername() : "-") + " (" + c.getCount() + ")",
-                            money(c.getTotal()), COLOR_GREEN);
+                            money(c.getTotal()), COLOR_ACCENT);
                 }
             }
 
@@ -466,9 +465,9 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             if (d.getStaff().getRiders() != null && !d.getStaff().getRiders().isEmpty()) {
                 for (OwnerRiderRow r : d.getStaff().getRiders()) {
                     addValueRow((r.getUsername() != null ? r.getUsername() : "-") + " (" + r.getDelivered() + ")",
-                            money(r.getDeliveryFees()), COLOR_GREEN);
+                            money(r.getDeliveryFees()), COLOR_ACCENT);
                 }
-                addValueRow("Usafirishaji Uliokamilika", String.valueOf(d.getStaff().getDeliveriesCompleted()), COLOR_GREEN);
+                addValueRow("Usafirishaji Uliokamilika", String.valueOf(d.getStaff().getDeliveriesCompleted()), COLOR_ACCENT);
             } else {
                 addEmptyNote("Hakuna usafirishaji kwa kipindi hiki");
             }
@@ -478,13 +477,13 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         if (d.getMonthly() != null && d.getMonthly().getMonthLabel() != null) {
             addSectionHeader("ULINGANISHO NA MWEZI ULIOPITA");
             OwnerMonthlyPerformance m = d.getMonthly();
-            addValueRow("Mauzo: " + m.getMonthLabel(), money(m.getSales()), COLOR_GREEN);
+            addValueRow("Mauzo: " + m.getMonthLabel(), money(m.getSales()), COLOR_ACCENT);
             addValueRow("Mauzo (Mwezi Uliopita)", money(m.getPreviousSales()), COLOR_MUTED);
             addValueRow("Mwendo wa Mauzo", pctSigned(m.getSalesGrowthPercent()),
-                    m.getSalesGrowthPercent() != null && m.getSalesGrowthPercent().signum() < 0 ? COLOR_RED : COLOR_GREEN);
+                    m.getSalesGrowthPercent() != null && m.getSalesGrowthPercent().signum() < 0 ? COLOR_RED : COLOR_ACCENT);
             addValueRow("Maagizo / Ulinganisho", m.getOrders() + " vs " + m.getPreviousOrders(), COLOR_WHITE);
             addValueRow("Gharama", money(m.getExpenses()), COLOR_AMBER);
-            addValueRow("Faida", money(m.getProfit()), COLOR_GREEN);
+            addValueRow("Faida", money(m.getProfit()), COLOR_ACCENT);
             if (m.getBestSellingFood() != null) {
                 addValueRow("Kitoweo Kikuu", m.getBestSellingFood(), COLOR_WHITE);
             }
@@ -499,8 +498,8 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         csvBtn.setAllCaps(false);
         csvBtn.setTextSize(13);
         csvBtn.setBackgroundTintList(ColorStateList.valueOf(0xFF1E1E1E));
-        csvBtn.setTextColor(COLOR_GREEN);
-        csvBtn.setStrokeColor(ColorStateList.valueOf(COLOR_GREEN));
+        csvBtn.setTextColor(COLOR_ACCENT);
+        csvBtn.setStrokeColor(ColorStateList.valueOf(COLOR_ACCENT));
         csvBtn.setStrokeWidth(1);
         csvBtn.setCornerRadius(dp(12));
         csvBtn.setOnClickListener(v -> exportReport(false));
@@ -510,7 +509,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         pdfBtn.setText("Pakua Ripoti kama PDF");
         pdfBtn.setAllCaps(false);
         pdfBtn.setTextSize(13);
-        pdfBtn.setBackgroundTintList(ColorStateList.valueOf(COLOR_GREEN));
+        pdfBtn.setBackgroundTintList(ColorStateList.valueOf(COLOR_ACCENT));
         pdfBtn.setTextColor(0xFF050505);
         pdfBtn.setCornerRadius(dp(12));
         pdfBtn.setOnClickListener(v -> exportReport(true));
@@ -600,8 +599,8 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         b.setAllCaps(false);
         b.setMinHeight(dp(44));
         b.setBackgroundTintList(ColorStateList.valueOf(0xFF1E1E1E));
-        b.setTextColor(COLOR_GREEN);
-        b.setStrokeColor(ColorStateList.valueOf(0xFF2A7A47));
+        b.setTextColor(COLOR_ACCENT);
+        b.setStrokeColor(ColorStateList.valueOf(COLOR_ACCENT));
         b.setStrokeWidth(1);
         b.setCornerRadius(dp(10));
         b.setOnClickListener(v -> {
@@ -625,7 +624,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
     private void addSectionHeader(String text) {
         TextView t = new TextView(this);
         t.setText(text);
-        t.setTextColor(COLOR_GREEN);
+        t.setTextColor(COLOR_ACCENT);
         t.setTextSize(13);
         t.setTypeface(t.getTypeface(), Typeface.BOLD);
         t.setPadding(0, dp(14), 0, dp(6));
@@ -691,7 +690,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         bar.setMax(100);
         int pct = percent == null ? 0 : (int) Math.round(percent.doubleValue());
         bar.setProgress(pct);
-        bar.setProgressTintList(ColorStateList.valueOf(COLOR_GREEN));
+        bar.setProgressTintList(ColorStateList.valueOf(COLOR_ACCENT));
         bar.setProgressBackgroundTintList(ColorStateList.valueOf(0xFF303030));
         TextView pctTv = new TextView(this);
         pctTv.setText(pct + "%");

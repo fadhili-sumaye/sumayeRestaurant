@@ -1,44 +1,43 @@
 package com.example.sumayerestaurant.ui.customer;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.example.sumayerestaurant.R;
-import com.example.sumayerestaurant.data.local.TokenManager;
+import com.example.sumayerestaurant.data.local.CartManager;
 import com.example.sumayerestaurant.data.model.MenuItem;
 import com.example.sumayerestaurant.data.repository.MenuRepository;
 import com.example.sumayerestaurant.ui.adapter.PublicMenuAdapter;
-import com.example.sumayerestaurant.ui.dashboard.DashboardActivity;
-import com.example.sumayerestaurant.ui.login.LoginActivity;
-import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.navigation.NavigationView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 /**
- * Public restaurant home screen - the first screen shown when the app opens.
- * Features a modern hero banner, category filter chips, and a grid of food/drink cards.
- * No authentication required to view this screen.
- * 
- * Hamburger menu (top-left) provides access to the staff Login screen.
+ * Customer home screen - the first screen shown when the app opens.
+ * Dark food-delivery style UI with a hero card, search bar, category pills,
+ * photo grid and bottom navigation (Home / Search / Cart / Profile).
  */
 public class PublicHomeActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
-    private MaterialToolbar toolbar;
-    private NavigationView navigationView;
     private RecyclerView menuRecyclerView;
     private ProgressBar progressBar;
     private TextView errorTextView;
@@ -46,13 +45,25 @@ public class PublicHomeActivity extends AppCompatActivity {
     private View emptyLayout;
     private ChipGroup categoryChipGroup;
     private TextView sectionTitleTextView;
+    private EditText searchEditText;
+    private View filterButton;
+    private ImageView filterIcon;
+    private ImageView heroImage;
+    private TextView heroBadge;
+    private TextView heroTitle;
+    private TextView heroPrep;
+    private TextView heroPrice;
+    private View heroAddButton;
+    private BottomNavigationView bottomNavigation;
 
     private PublicMenuAdapter menuAdapter;
     private MenuRepository menuRepository;
-    private TokenManager tokenManager;
+    private CartManager cartManager;
 
-    private List<MenuItem> allMenuItems = new ArrayList<>();
-    private String selectedCategory = "Vyote"; // "All" in Swahili
+    private final List<MenuItem> allMenuItems = new ArrayList<>();
+    private String selectedCategory = "Vyote";
+    private boolean availableOnly = false;
+    private final NumberFormat currencyFormat = NumberFormat.getNumberInstance(Locale.US);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +71,6 @@ public class PublicHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_public_home);
 
         // Initialize views
-        drawerLayout = findViewById(R.id.drawerLayout);
-        toolbar = findViewById(R.id.toolbar);
-        navigationView = findViewById(R.id.navigationView);
         menuRecyclerView = findViewById(R.id.menuRecyclerView);
         progressBar = findViewById(R.id.progressBar);
         errorTextView = findViewById(R.id.errorTextView);
@@ -70,65 +78,114 @@ public class PublicHomeActivity extends AppCompatActivity {
         emptyLayout = findViewById(R.id.emptyLayout);
         categoryChipGroup = findViewById(R.id.categoryChipGroup);
         sectionTitleTextView = findViewById(R.id.sectionTitleTextView);
+        searchEditText = findViewById(R.id.searchEditText);
+        filterButton = findViewById(R.id.filterButton);
+        filterIcon = findViewById(R.id.filterIcon);
+        heroImage = findViewById(R.id.heroImage);
+        heroBadge = findViewById(R.id.heroBadge);
+        heroTitle = findViewById(R.id.heroTitle);
+        heroPrep = findViewById(R.id.heroPrep);
+        heroPrice = findViewById(R.id.heroPrice);
+        heroAddButton = findViewById(R.id.heroAddButton);
+        bottomNavigation = findViewById(R.id.bottomNavigation);
 
-        // Setup toolbar with hamburger icon
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(true);
-            getSupportActionBar().setTitle("SUMAYE RESTAURANT");
-        }
-
-        toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
-
-        // Setup drawer navigation
-        navigationView.setNavigationItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_login) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-                if (tokenManager.isLoggedIn()) {
-                    startActivity(new Intent(this, DashboardActivity.class));
-                } else {
-                    startActivity(new Intent(this, LoginActivity.class));
-                }
-                return true;
-            }
-            return false;
-        });
-
-        // Initialize components
-        tokenManager = new TokenManager(this);
+        cartManager = CartManager.getInstance();
         menuRepository = new MenuRepository(this);
 
         // Setup RecyclerView with 2-column grid
-        menuAdapter = new PublicMenuAdapter(this);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        menuRecyclerView.setLayoutManager(gridLayoutManager);
+        menuAdapter = new PublicMenuAdapter(this, new PublicMenuAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(MenuItem item) {
+                FoodDetailActivity.start(PublicHomeActivity.this, item);
+            }
+
+            @Override
+            public void onAddClick(MenuItem item) {
+                if (!item.isAvailable()) {
+                    Toast.makeText(PublicHomeActivity.this, "Chakula hiki haipatikani leo", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                cartManager.addItem(item, 1, null);
+                Toast.makeText(PublicHomeActivity.this, "Imeongezwa kwenye kikapu", Toast.LENGTH_SHORT).show();
+            }
+        });
+        menuRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         menuRecyclerView.setAdapter(menuAdapter);
 
-        // Update drawer menu based on login state
-        updateDrawerMenu();
+        setupSearch();
+        setupHero();
+        setupBottomNavigation();
+        setupFilterButton();
 
         // Load menu from backend
         loadPublicMenu();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        updateDrawerMenu();
+    private void setupSearch() {
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                applyFilters();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
     }
 
-    private void updateDrawerMenu() {
-        if (navigationView.getMenu() != null) {
-            navigationView.getMenu().clear();
-        }
-        if (tokenManager.isLoggedIn()) {
-            navigationView.getMenu().add(0, R.id.nav_login, 0, "Dashboard")
-                    .setIcon(R.drawable.ic_login);
+    private void setupHero() {
+        heroAddButton.setOnClickListener(v -> {
+            MenuItem heroItem = getHeroItem();
+            if (heroItem == null) return;
+            if (!heroItem.isAvailable()) {
+                Toast.makeText(this, "Chakula hiki haipatikani leo", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            cartManager.addItem(heroItem, 1, null);
+            Toast.makeText(this, "Imeongezwa kwenye kikapu", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    private void setupFilterButton() {
+        filterButton.setOnClickListener(v -> {
+            availableOnly = !availableOnly;
+            updateFilterButtonStyle();
+            applyFilters();
+        });
+    }
+
+    private void updateFilterButtonStyle() {
+        if (availableOnly) {
+            filterButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFFFF6B00));
+            filterIcon.setColorFilter(0xFF050505);
         } else {
-            navigationView.getMenu().add(0, R.id.nav_login, 0, "Login")
-                    .setIcon(R.drawable.ic_login);
+            filterButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(getColor(R.color.food_accent_soft)));
+            filterIcon.setColorFilter(getColor(R.color.food_accent));
         }
+    }
+
+    private void setupBottomNavigation() {
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                return true;
+            }
+            if (id == R.id.nav_search) {
+                searchEditText.requestFocus();
+            } else if (id == R.id.nav_cart) {
+                startActivity(new android.content.Intent(this, CustomerCartActivity.class));
+            } else if (id == R.id.nav_profile) {
+                startActivity(new android.content.Intent(this, CustomerProfileActivity.class));
+            }
+            // Keep Home highlighted since the other tabs open separate screens.
+            bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
+            return true;
+        });
     }
 
     private void loadPublicMenu() {
@@ -148,13 +205,14 @@ public class PublicHomeActivity extends AppCompatActivity {
                     } else {
                         emptyLayout.setVisibility(View.GONE);
                         menuRecyclerView.setVisibility(View.VISIBLE);
-                        allMenuItems = result;
+                        allMenuItems.clear();
+                        allMenuItems.addAll(result);
 
                         // Build category chips from actual data
                         buildCategoryChips(result);
 
                         // Apply initial filter
-                        filterByCategory(selectedCategory);
+                        applyFilters();
                     }
                 });
             }
@@ -188,16 +246,13 @@ public class PublicHomeActivity extends AppCompatActivity {
             chip.setCheckable(true);
             chip.setChecked(category.equals(selectedCategory));
             chip.setCheckedIconVisible(false);
-            chip.setChipBackgroundColorResource(
-                    category.equals(selectedCategory) ? R.color.primary : R.color.card_secondary
-            );
-            chip.setTextColor(getColor(R.color.text_primary));
+            updateChipStyle(chip, category);
 
             chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (isChecked) {
                     selectedCategory = category;
-                    filterByCategory(category);
-                    updateChipStyles();
+                    applyFilters();
+                    updateAllChipStyles();
                 }
             });
 
@@ -210,42 +265,99 @@ public class PublicHomeActivity extends AppCompatActivity {
         }
     }
 
-    private void updateChipStyles() {
+    private void updateAllChipStyles() {
         for (int i = 0; i < categoryChipGroup.getChildCount(); i++) {
-            Chip chip = (Chip) categoryChipGroup.getChildAt(i);
-            if (chip.getText().toString().equals(selectedCategory)) {
-                chip.setChipBackgroundColorResource(R.color.primary);
-                chip.setTextColor(getColor(R.color.black));
-            } else {
-                chip.setChipBackgroundColorResource(R.color.card_secondary);
-                chip.setTextColor(getColor(R.color.text_primary));
-            }
+            updateChipStyle((Chip) categoryChipGroup.getChildAt(i),
+                    ((Chip) categoryChipGroup.getChildAt(i)).getText().toString());
         }
     }
 
-    private void filterByCategory(String category) {
-        List<MenuItem> filtered;
-        if ("Vyote".equals(category)) {
-            filtered = allMenuItems;
-            sectionTitleTextView.setText("Orodha ya Vyakula");
+    private void updateChipStyle(Chip chip, String category) {
+        if (category.equals(selectedCategory)) {
+            chip.setChipBackgroundColorResource(R.color.food_accent);
+            chip.setTextColor(getColor(R.color.food_on_accent));
         } else {
-            filtered = new ArrayList<>();
-            for (MenuItem item : allMenuItems) {
-                if (item.getCategory() != null && category.equals(item.getCategory().getName())) {
-                    filtered.add(item);
-                }
-            }
-            sectionTitleTextView.setText(category);
+            chip.setChipBackgroundColorResource(R.color.card_secondary);
+            chip.setTextColor(getColor(R.color.text_primary));
+        }
+    }
+
+    private void applyFilters() {
+        String query = searchEditText.getText().toString().trim().toLowerCase();
+        List<MenuItem> base = new ArrayList<>();
+        for (MenuItem item : allMenuItems) {
+            boolean categoryMatches = "Vyote".equals(selectedCategory)
+                    || (item.getCategory() != null && selectedCategory.equals(item.getCategory().getName()));
+            if (!categoryMatches) continue;
+
+            boolean queryMatches = query.isEmpty()
+                    || (item.getName() != null && item.getName().toLowerCase().contains(query))
+                    || (item.getCategory() != null && item.getCategory().getName() != null
+                        && item.getCategory().getName().toLowerCase().contains(query));
+            if (!queryMatches) continue;
+
+            if (availableOnly && !item.isAvailable()) continue;
+
+            base.add(item);
         }
 
-        if (filtered.isEmpty()) {
+        if ("Vyote".equals(selectedCategory)) {
+            sectionTitleTextView.setText(query.isEmpty() ? "Menu" : "Matokeo ya Utafutaji");
+        } else {
+            sectionTitleTextView.setText(query.isEmpty() ? selectedCategory : "Matokeo ya Utafutaji");
+        }
+
+        if (base.isEmpty()) {
             emptyLayout.setVisibility(View.VISIBLE);
             menuRecyclerView.setVisibility(View.GONE);
+            heroImage.setImageResource(R.drawable.placeholder_food);
+            heroTitle.setText("Bado hakuna chakula");
+            heroPrep.setText("Jaribu utafutaji mwingine.");
+            heroPrice.setText("");
+            heroBadge.setVisibility(View.GONE);
         } else {
             emptyLayout.setVisibility(View.GONE);
             menuRecyclerView.setVisibility(View.VISIBLE);
-            menuAdapter.setItems(filtered);
+            menuAdapter.setItems(base);
+            bindHero(base.get(0));
         }
+    }
+
+    private MenuItem getHeroItem() {
+        List<MenuItem> items = menuAdapter.getItems();
+        if (items.isEmpty()) return null;
+        for (MenuItem item : items) {
+            if (item.isAvailable()) return item;
+        }
+        return items.get(0);
+    }
+
+    private void bindHero(MenuItem item) {
+        heroTitle.setText(item.getName());
+        heroPrice.setText(String.format("TZS %s", currencyFormat.format(item.getPrice())));
+        heroBadge.setVisibility(View.VISIBLE);
+
+        if (item.getPreparationTimeMinutes() != null && item.getPreparationTimeMinutes() > 0) {
+            String cat = item.getCategory() != null && item.getCategory().getName() != null
+                    ? item.getCategory().getName() : "Sumaye Special";
+            heroPrep.setText(String.format("%s · Dakika %d", cat, item.getPreparationTimeMinutes()));
+        } else {
+            heroPrep.setText(item.getCategory() != null && item.getCategory().getName() != null
+                    ? item.getCategory().getName() : "");
+        }
+
+        if (item.getImageUrl() != null && !item.getImageUrl().isEmpty()) {
+            Glide.with(this)
+                    .load(PublicMenuAdapter.resolveImageUrl(item.getImageUrl()))
+                    .transform(new CenterCrop())
+                    .placeholder(R.drawable.placeholder_food)
+                    .error(R.drawable.placeholder_food)
+                    .into(heroImage);
+        } else {
+            heroImage.setImageResource(R.drawable.placeholder_food);
+        }
+
+        heroImage.setOnClickListener(v -> FoodDetailActivity.start(this, item));
     }
 
     private void showLoading(boolean loading) {

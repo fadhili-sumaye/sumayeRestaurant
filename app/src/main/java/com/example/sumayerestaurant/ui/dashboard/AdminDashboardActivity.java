@@ -2,7 +2,6 @@ package com.example.sumayerestaurant.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.sumayerestaurant.R;
@@ -33,7 +32,6 @@ public class AdminDashboardActivity extends AppCompatActivity {
     private void initializeUI() {
         TextView welcomeTextView = findViewById(R.id.welcomeTextView);
         TextView roleTextView = findViewById(R.id.roleTextView);
-        Button logoutButton = findViewById(R.id.logoutButton);
         
         welcomeTextView.setText("Karibu, " + (user != null && user.getFirstName() != null ? user.getFirstName() : "Msimamizi") + "!");
         roleTextView.setText("Msimamizi (Super Admin)");
@@ -69,10 +67,10 @@ public class AdminDashboardActivity extends AppCompatActivity {
         });
 
         // Password Management
-        findViewById(R.id.btnChangePassword).setOnClickListener(v -> com.example.sumayerestaurant.util.PasswordDialogHelper.showChangePasswordDialog(this));
         findViewById(R.id.btnResetStaffPassword).setOnClickListener(v -> com.example.sumayerestaurant.util.PasswordDialogHelper.showResetStaffPasswordDialog(this));
 
-        logoutButton.setOnClickListener(v -> logout());
+        com.example.sumayerestaurant.util.RoleMenuUtil.attach(this,
+                findViewById(R.id.btnRoleMenu), this::logout);
         setupBottomNav();
     }
 

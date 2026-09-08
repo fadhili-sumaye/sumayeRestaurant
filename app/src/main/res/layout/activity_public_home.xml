@@ -1,243 +1,380 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
     android:fitsSystemWindows="true">
 
-    <!-- Main Content -->
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <!-- Header -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp">
 
-        <!-- Collapsing Toolbar with Hero Section -->
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background"
-            android:theme="@style/Theme.SUMAYERESTAURANT">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/headerProfileIcon"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:cardCornerRadius="21dp"
+            app:cardBackgroundColor="@color/card_secondary"
+            app:strokeWidth="0dp"
+            app:cardElevation="0dp">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsingToolbar"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:contentScrim="@color/background"
-                app:statusBarScrim="@color/background">
+                android:layout_height="match_parent"
+                android:padding="9dp"
+                android:src="@drawable/ic_profile"
+                app:tint="@color/food_accent" />
 
-                <!-- Hero Banner Content -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingTop="56dp"
-                    app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.7">
+        </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Hero Card -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="8dp"
-                        app:strokeWidth="0dp">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
 
-                        <FrameLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/bg_hero_banner">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/notificationIcon"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:cardCornerRadius="21dp"
+            app:cardBackgroundColor="@color/card_secondary"
+            app:strokeWidth="0dp"
+            app:cardElevation="0dp">
 
-                            <!-- Gradient overlay for text readability -->
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/bg_hero_overlay" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="9dp"
+                android:src="@drawable/ic_notification"
+                app:tint="@color/secondary_text" />
 
-                            <!-- Hero Text Content -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-                                android:padding="24dp"
-                                android:gravity="center_vertical">
+        </com.google.android.material.card.MaterialCardView>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Karibu"
-                                    android:textColor="@color/white"
-                                    android:textSize="14sp"
-                                    android:alpha="0.8" />
+    </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Sumaye\nRestaurant"
-                                    android:textColor="@color/white"
-                                    android:textSize="28sp"
-                                    android:textStyle="bold"
-                                    android:lineSpacingMultiplier="1.1"
-                                    android:layout_marginTop="4dp" />
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Chakula Kizuri,"
+        android:textColor="@color/text_primary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Vyakula vitamu na vinywaji bora"
-                                    android:textColor="@color/white"
-                                    android:textSize="13sp"
-                                    android:alpha="0.75"
-                                    android:layout_marginTop="8dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Hisia Nzuri!"
+        android:textColor="@color/food_accent"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-                            </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:text="Sumaye Restaurant · Dar es Salaam"
+        android:textColor="@color/secondary_text"
+        android:textSize="13sp" />
 
-                        </FrameLayout>
+    <!-- Search bar -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="14dp"
+        app:cardCornerRadius="18dp"
+        app:cardBackgroundColor="@color/card_secondary"
+        app:strokeWidth="0dp"
+        app:cardElevation="0dp">
 
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-
-                <!-- Toolbar (stays pinned at top) -->
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin"
-                    app:navigationIcon="@drawable/ic_menu_hamburger"
-                    app:title="SUMAYE RESTAURANT"
-                    app:titleTextColor="@color/text_primary"
-                    app:titleTextAppearance="@style/TextAppearance.Material3.TitleMedium" />
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <!-- Scrollable Content Below Hero -->
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp">
 
-            <LinearLayout
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/hint_color" />
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:background="@null"
+                android:fontFamily="sans"
+                android:hint="Tafuta chakula au kinywaji..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/hint_color"
+                android:textSize="14sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/filterButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                app:cardCornerRadius="18dp"
+                app:cardBackgroundColor="@color/food_accent_soft"
+                app:strokeWidth="0dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/filterIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_filter"
+                    app:tint="@color/food_accent" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Category pills -->
+    <HorizontalScrollView
+        android:id="@+id/categoryScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp"
+        android:clipToPadding="false">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/categoryChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true" />
+
+    </HorizontalScrollView>
+
+    <!-- Scrollable food area -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Hero card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="6dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/heroImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/app_name" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_hero_overlay" />
+
+                    <!-- Hero text -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="bottom"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:id="@+id/heroBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/bg_chip_selected"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="3dp"
+                            android:text="BORA LEO"
+                            android:textColor="@color/food_on_accent"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/heroTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vyakula Vitamu"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp">
+
+                            <TextView
+                                android:id="@+id/heroPrep"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/heroPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/food_accent"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/heroAddButton"
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:layout_marginStart="12dp"
+                                app:cardCornerRadius="22dp"
+                                app:cardBackgroundColor="@color/food_accent"
+                                app:strokeWidth="0dp"
+                                app:cardElevation="3dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_add"
+                                    app:tint="@color/food_on_accent" />
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Section title -->
+            <TextView
+                android:id="@+id/sectionTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menu"
+                android:textColor="@color/text_primary"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="18dp"
+                android:paddingBottom="8dp" />
+
+            <!-- Loading -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="28dp"
+                android:indeterminateTint="@color/food_accent"
+                android:visibility="gone" />
+
+            <!-- Error -->
+            <TextView
+                android:id="@+id/errorTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:textColor="@color/error_color"
+                android:textSize="14sp"
+                android:padding="16dp"
+                android:gravity="center"
+                android:visibility="gone" />
 
-                <!-- Category Filter Chips -->
-                <HorizontalScrollView
-                    android:id="@+id/categoryScrollView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none"
-                    android:paddingHorizontal="12dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="4dp"
-                    android:clipToPadding="false">
+            <!-- Empty state -->
+            <LinearLayout
+                android:id="@+id/emptyLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="48dp"
+                android:visibility="gone">
 
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/categoryChipGroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:singleSelection="true"
-                        app:selectionRequired="true" />
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:src="@drawable/placeholder_food"
+                    app:tint="@color/hint_color" />
 
-                </HorizontalScrollView>
-
-                <!-- Section Title -->
                 <TextView
-                    android:id="@+id/sectionTitleTextView"
+                    android:id="@+id/emptyTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Orodha ya Vyakula"
-                    android:textColor="@color/text_primary"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:paddingHorizontal="16dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="8dp" />
-
-                <!-- Loading Progress -->
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginVertical="32dp"
-                    android:indeterminateTint="@color/primary"
-                    android:visibility="gone" />
-
-                <!-- Error Message -->
-                <TextView
-                    android:id="@+id/errorTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/error_color"
-                    android:textSize="14sp"
-                    android:padding="16dp"
+                    android:text="Hakuna chakula kinachofanana na utafutaji wako."
+                    android:textColor="@color/secondary_text"
+                    android:textSize="15sp"
                     android:gravity="center"
-                    android:visibility="gone" />
-
-                <!-- Empty State -->
-                <LinearLayout
-                    android:id="@+id/emptyLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="48dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🍽️"
-                        android:textSize="48sp" />
-
-                    <TextView
-                        android:id="@+id/emptyTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hakuna vyakula vilivyopatikana kwa sasa."
-                        android:textColor="@color/secondary_text"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:layout_marginTop="12dp" />
-
-                </LinearLayout>
-
-                <!-- Menu Items Grid -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/menuRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:clipToPadding="false"
-                    android:paddingHorizontal="8dp"
-                    android:paddingBottom="24dp" />
+                    android:layout_marginTop="12dp" />
 
             </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
+            <!-- Food grid -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menuRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:paddingHorizontal="8dp"
+                android:paddingBottom="20dp" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </LinearLayout>
 
-    <!-- Navigation Drawer (Hamburger Menu) -->
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/surface"
-        app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/drawer_menu"
-        app:itemTextColor="@color/text_primary"
-        app:itemIconTint="@color/primary" />
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/food_nav_color"
+        app:itemTextColor="@color/food_nav_color" />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

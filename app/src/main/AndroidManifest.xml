@@ -31,6 +31,25 @@
             </intent-filter>
         </activity>
 
+        <!-- Customer Food Detail, Cart and Profile (Phase: customer UI) -->
+        <activity
+            android:name=".ui.customer.FoodDetailActivity"
+            android:exported="false"
+            android:label="Maelezo ya Chakula"
+            android:theme="@style/Theme.SUMAYERESTAURANT" />
+
+        <activity
+            android:name=".ui.customer.CustomerCartActivity"
+            android:exported="false"
+            android:label="Kikapu"
+            android:theme="@style/Theme.SUMAYERESTAURANT" />
+
+        <activity
+            android:name=".ui.customer.CustomerProfileActivity"
+            android:exported="false"
+            android:label="Wasifu"
+            android:theme="@style/Theme.SUMAYERESTAURANT" />
+
         <!-- Staff Login Screen (accessed via hamburger menu) -->
         <activity
             android:name=".ui.login.LoginActivity"

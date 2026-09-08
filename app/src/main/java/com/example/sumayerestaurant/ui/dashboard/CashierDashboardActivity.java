@@ -80,8 +80,9 @@ public class CashierDashboardActivity extends AppCompatActivity {
         chipAll = findViewById(R.id.chipFilterAllBills);
 
         findViewById(R.id.btnRefreshCashier).setOnClickListener(v -> viewModel.loadBills());
-        findViewById(R.id.btnPasswordCashier).setOnClickListener(v -> com.example.sumayerestaurant.util.PasswordDialogHelper.showChangePasswordDialog(this));
-        findViewById(R.id.btnLogoutCashier).setOnClickListener(v -> logout());
+        com.example.sumayerestaurant.util.RoleMenuUtil.attachToToolbar(this,
+                (com.google.android.material.appbar.MaterialToolbar) findViewById(R.id.toolbarCashier),
+                this::logout);
 
         setupFilterChips();
 
