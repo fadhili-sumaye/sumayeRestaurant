@@ -57,6 +57,12 @@ dependencies {
     // RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     
+    // DrawerLayout
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+    
+    // CoordinatorLayout
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
+    
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment:2.7.7")
     implementation("androidx.navigation:navigation-ui:2.7.7")
@@ -75,6 +81,9 @@ dependencies {
     
     // Gson for JSON parsing
     implementation("com.google.code.gson:gson:2.10.1")
+    
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     
     // Security (for encrypted SharedPreferences)
     implementation("androidx.security:security-crypto:1.1.0-alpha06")

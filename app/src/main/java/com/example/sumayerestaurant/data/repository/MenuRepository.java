@@ -72,4 +72,27 @@ public class MenuRepository {
             }
         });
     }
+
+    public void getPublicMenu(MenuCallback<List<MenuItem>> callback) {
+        if (!ConnectivityUtil.isNetworkAvailable(context)) {
+            callback.onError(Constants.ERROR_NETWORK);
+            return;
+        }
+
+        apiService.getPublicMenu().enqueue(new Callback<List<MenuItem>>() {
+            @Override
+            public void onResponse(Call<List<MenuItem>> call, Response<List<MenuItem>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Hitilafu katika kupata orodha ya vyakula.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MenuItem>> call, Throwable t) {
+                callback.onError("Imeshindwa kuunganishwa na seva: " + t.getMessage());
+            }
+        });
+    }
 }

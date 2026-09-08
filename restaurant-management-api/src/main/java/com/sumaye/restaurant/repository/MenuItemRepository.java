@@ -11,4 +11,5 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
     List<MenuItem> findByBranchOrderByNameAsc(Branch branch);
     List<MenuItem> findByCategory(MenuCategory category);
     List<MenuItem> findByBranchAndAvailable(Branch branch, boolean available);
+    List<MenuItem> findByAvailableOrderByNameAsc(boolean available);
 }

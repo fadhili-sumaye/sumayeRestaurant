@@ -17,6 +17,13 @@ public interface ApiService {
     @POST("/api/auth/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
+    // Public menu (no authentication required)
+    @GET("/api/public/menu")
+    Call<List<MenuItem>> getPublicMenu();
+
+    @GET("/api/public/menu/categories")
+    Call<List<MenuCategory>> getPublicCategories();
+
     @POST("/api/auth/change-password")
     Call<Map<String, String>> changePassword(@Body ChangePasswordRequest request);
 
