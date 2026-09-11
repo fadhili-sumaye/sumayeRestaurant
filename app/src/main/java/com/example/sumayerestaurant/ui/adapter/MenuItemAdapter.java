@@ -6,15 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.local.CartManager;
 import com.example.sumayerestaurant.data.model.CartItem;
 import com.example.sumayerestaurant.data.model.MenuItem;
+import com.example.sumayerestaurant.util.ImageHelper;
 import com.google.android.material.card.MaterialCardView;
 
 import java.text.NumberFormat;
@@ -70,6 +76,7 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuVi
             holder.tvAddSpecialNote.setVisibility(View.GONE);
             holder.tvSpecialInstructionsPreview.setVisibility(View.GONE);
             holder.cardMenuItem.setAlpha(0.6f);
+            holder.ivFoodImage.setImageResource(ImageHelper.getFoodFallbackDrawable(item.getImageUrl(), item.getName()));
             return;
         }
 
@@ -77,6 +84,18 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuVi
         holder.tvAvailabilityBadge.setVisibility(View.GONE);
         holder.layoutQuantityControls.setVisibility(View.VISIBLE);
         holder.tvAddSpecialNote.setVisibility(View.VISIBLE);
+
+        int fallbackRes = ImageHelper.getFoodFallbackDrawable(item.getImageUrl(), item.getName());
+        String resolved = ImageHelper.resolveImageUrl(item.getImageUrl());
+        Object loadTarget = (resolved != null && !resolved.isEmpty()) ? resolved : fallbackRes;
+
+        Glide.with(context)
+                .load(loadTarget)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .transform(new CenterCrop(), new RoundedCorners(12))
+                .placeholder(fallbackRes)
+                .error(fallbackRes)
+                .into(holder.ivFoodImage);
 
         // Find existing quantity and instructions in cart
         int currentQty = 0;
@@ -139,6 +158,7 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuVi
         ImageButton btnMinus;
         TextView tvQuantity;
         ImageButton btnPlus;
+        ImageView ivFoodImage;
 
         MenuViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -153,6 +173,7 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuVi
             btnMinus = itemView.findViewById(R.id.btnMinus);
             tvQuantity = itemView.findViewById(R.id.tvQuantity);
             btnPlus = itemView.findViewById(R.id.btnPlus);
+            ivFoodImage = itemView.findViewById(R.id.ivFoodImage);
         }
     }
 }

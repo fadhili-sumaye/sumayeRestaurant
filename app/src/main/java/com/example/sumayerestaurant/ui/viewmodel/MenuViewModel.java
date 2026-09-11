@@ -60,7 +60,8 @@ public class MenuViewModel extends AndroidViewModel {
 
     public void loadMenu(Long branchId) {
         if (branchId == null) {
-            branchId = 1L;
+            errorMessageLiveData.setValue("Akaunti hii haina tawi lililowekwa.");
+            return;
         }
 
         isLoadingLiveData.setValue(true);

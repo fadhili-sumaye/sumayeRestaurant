@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/dark_blue">
+    android:background="@color/background">
 
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp">
 
         <ImageButton
             android:id="@+id/btnRoleMenu"
@@ -37,9 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Karibu!"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary" />
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/text_primary" />
 
             <TextView
                 android:id="@+id/roleTextView"
@@ -47,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="Dashibodi ya Mmiliki"
                 android:textSize="13sp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/secondary_text"
                 android:layout_marginTop="2dp" />
         </LinearLayout>
@@ -58,7 +61,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
 
         <ProgressBar
             android:id="@+id/loadingBar"
@@ -76,6 +80,7 @@
             android:layout_marginStart="10dp"
             android:text="Inapakia takwimu..."
             android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/secondary_text" />
     </LinearLayout>
 
@@ -91,7 +96,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Period chips (filled programmatically) -->
+            <!-- Period chips -->
             <LinearLayout
                 android:id="@+id/chipContainer"
                 android:layout_width="match_parent"
@@ -99,36 +104,38 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp" />
 
-            <!-- Dashboard sections (built programmatically) -->
+            <!-- Dashboard sections -->
             <LinearLayout
                 android:id="@+id/contentContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="12dp" />
 
-            <!-- Reset staff password (management only) -->
+            <!-- Reset staff password -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnResetStaffPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="👤 Weka Upya Nenosiri la Staff"
+                android:text="Weka Upya Nenosiri la Staff"
                 android:textSize="13sp"
                 android:padding="12dp"
-                app:cornerRadius="10dp"
+                app:cornerRadius="27dp"
                 app:strokeColor="@color/primary"
                 app:strokeWidth="1dp"
-                android:backgroundTint="@color/dark_blue_surface"
-                android:textColor="@color/primary" />
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="@color/primary"
+                android:fontFamily="@font/poppins_medium" />
         </LinearLayout>
     </ScrollView>
 
-    <!-- Role-based Bottom Navigation -->
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.Sumaye.BottomNav"
         app:menu="@menu/menu_bottom_owner"
         app:labelVisibilityMode="labeled" />
 

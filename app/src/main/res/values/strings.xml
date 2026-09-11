@@ -82,4 +82,13 @@
     <string name="dine_in">Kula Hapa</string>
     <string name="takeaway">Kufunga</string>
     <string name="delivery">Kupeleka</string>
+    <string name="inventory_management">Usimamizi wa Hisa</string>
+    <string name="stock_action">Hatua za Hisa</string>
+    <string name="recipes_and_purchases">Mapishi na Manunuzi</string>
+    <string name="customers">Wateja</string>
+    <string name="table_reservations">Uhifadhi wa Meza</string>
+    <string name="delivery_orders">Oda za Delivery</string>
+    <string name="record_expense">Rekodi Gharama</string>
+    <string name="close_day">Funga Siku</string>
+    <string name="reports">Ripoti</string>
 </resources>

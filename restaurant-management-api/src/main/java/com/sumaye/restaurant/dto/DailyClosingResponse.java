@@ -18,6 +18,7 @@ public class DailyClosingResponse {
     private BigDecimal cardSales;
     private BigDecimal bankSales;
     private BigDecimal otherSales;
+    private BigDecimal discounts;
     private BigDecimal expenses;
     private BigDecimal expectedCash;
     private LocalDateTime closedAt;
@@ -33,6 +34,7 @@ public class DailyClosingResponse {
                 .cardSales(closing.getCardSales())
                 .bankSales(closing.getBankSales())
                 .otherSales(closing.getOtherSales())
+                .discounts(closing.getDiscounts())
                 .expenses(closing.getExpenses())
                 .expectedCash(closing.getExpectedCash())
                 .closedAt(closing.getClosedAt())

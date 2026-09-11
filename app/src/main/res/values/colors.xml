@@ -3,13 +3,16 @@
     <color name="black">#FF050505</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- ============ Primary / Brand (warm orange) ============ -->
+    <!-- ============ Primary / Brand (Pinterest warm coral-orange) ============ -->
     <color name="primary">#FFFF6B00</color>
     <color name="primary_dark">#FFFF5500</color>
     <color name="primary_light">#FFFF8A3D</color>
-    <color name="brand_green">#FFFF6B00</color>
-    <color name="brand_green_dark">#FFFF5500</color>
-    <color name="brand_green_light">#FF2A1A0A</color>
+    <color name="brand_accent">#FFFF6B00</color>
+    <color name="brand_accent_dark">#FFFF5500</color>
+    <color name="brand_accent_soft">#FF2A1A0A</color>
+    <color name="brand_green">@color/brand_accent</color>
+    <color name="brand_green_dark">@color/brand_accent_dark</color>
+    <color name="brand_green_light">@color/brand_accent_soft</color>
 
     <!-- ============ Secondary ============ -->
     <color name="secondary">#FFFF6B00</color>
@@ -24,7 +27,7 @@
     <color name="disabled_text">#FF777777</color>
 
     <!-- ============ Status ============ -->
-    <color name="success_color">#FFFF8A3D</color>
+    <color name="success_color">#FF38B26D</color>
     <color name="error_color">#FFFF5252</color>
     <color name="warning_color">#FFFFD740</color>
     <color name="info_color">#FFFF6B00</color>
@@ -41,22 +44,23 @@
     <color name="dark_blue_divider">#FF303030</color>
 
     <!-- ============ Core design tokens ============ -->
-    <color name="background">#FF121212</color>
-    <color name="surface">#FF1E1E1E</color>
-    <color name="divider">#FF303030</color>
-    <color name="secondary_background">#FF161616</color>
-    <color name="card_background">#FF1E1E1E</color>
-    <color name="card_secondary">#FF242424</color>
-    <color name="green_bright">#FFFF6B00</color>
+    <color name="background">#FF0E0E0E</color>
+    <color name="surface">#FF1A1A1A</color>
+    <color name="divider">#FF2A2A2A</color>
+    <color name="secondary_background">#FF131313</color>
+    <color name="card_background">#FF1C1C1C</color>
+    <color name="card_secondary">#FF222222</color>
+    <color name="accent_bright">#FFFF6B00</color>
+    <color name="green_bright">@color/accent_bright</color>
     <color name="color_on_primary">#FF050505</color>
     <color name="status_success_background">#FF2A1A0A</color>
     <color name="status_warning_background">#FF2A2410</color>
     <color name="status_error_background">#FF2A1313</color>
 
     <!-- ============ Extended palette ============ -->
-    <color name="surface_neutral">#FF2A2A2A</color>
-    <color name="surface_raised">#FF303030</color>
-    <color name="elevated_surface">#FF262626</color>
+    <color name="surface_neutral">#FF282828</color>
+    <color name="surface_raised">#FF2E2E2E</color>
+    <color name="elevated_surface">#FF242424</color>
     <color name="on_primary_dark">#FF050505</color>
     <color name="green_chip">#FF2A1A0A</color>
     <color name="green_outline">#FFFF6B00</color>
@@ -72,4 +76,19 @@
     <color name="food_accent_soft">#FF2A1A0A</color>
     <color name="food_nav_selected">#FFFF6B00</color>
     <color name="food_overlay_dark">#B3000000</color>
+
+    <!-- ============ Pinterest-style additions ============ -->
+    <color name="pin_shadow">#33000000</color>
+    <color name="pin_save_bg">#FF1C1C1C</color>
+    <color name="pin_save_icon">#FFFF6B00</color>
+    <color name="pin_chip_active">#FFFF6B00</color>
+    <color name="pin_chip_inactive">#FF282828</color>
+    <color name="pin_chip_active_text">#FF050505</color>
+    <color name="pin_chip_inactive_text">#FFAAAAAA</color>
+    <color name="pin_card_pressed">#FF252525</color>
+    <color name="pin_surface_tint">#FF1E1E1E</color>
+    <color name="pin_gradient_start">#00000000</color>
+    <color name="pin_gradient_end">#CC000000</color>
+    <color name="pin_fab_background">#FFFF6B00</color>
+    <color name="pin_fab_icon">#FF050505</color>
 </resources>

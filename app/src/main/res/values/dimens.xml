@@ -4,11 +4,18 @@
     <dimen name="space_sm">8dp</dimen>
     <dimen name="space_md">16dp</dimen>
     <dimen name="space_lg">24dp</dimen>
-    <dimen name="screen_padding">20dp</dimen>
+    <dimen name="screen_padding">16dp</dimen>
     <dimen name="card_radius">16dp</dimen>
+    <dimen name="card_radius_large">24dp</dimen>
     <dimen name="button_height">54dp</dimen>
     <dimen name="chip_height">40dp</dimen>
     <dimen name="icon_size">20dp</dimen>
     <dimen name="input_height">56dp</dimen>
     <dimen name="bottom_nav_height">64dp</dimen>
+    <dimen name="pin_card_radius">20dp</dimen>
+    <dimen name="pin_card_elevation">4dp</dimen>
+    <dimen name="pin_card_margin">6dp</dimen>
+    <dimen name="pin_image_radius">20dp</dimen>
+    <dimen name="pin_fab_size">56dp</dimen>
+    <dimen name="pin_header_height">56dp</dimen>
 </resources>

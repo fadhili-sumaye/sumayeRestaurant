@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SUMAYERESTAURANT"
-        android:usesCleartextTraffic="true"
+        android:usesCleartextTraffic="false"
         android:networkSecurityConfig="@xml/network_security_config">
         
         <!-- Main Launcher Activity - Public Restaurant Home -->
@@ -164,15 +164,15 @@
             android:exported="false"
             android:label="Hisa za tawi"
             android:theme="@style/Theme.SUMAYERESTAURANT" />
-        <activity android:name=".ui.inventory.InventoryDashboardActivity" android:exported="false" android:label="Usimamizi wa hisa" />
-        <activity android:name=".ui.inventory.StockActionActivity" android:exported="false" android:label="Hisa" />
-        <activity android:name=".ui.inventory.RecipePurchaseActivity" android:exported="false" android:label="Hisa" />
-        <activity android:name=".ui.customer.CustomerActivity" android:exported="false" android:label="Wateja" />
-        <activity android:name=".ui.reservation.ReservationActivity" android:exported="false" android:label="Uhifadhi wa Meza" />
-        <activity android:name=".ui.delivery.DeliveryActivity" android:exported="false" android:label="Oda za Delivery" />
-        <activity android:name=".ui.finance.ExpenseActivity" android:exported="false" android:label="Rekodi Gharama" />
-        <activity android:name=".ui.finance.DailyClosingActivity" android:exported="false" android:label="Funga Siku" />
-        <activity android:name=".ui.finance.ReportActivity" android:exported="false" android:label="Ripoti" />
+        <activity android:name=".ui.inventory.InventoryDashboardActivity" android:exported="false" android:label="@string/inventory_management" />
+        <activity android:name=".ui.inventory.StockActionActivity" android:exported="false" android:label="@string/stock_action" />
+        <activity android:name=".ui.inventory.RecipePurchaseActivity" android:exported="false" android:label="@string/recipes_and_purchases" />
+        <activity android:name=".ui.customer.CustomerActivity" android:exported="false" android:label="@string/customers" />
+        <activity android:name=".ui.reservation.ReservationActivity" android:exported="false" android:label="@string/table_reservations" />
+        <activity android:name=".ui.delivery.DeliveryActivity" android:exported="false" android:label="@string/delivery_orders" />
+        <activity android:name=".ui.finance.ExpenseActivity" android:exported="false" android:label="@string/record_expense" />
+        <activity android:name=".ui.finance.DailyClosingActivity" android:exported="false" android:label="@string/close_day" />
+        <activity android:name=".ui.finance.ReportActivity" android:exported="false" android:label="@string/reports" />
 
         <!-- Shares generated PDF/CSV owner reports to other apps -->
         <provider

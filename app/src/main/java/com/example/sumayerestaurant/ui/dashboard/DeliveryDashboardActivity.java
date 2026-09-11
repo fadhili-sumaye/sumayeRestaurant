@@ -37,7 +37,7 @@ public class DeliveryDashboardActivity extends AppCompatActivity implements Deli
     private TokenManager tokenManager;
     private WebSocketManager webSocketManager;
     private User user;
-    private Long branchId = 1L;
+    private Long branchId;
 
     private TextView welcomeTextView;
     private TextView roleTextView;
@@ -67,6 +67,10 @@ public class DeliveryDashboardActivity extends AppCompatActivity implements Deli
 
         if (user != null && user.getBranchId() != null) {
             branchId = user.getBranchId();
+        } else {
+            Toast.makeText(this, "Akaunti hii haina tawi lililowekwa.", Toast.LENGTH_LONG).show();
+            finish();
+            return;
         }
 
         initViews();

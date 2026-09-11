@@ -35,7 +35,8 @@ public class TableViewModel extends AndroidViewModel {
 
     public void loadTables(Long branchId) {
         if (branchId == null) {
-            branchId = 1L; // default
+            errorMessageLiveData.setValue("Akaunti hii haina tawi lililowekwa.");
+            return;
         }
         isLoadingLiveData.setValue(true);
         errorMessageLiveData.setValue(null);

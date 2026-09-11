@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.model.RestaurantTable;
+import com.example.sumayerestaurant.util.Constants;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
@@ -92,9 +93,13 @@ public class TableListAdapter extends RecyclerView.Adapter<TableListAdapter.Tabl
         });
 
         holder.itemView.setOnLongClickListener(v -> {
-            String token = (table.getQrToken() != null && !table.getQrToken().isEmpty()) ? table.getQrToken() : ("TABLE-" + table.getTableNumber());
+            String token = table.getQrToken();
+            if (token == null || token.length() < 32) {
+                Toast.makeText(context, "Msimbo wa QR wa meza hii bado haujatengenezwa.", Toast.LENGTH_LONG).show();
+                return true;
+            }
             String qrDeepLink = "sumaye://order/" + token;
-            String httpLink = "http://localhost:8080/api/public/qr/" + token;
+            String httpLink = Constants.BASE_URL + "api/public/qr/" + token;
 
             new androidx.appcompat.app.AlertDialog.Builder(context)
                 .setTitle("Kiungo cha QR — Meza " + table.getTableNumber())

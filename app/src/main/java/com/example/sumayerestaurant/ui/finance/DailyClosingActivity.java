@@ -86,7 +86,9 @@ public class DailyClosingActivity extends AppCompatActivity {
             @Override public void onResponse(Call<DailyClosing> call, Response<DailyClosing> response) {
                 if (response.isSuccessful() && response.body() != null) showClosed(response.body());
             }
-            @Override public void onFailure(Call<DailyClosing> call, Throwable throwable) { }
+            @Override public void onFailure(Call<DailyClosing> call, Throwable throwable) {
+                message("Hakuna muunganisho wa mtandao. Tafadhali jaribu tena.");
+            }
         });
     }
 
@@ -113,7 +115,7 @@ public class DailyClosingActivity extends AppCompatActivity {
     private void submit() {
         Map<String, Object> request = new HashMap<>();
         request.put("businessDate", businessDate.getText().toString().trim());
-        request.put("actualCash", actualCash.getText().toString().trim());
+        request.put("actualCash", new java.math.BigDecimal(actualCash.getText().toString().trim()));
         request.put("differenceReason", differenceReason.getText().toString().trim());
         request.put("notes", notes.getText().toString().trim());
         closeButton.setEnabled(false);

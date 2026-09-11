@@ -436,7 +436,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                 addEmptyNote("Hakuna data");
             } else {
                 for (OwnerStaffSalesRow w : d.getStaff().getWaiters()) {
-                    addValueRow(w.getUsername() != null ? w.getUsername() : "-" + " (" + w.getOrders() + " oda)",
+                    addValueRow((w.getUsername() != null ? w.getUsername() : "-") + " (" + w.getOrders() + " oda)",
                             money(w.getSales()), COLOR_ACCENT);
                 }
             }
@@ -799,7 +799,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         BigDecimal val = v;
         String prefix = v.signum() < 0 ? "-" : "";
         if (abs.doubleValue() >= 1000000.0) {
-            return prefix + moneyFmt.format(v.divide(new BigDecimal("1000000"))) + "M";
+            return prefix + moneyFmt.format(v.divide(new BigDecimal("1000000"), 1, java.math.RoundingMode.HALF_UP)) + "M";
         }
         return val.toString();
     }

@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@color/dark_blue">
+    android:background="@color/background">
 
-    <!-- Header with top-left role menu -->
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,9 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Karibu!"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary" />
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/text_primary" />
 
             <TextView
                 android:id="@+id/roleTextView"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="Meneja wa Tawi"
                 android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/secondary_text"
                 android:layout_marginTop="2dp" />
         </LinearLayout>
@@ -70,8 +72,9 @@
                 android:text="Usimamizi wa Shughuli za Mgahawa"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/text_color"
-                android:layout_marginBottom="12dp" />
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="14dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/inventoryButton"
@@ -79,8 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="52dp"
-                app:cornerRadius="10dp"
-                android:text="📦 Hisa &amp; Usimamizi wa Stoo" />
+                app:cornerRadius="27dp"
+                android:text="Hisa &amp; Usimamizi wa Stoo" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/customersButton"
@@ -88,8 +91,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="52dp"
-                app:cornerRadius="10dp"
-                android:text="👥 Orodha ya Wateja (CRM)" />
+                app:cornerRadius="27dp"
+                android:text="Orodha ya Wateja (CRM)" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/reservationsButton"
@@ -97,8 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="52dp"
-                app:cornerRadius="10dp"
-                android:text="📅 Uhifadhi wa Meza" />
+                app:cornerRadius="27dp"
+                android:text="Uhifadhi wa Meza" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/deliveryButton"
@@ -106,8 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="52dp"
-                app:cornerRadius="10dp"
-                android:text="🚚 Oda za Delivery" />
+                app:cornerRadius="27dp"
+                android:text="Oda za Delivery" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/expenseButton"
@@ -115,8 +118,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="52dp"
-                app:cornerRadius="10dp"
-                android:text="💰 Rekodi Gharama" />
+                app:cornerRadius="27dp"
+                android:text="Rekodi Gharama" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/dailyClosingButton"
@@ -124,8 +127,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="52dp"
-                app:cornerRadius="10dp"
-                android:text="🔒 Funga Siku ya Biashara (Z-Report)" />
+                app:cornerRadius="27dp"
+                android:text="Funga Siku ya Biashara (Z-Report)" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/reportsButton"
@@ -133,31 +136,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:minHeight="52dp"
-                app:cornerRadius="10dp"
-                android:text="📊 Ripoti za Mauzo na Faida" />
+                app:cornerRadius="27dp"
+                android:text="Ripoti za Mauzo na Faida" />
         </LinearLayout>
     </ScrollView>
 
-    <!-- Reset staff password (management only) -->
+    <!-- Reset staff password -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnResetStaffPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="👤 Weka Upya Nenosiri la Staff"
+        android:text="Weka Upya Nenosiri la Staff"
         android:textSize="13sp"
         android:padding="12dp"
-        app:cornerRadius="10dp"
+        app:cornerRadius="27dp"
         app:strokeColor="@color/primary"
         app:strokeWidth="1dp"
-        android:backgroundTint="@color/dark_blue_surface"
-        android:textColor="@color/primary" />
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@color/primary"
+        android:fontFamily="@font/poppins_medium" />
 
-    <!-- Role-based Bottom Navigation -->
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.Sumaye.BottomNav"
         app:menu="@menu/menu_bottom_manager"
         app:labelVisibilityMode="labeled" />
 

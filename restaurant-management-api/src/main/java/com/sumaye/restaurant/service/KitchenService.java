@@ -28,6 +28,7 @@ public class KitchenService {
     private final UserRepository userRepository;
     private final BranchRepository branchRepository;
     private final RestaurantTableRepository tableRepository;
+    private final InventoryService inventoryService;
     private final SimpMessagingTemplate messagingTemplate;
 
     @Transactional(readOnly = true)
@@ -157,6 +158,15 @@ public class KitchenService {
         KitchenOrder kitchenOrder = kitchenOrderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("KOT haikupatikana: ID " + id));
 
+        if (kitchenOrder.getStatus() == KitchenOrder.KitchenOrderStatus.READY) {
+            throw new ApiException("Huwezi kughairisha oda iliyokamilika na iko tayari.");
+        }
+
+        Order order = kitchenOrder.getOrder();
+        if (order.getStatus() == Order.OrderStatus.COMPLETED) {
+            throw new ApiException("Huwezi kughairisha oda iliyokamilika na kulipwa.");
+        }
+
         User user = getUser(username);
         kitchenOrder.setStatus(KitchenOrder.KitchenOrderStatus.CANCELLED);
         kitchenOrder.setCancelledAt(LocalDateTime.now());
@@ -170,13 +180,18 @@ public class KitchenService {
             }
         }
 
-        Order order = kitchenOrder.getOrder();
         order.setStatus(Order.OrderStatus.CANCELLED);
         order.setCancellationReason(reason != null ? reason : "Imeghairiwa na jiko");
         order.setCancelledBy(user);
         order.setCancelledAt(LocalDateTime.now());
         order.setUpdatedAt(LocalDateTime.now());
         orderRepository.save(order);
+
+        try {
+            inventoryService.reverseStockForOrder(order);
+        } catch (Exception e) {
+            log.warn("Failed to reverse stock for cancelled order {}: {}", order.getOrderNumber(), e.getMessage());
+        }
 
         // Release table if occupied
         RestaurantTable table = order.getTable();

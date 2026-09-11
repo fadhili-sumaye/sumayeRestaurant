@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@color/dark_blue">
+    android:padding="20dp"
+    android:background="@color/background">
 
-    <!-- Header with top-left role menu -->
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +40,8 @@
                 android:text="Karibu!"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary" />
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/text_primary" />
 
             <TextView
                 android:id="@+id/roleTextView"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="Msimamizi"
                 android:textSize="15sp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/secondary_text"
                 android:layout_marginTop="2dp" />
         </LinearLayout>
@@ -66,10 +68,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mifumo ya Uendeshaji (Phase 1–6)"
+                android:text="Mifumo ya Uendeshaji"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/text_color"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/text_primary"
                 android:layout_marginBottom="16dp" />
 
             <!-- Card 1: Cashier & Billing -->
@@ -78,6 +81,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/card_background"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -85,14 +92,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="💳 Malipo &amp; Ankara (Cashier)"
+                        android:text="Malipo &amp; Ankara (Cashier)"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:textColor="@color/primary" />
 
                     <TextView
@@ -100,8 +108,9 @@
                         android:layout_height="wrap_content"
                         android:text="Tazama ankara zote, pokea malipo ya Cash, M-Pesa, Kadi, na toa risiti."
                         android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="6dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -111,6 +120,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/card_background"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -118,14 +131,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🍽️ Meza &amp; Oda (Waiter Flow)"
+                        android:text="Meza &amp; Oda (Waiter Flow)"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:textColor="@color/primary" />
 
                     <TextView
@@ -133,8 +147,9 @@
                         android:layout_height="wrap_content"
                         android:text="Uteuzi wa meza, kuagiza chakula kwenye menu, na kutuma oda jikoni."
                         android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="6dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -143,7 +158,11 @@
                 android:id="@+id/cardAdminKitchen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/card_background"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -151,14 +170,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🍳 Skrini ya Jikoni (KDS)"
+                        android:text="Skrini ya Jikoni (KDS)"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:textColor="@color/primary" />
 
                     <TextView
@@ -166,8 +186,9 @@
                         android:layout_height="wrap_content"
                         android:text="Orodha ya oda za jiko zinazopikwa, kubadilisha hali (Preparing / Ready)."
                         android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="6dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -177,10 +198,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardCornerRadius="14dp"
-                app:strokeColor="@color/dark_blue_divider"
-                app:strokeWidth="1dp"
-                app:cardBackgroundColor="@color/dark_blue_surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/card_background"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -188,14 +209,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🏢 Usimamizi wa Tawi (Manager Operations)"
+                        android:text="Usimamizi wa Tawi (Manager Operations)"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:textColor="@color/primary" />
 
                     <TextView
@@ -203,8 +225,9 @@
                         android:layout_height="wrap_content"
                         android:text="Wateja, uhifadhi wa meza, oda za delivery, gharama, na kufunga siku."
                         android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="6dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -214,10 +237,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="14dp"
-                app:strokeColor="@color/dark_blue_divider"
-                app:strokeWidth="1dp"
-                app:cardBackgroundColor="@color/dark_blue_surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/card_background"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -225,14 +248,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📊 Ripoti za Mauzo &amp; Hisa za Stoo"
+                        android:text="Ripoti za Mauzo &amp; Hisa za Stoo"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/poppins_semibold"
                         android:textColor="@color/primary" />
 
                     <TextView
@@ -240,34 +264,37 @@
                         android:layout_height="wrap_content"
                         android:text="Tathmini ya faida, matumizi, na viungo vya stoo."
                         android:textSize="13sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="6dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- Reset staff password (management only) -->
+    <!-- Reset staff password -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnResetStaffPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="👤 Weka Upya Nenosiri la Staff"
-        android:textSize="14sp"
+        android:text="Weka Upya Nenosiri la Staff"
+        android:textSize="13sp"
         android:padding="12dp"
-        app:cornerRadius="10dp"
+        app:cornerRadius="27dp"
         app:strokeColor="@color/primary"
         app:strokeWidth="1dp"
-        android:backgroundTint="@color/dark_blue_surface"
-        android:textColor="@color/primary" />
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@color/primary"
+        android:fontFamily="@font/poppins_medium" />
 
-    <!-- Role-based Bottom Navigation -->
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.Sumaye.BottomNav"
         app:menu="@menu/menu_bottom_admin"
         app:labelVisibilityMode="labeled" />
 

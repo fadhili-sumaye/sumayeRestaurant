@@ -1,6 +1,7 @@
 package com.example.sumayerestaurant.data.api;
 
 import android.content.Context;
+import com.example.sumayerestaurant.BuildConfig;
 import com.example.sumayerestaurant.util.Constants;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -25,7 +26,7 @@ public class RetrofitClient {
     private static Retrofit createRetrofit(Context context) {
         // Log request bodies only in emulator/LAN development, not in production
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        if (Constants.ENV == Constants.Env.PRODUCTION) {
+        if (!BuildConfig.DEBUG) {
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         } else {
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

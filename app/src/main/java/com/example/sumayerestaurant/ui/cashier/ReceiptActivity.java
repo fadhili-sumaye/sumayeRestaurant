@@ -117,7 +117,8 @@ public class ReceiptActivity extends AppCompatActivity {
         tvTaxInfo.setText("TIN: " + receipt.getTinNumber() + " | VRN: " + receipt.getVrnNumber());
 
         tvReceiptNumber.setText("Risiti: " + receipt.getReceiptNumber());
-        tvReceiptDate.setText(receipt.getReceiptDate() != null ? receipt.getReceiptDate().replace("T", " ").substring(0, 16) : "");
+        String dateStr = receipt.getReceiptDate() != null ? receipt.getReceiptDate().replace("T", " ") : "";
+        tvReceiptDate.setText(dateStr.length() >= 16 ? dateStr.substring(0, 16) : dateStr);
 
         String tableStr = receipt.getTableNumber() != null ? "Meza: " + receipt.getTableNumber() : receipt.getOrderType();
         tvOrderTable.setText(tableStr + " • Oda: #" + receipt.getOrderNumber());

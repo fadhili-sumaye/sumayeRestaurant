@@ -7,7 +7,7 @@
     android:padding="20dp"
     android:background="@color/background">
 
-    <!-- Header with top-left role menu -->
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,9 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Karibu!"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary" />
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/text_primary" />
 
             <TextView
                 android:id="@+id/roleTextView"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="Mhudumu"
                 android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/secondary_text"
                 android:layout_marginTop="2dp" />
         </LinearLayout>
@@ -63,16 +65,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Card 1: Start New Order / View Tables -->
+            <!-- Card 1: Start New Order -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnNewOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="3dp"
-                app:strokeColor="@color/brand_green"
-                app:strokeWidth="1dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/card_background"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -80,24 +82,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp"
-                    android:background="@color/dark_blue_surface">
+                    android:padding="22dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🍽️  Chagua Meza / Oda Mpya"
-                        android:textSize="18sp"
+                        android:text="Chagua Meza / Oda Mpya"
+                        android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="@color/brand_green" />
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tazama meza zilizo wazi na anza kuweka oda ya mteja."
                         android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginTop="6dp" />
+                        android:layout_marginTop="8dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -107,10 +110,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="3dp"
-                app:strokeColor="@color/primary"
-                app:strokeWidth="1dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/card_background"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -118,15 +121,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp"
-                    android:background="@color/dark_blue_surface">
+                    android:padding="22dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📋  Oda Zangu"
-                        android:textSize="18sp"
+                        android:text="Oda Zangu"
+                        android:textSize="20sp"
                         android:textStyle="bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/primary" />
 
                     <TextView
@@ -134,19 +137,21 @@
                         android:layout_height="wrap_content"
                         android:text="Tazama hali ya oda ulizotuma jikoni au zilizokamilika."
                         android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginTop="6dp" />
+                        android:layout_marginTop="8dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- Role-based Bottom Navigation -->
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.Sumaye.BottomNav"
         app:menu="@menu/menu_bottom_waiter"
         app:labelVisibilityMode="labeled" />
 

@@ -26,7 +26,7 @@ public class TableListActivity extends AppCompatActivity {
     private TokenManager tokenManager;
     private ProgressBar progressBar;
     private TextView tvEmptyState;
-    private Long branchId = 1L;
+    private Long branchId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,10 @@ public class TableListActivity extends AppCompatActivity {
         User user = tokenManager.getUser();
         if (user != null && user.getBranchId() != null) {
             branchId = user.getBranchId();
+        } else {
+            Toast.makeText(this, "Akaunti hii haina tawi lililowekwa.", Toast.LENGTH_LONG).show();
+            finish();
+            return;
         }
 
         initViews();

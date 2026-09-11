@@ -37,7 +37,7 @@ public class KitchenViewModel extends AndroidViewModel {
 
     private String currentFilter = "ALL"; // ALL, NEW, PREPARING, READY
     private boolean isOldestFirst = true;
-    private Long branchId = 1L;
+    private Long branchId;
 
     public KitchenViewModel(@NonNull Application application) {
         super(application);
@@ -48,6 +48,8 @@ public class KitchenViewModel extends AndroidViewModel {
         User user = tokenManager.getUser();
         if (user != null && user.getBranchId() != null) {
             this.branchId = user.getBranchId();
+        } else {
+            errorMessageLiveData.setValue("Akaunti hii haina tawi lililowekwa.");
         }
     }
 

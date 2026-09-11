@@ -6,16 +6,16 @@
     android:orientation="vertical"
     android:background="@color/background">
 
-<!-- Top App Bar -->
+    <!-- Top App Bar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarKitchen"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/surface"
-        app:title="👨‍🍳 Jikoni - KOT Queue"
-        app:titleTextColor="@color/white"
+        app:title="Jikoni - KOT Queue"
+        app:titleTextColor="@color/text_primary"
         app:navigationIcon="@drawable/ic_menu_dots"
-        app:navigationIconTint="@color/white" />
+        app:navigationIconTint="@color/primary" />
 
     <!-- Connection Status Banner -->
     <LinearLayout
@@ -25,8 +25,8 @@
         android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:background="@color/status_success_background"
         android:gravity="center_vertical">
 
@@ -35,10 +35,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🟢 Mtandao umeunganishwa"
-            android:textColor="@color/primary_dark"
+            android:text="Mtandao umeunganishwa"
+            android:textColor="@color/primary"
             android:textSize="13sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_semibold" />
 
         <ImageButton
             android:id="@+id/btnSoundToggle"
@@ -47,7 +47,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_lock_silent_mode_off"
             android:contentDescription="Sauti"
-            android:tint="@color/surface" />
+            android:tint="@color/primary" />
     </LinearLayout>
 
     <!-- Filter & Sort Bar -->
@@ -59,7 +59,7 @@
         android:paddingEnd="12dp"
         android:paddingTop="8dp"
         android:paddingBottom="4dp"
-        android:background="@color/dark_blue_surface">
+        android:background="@color/surface">
 
         <!-- Filter Chips Row -->
         <HorizontalScrollView
@@ -77,60 +77,59 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Zote"
-                    android:textColor="@color/white"
+                    android:textColor="@color/pin_chip_active_text"
                     android:textSize="13sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_semibold"
                     android:background="@drawable/bg_chip_selected"
-                    android:paddingStart="14dp"
-                    android:paddingEnd="14dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:layout_marginEnd="6dp" />
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:id="@+id/chipFilterNew"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mpya"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/pin_chip_inactive_text"
                     android:textSize="13sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:background="@drawable/bg_chip_unselected"
-                    android:paddingStart="14dp"
-                    android:paddingEnd="14dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:layout_marginEnd="6dp" />
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:id="@+id/chipFilterPreparing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Zinaandaliwa"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/pin_chip_inactive_text"
                     android:textSize="13sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:background="@drawable/bg_chip_unselected"
-                    android:paddingStart="14dp"
-                    android:paddingEnd="14dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:layout_marginEnd="6dp" />
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:id="@+id/chipFilterReady"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tayari"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/pin_chip_inactive_text"
                     android:textSize="13sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:background="@drawable/bg_chip_unselected"
-                    android:paddingStart="14dp"
-                    android:paddingEnd="14dp"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:layout_marginEnd="6dp" />
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp" />
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -140,7 +139,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/tvActiveOrdersCount"
@@ -150,16 +149,17 @@
                 android:text="Oda Zinazoendelea: 0"
                 android:textColor="@color/secondary_text"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/poppins_semibold" />
 
             <TextView
                 android:id="@+id/btnToggleSort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="⏱️ Ya Zamani Kwanza"
+                android:text="Ya Zamani Kwanza"
                 android:textColor="@color/primary"
                 android:textSize="13sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins_semibold"
                 android:padding="4dp"
                 android:clickable="true"
                 android:focusable="true" />
@@ -185,6 +185,7 @@
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="16sp"
+        android:fontFamily="@font/poppins_regular"
         android:layout_marginTop="64dp"
         android:visibility="gone" />
 
@@ -193,7 +194,7 @@
         android:id="@+id/recyclerViewKitchenOrders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="6dp"
+        android:padding="8dp"
         android:clipToPadding="false" />
 
 </LinearLayout>

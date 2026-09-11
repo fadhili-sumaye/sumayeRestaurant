@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             binding.loginButton.setEnabled(!isLoading);
             if (isLoading) {
                 binding.progressBar.setVisibility(View.VISIBLE);
-                binding.loginButton.setText("Inaprocessing...");
+                binding.loginButton.setText("Inashughulikia...");
                 // If the backend is cold-starting it can take ~30-60s; tell the user
                 // instead of leaving them staring at a spinner.
                 wakingHint = () -> binding.loginButton.setText("Inaamsha server... Subiri kidogo");

@@ -29,7 +29,7 @@ public class StorekeeperDashboardActivity extends AppCompatActivity {
 
     private TokenManager tokenManager;
     private User user;
-    private Long branchId = 1L;
+    private Long branchId;
 
     private TextView welcomeTextView;
     private TextView roleTextView;
@@ -51,6 +51,10 @@ public class StorekeeperDashboardActivity extends AppCompatActivity {
 
         if (user != null && user.getBranchId() != null) {
             branchId = user.getBranchId();
+        } else {
+            Toast.makeText(this, "Akaunti hii haina tawi lililowekwa.", Toast.LENGTH_LONG).show();
+            finish();
+            return;
         }
 
         initViews();

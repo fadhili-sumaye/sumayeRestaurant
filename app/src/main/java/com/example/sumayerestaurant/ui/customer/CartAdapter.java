@@ -9,12 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.local.CartManager;
 import com.example.sumayerestaurant.data.model.CartItem;
 import com.example.sumayerestaurant.ui.adapter.PublicMenuAdapter;
+import com.example.sumayerestaurant.util.ImageHelper;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -60,16 +62,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.cartItemPrice.setText(String.format("TZS %s", currencyFormat.format(cartItem.getSubtotal())));
         holder.cartItemQty.setText(String.valueOf(cartItem.getQuantity()));
 
-        if (menuItem.getImageUrl() != null && !menuItem.getImageUrl().isEmpty()) {
-            Glide.with(context)
-                    .load(PublicMenuAdapter.resolveImageUrl(menuItem.getImageUrl()))
-                    .transform(new CenterCrop(), new RoundedCorners(14))
-                    .placeholder(R.drawable.placeholder_food)
-                    .error(R.drawable.placeholder_food)
-                    .into(holder.cartItemImage);
-        } else {
-            holder.cartItemImage.setImageResource(R.drawable.placeholder_food);
-        }
+        int fallbackRes = ImageHelper.getFoodFallbackDrawable(menuItem.getImageUrl(), menuItem.getName());
+        String resolved = ImageHelper.resolveImageUrl(menuItem.getImageUrl());
+        Object loadTarget = (resolved != null && !resolved.isEmpty()) ? resolved : fallbackRes;
+
+        Glide.with(context)
+                .load(loadTarget)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .transform(new CenterCrop(), new RoundedCorners(14))
+                .placeholder(fallbackRes)
+                .error(fallbackRes)
+                .into(holder.cartItemImage);
 
         holder.plusButton.setOnClickListener(v ->
                 cartManager.updateQuantity(menuItem.getId(), cartItem.getQuantity() + 1));

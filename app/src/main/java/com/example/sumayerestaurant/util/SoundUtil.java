@@ -13,6 +13,7 @@ public class SoundUtil {
         try {
             ToneGenerator toneGen = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
             toneGen.startTone(ToneGenerator.TONE_PROP_BEEP2, 400);
+            toneGen.release();
 
             Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             if (vibrator != null && vibrator.hasVibrator()) {

@@ -6,12 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.local.CartManager;
 import com.example.sumayerestaurant.data.model.CartItem;
+import com.example.sumayerestaurant.util.ImageHelper;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -59,6 +65,18 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
         holder.tvQuantity.setText(String.valueOf(item.getQuantity()));
         holder.tvSubtotal.setText(String.format("TZS %s", currencyFormat.format(item.getSubtotal())));
 
+        int fallbackRes = ImageHelper.getFoodFallbackDrawable(item.getMenuItem().getImageUrl(), item.getMenuItem().getName());
+        String resolved = ImageHelper.resolveImageUrl(item.getMenuItem().getImageUrl());
+        Object loadTarget = (resolved != null && !resolved.isEmpty()) ? resolved : fallbackRes;
+
+        Glide.with(context)
+                .load(loadTarget)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .transform(new CenterCrop(), new RoundedCorners(12))
+                .placeholder(fallbackRes)
+                .error(fallbackRes)
+                .into(holder.ivCartItemimage);
+
         if (!TextUtils.isEmpty(item.getSpecialInstructions())) {
             holder.tvInstructions.setText("✍️ " + item.getSpecialInstructions());
             holder.tvInstructions.setTextColor(context.getColor(R.color.error_color));
@@ -92,6 +110,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
     }
 
     static class CartViewHolder extends RecyclerView.ViewHolder {
+        ImageView ivCartItemimage;
         TextView tvName;
         TextView tvInstructions;
         TextView tvQuantity;
@@ -102,6 +121,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
 
         CartViewHolder(@NonNull View itemView) {
             super(itemView);
+            ivCartItemimage = itemView.findViewById(R.id.ivCartItemImage);
             tvName = itemView.findViewById(R.id.tvCartItemName);
             tvInstructions = itemView.findViewById(R.id.tvCartItemInstructions);
             tvQuantity = itemView.findViewById(R.id.tvCartQuantity);

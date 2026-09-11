@@ -9,12 +9,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.local.CartManager;
 import com.example.sumayerestaurant.data.model.MenuItem;
 import com.example.sumayerestaurant.ui.adapter.PublicMenuAdapter;
+import com.example.sumayerestaurant.util.ImageHelper;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -80,7 +82,7 @@ public class FoodDetailActivity extends AppCompatActivity {
             detailPrep.setText("Tayari kwa haraka");
         }
 
-        detailDescription.setText(item.getDescription() != null && !item.getDescription().isBlank()
+        detailDescription.setText(item.getDescription() != null && !item.getDescription().trim().isEmpty()
                 ? item.getDescription()
                 : "Chakula kizuri cha nyumbani kutoka jikoni la Sumaye Restaurant.");
 
@@ -92,16 +94,17 @@ public class FoodDetailActivity extends AppCompatActivity {
             detailAvailability.setTextColor(getColor(R.color.error_color));
         }
 
-        if (item.getImageUrl() != null && !item.getImageUrl().isEmpty()) {
-            Glide.with(this)
-                    .load(PublicMenuAdapter.resolveImageUrl(item.getImageUrl()))
-                    .transform(new CenterCrop(), new RoundedCorners(28))
-                    .placeholder(R.drawable.placeholder_food)
-                    .error(R.drawable.placeholder_food)
-                    .into(detailImage);
-        } else {
-            detailImage.setImageResource(R.drawable.placeholder_food);
-        }
+        int fallbackRes = ImageHelper.getFoodFallbackDrawable(item.getImageUrl(), item.getName());
+        String resolved = ImageHelper.resolveImageUrl(item.getImageUrl());
+        Object loadTarget = (resolved != null && !resolved.isEmpty()) ? resolved : fallbackRes;
+
+        Glide.with(this)
+                .load(loadTarget)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .transform(new CenterCrop(), new RoundedCorners(28))
+                .placeholder(fallbackRes)
+                .error(fallbackRes)
+                .into(detailImage);
 
         backButton.setOnClickListener(v -> finish());
 

@@ -118,7 +118,7 @@ public class PaymentActivity extends AppCompatActivity {
                 layoutMobileMoneyDetails.setVisibility(View.VISIBLE);
             } else {
                 layoutCashDetails.setVisibility(View.GONE);
-                layoutMobileMoneyDetails.setVisibility(View.VISIBLE); // Use reference for Card / Bank too
+                layoutMobileMoneyDetails.setVisibility(View.GONE);
             }
         });
 
@@ -201,7 +201,13 @@ public class PaymentActivity extends AppCompatActivity {
                     String valStr = etVal.getText() != null ? etVal.getText().toString().trim() : "";
                     if (valStr.isEmpty()) return;
 
-                    BigDecimal val = new BigDecimal(valStr);
+                    BigDecimal val;
+                    try {
+                        val = new BigDecimal(valStr);
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(PaymentActivity.this, "Kiasi si sahihi.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     String type = rbFixed.isChecked() ? "FIXED" : "PERCENTAGE";
                     String reason = etReason.getText() != null ? etReason.getText().toString().trim() : "";
 
@@ -231,7 +237,13 @@ public class PaymentActivity extends AppCompatActivity {
             return;
         }
 
-        BigDecimal amount = new BigDecimal(amountStr);
+        BigDecimal amount;
+        try {
+            amount = new BigDecimal(amountStr);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Kiasi si sahihi.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String paymentMethod = "CASH";
         String provider = "NONE";
         String ref = null;

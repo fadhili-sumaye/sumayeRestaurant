@@ -23,7 +23,7 @@
         <!-- Windows -->
         <item name="android:windowBackground">@color/background</item>
         <item name="android:statusBarColor">@color/background</item>
-        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/surface</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="27">shortEdges</item>
@@ -35,6 +35,8 @@
         <item name="materialButtonStyle">@style/Widget.Sumaye.Button.Primary</item>
         <item name="materialCardViewStyle">@style/Widget.Sumaye.Card</item>
         <item name="textInputStyle">@style/Widget.Sumaye.TextInput</item>
+        <item name="chipStyle">@style/Widget.Sumaye.Chip</item>
+        <item name="bottomNavigationStyle">@style/Widget.Sumaye.BottomNav</item>
         <item name="android:datePickerDialogTheme" tools:targetApi="24">@style/ThemeOverlay.Sumaye.DatePicker</item>
     </style>
 

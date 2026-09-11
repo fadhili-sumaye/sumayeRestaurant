@@ -14,13 +14,38 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp"
-        android:paddingTop="8dp">
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chakula Kizuri,"
+                android:textColor="@color/text_primary"
+                android:textSize="28sp"
+                android:fontFamily="@font/poppins_bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hisia Nzuri!"
+                android:textColor="@color/food_accent"
+                android:textSize="28sp"
+                android:fontFamily="@font/poppins_bold" />
+
+        </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/headerProfileIcon"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            app:cardCornerRadius="21dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:cardCornerRadius="22dp"
             app:cardBackgroundColor="@color/card_secondary"
             app:strokeWidth="0dp"
             app:cardElevation="0dp">
@@ -28,22 +53,18 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="9dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_profile"
                 app:tint="@color/food_accent" />
 
         </com.google.android.material.card.MaterialCardView>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/notificationIcon"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            app:cardCornerRadius="21dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="22dp"
             app:cardBackgroundColor="@color/card_secondary"
             app:strokeWidth="0dp"
             app:cardElevation="0dp">
@@ -51,7 +72,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="9dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_notification"
                 app:tint="@color/secondary_text" />
 
@@ -59,26 +80,7 @@
 
     </LinearLayout>
 
-    <!-- Title -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Chakula Kizuri,"
-        android:textColor="@color/text_primary"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Hisia Nzuri!"
-        android:textColor="@color/food_accent"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
+    <!-- Subtitle -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,25 +88,26 @@
         android:layout_marginTop="2dp"
         android:text="Sumaye Restaurant · Dar es Salaam"
         android:textColor="@color/secondary_text"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:fontFamily="@font/poppins_regular" />
 
     <!-- Search bar -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="54dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="14dp"
-        app:cardCornerRadius="18dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="27dp"
         app:cardBackgroundColor="@color/card_secondary"
         app:strokeWidth="0dp"
-        app:cardElevation="0dp">
+        app:cardElevation="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="16dp">
 
             <ImageView
                 android:layout_width="20dp"
@@ -117,9 +120,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="12dp"
                 android:background="@null"
-                android:fontFamily="sans"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Tafuta chakula au kinywaji..."
                 android:imeOptions="actionSearch"
                 android:inputType="text"
@@ -130,10 +133,10 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/filterButton"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                app:cardCornerRadius="18dp"
-                app:cardBackgroundColor="@color/food_accent_soft"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                app:cardCornerRadius="19dp"
+                app:cardBackgroundColor="@color/food_accent"
                 app:strokeWidth="0dp"
                 app:cardElevation="0dp">
 
@@ -141,9 +144,9 @@
                     android:id="@+id/filterIcon"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="8dp"
+                    android:padding="9dp"
                     android:src="@drawable/ic_filter"
-                    app:tint="@color/food_accent" />
+                    app:tint="@color/food_on_accent" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -187,11 +190,11 @@
             <!-- Hero card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="220dp"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="6dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="6dp"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="8dp"
                 app:strokeWidth="0dp">
 
                 <FrameLayout
@@ -216,7 +219,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:gravity="bottom"
-                        android:padding="18dp">
+                        android:padding="20dp">
 
                         <TextView
                             android:id="@+id/heroBadge"
@@ -224,12 +227,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:background="@drawable/bg_chip_selected"
-                            android:paddingHorizontal="10dp"
-                            android:paddingVertical="3dp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="5dp"
                             android:text="BORA LEO"
                             android:textColor="@color/food_on_accent"
                             android:textSize="11sp"
-                            android:textStyle="bold" />
+                            android:fontFamily="@font/poppins_bold" />
 
                         <TextView
                             android:id="@+id/heroTitle"
@@ -237,15 +240,15 @@
                             android:layout_height="wrap_content"
                             android:text="Vyakula Vitamu"
                             android:textColor="@color/white"
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
+                            android:textSize="26sp"
+                            android:fontFamily="@font/poppins_bold" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            android:layout_marginTop="4dp">
+                            android:layout_marginTop="6dp">
 
                             <TextView
                                 android:id="@+id/heroPrep"
@@ -260,23 +263,23 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/food_accent"
-                                android:textSize="22sp"
-                                android:textStyle="bold" />
+                                android:textSize="24sp"
+                                android:fontFamily="@font/poppins_bold" />
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/heroAddButton"
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
                                 android:layout_marginStart="12dp"
-                                app:cardCornerRadius="22dp"
+                                app:cardCornerRadius="24dp"
                                 app:cardBackgroundColor="@color/food_accent"
                                 app:strokeWidth="0dp"
-                                app:cardElevation="3dp">
+                                app:cardElevation="6dp">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="10dp"
+                                    android:padding="12dp"
                                     android:src="@drawable/ic_add"
                                     app:tint="@color/food_on_accent" />
 
@@ -297,10 +300,10 @@
                 android:layout_height="wrap_content"
                 android:text="Menu"
                 android:textColor="@color/text_primary"
-                android:textSize="19sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_bold"
                 android:paddingHorizontal="16dp"
-                android:paddingTop="18dp"
+                android:paddingTop="20dp"
                 android:paddingBottom="8dp" />
 
             <!-- Loading -->
@@ -335,8 +338,8 @@
                 android:visibility="gone">
 
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:src="@drawable/placeholder_food"
                     app:tint="@color/hint_color" />
 
@@ -352,7 +355,7 @@
 
             </LinearLayout>
 
-            <!-- Food grid -->
+            <!-- Food grid (StaggeredGridLayoutManager set in Java) -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/menuRecyclerView"
                 android:layout_width="match_parent"
@@ -360,7 +363,7 @@
                 android:nestedScrollingEnabled="false"
                 android:clipToPadding="false"
                 android:paddingHorizontal="8dp"
-                android:paddingBottom="20dp" />
+                android:paddingBottom="24dp" />
 
         </LinearLayout>
 
@@ -371,7 +374,7 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/surface"
+        style="@style/Widget.Sumaye.BottomNav"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/food_nav_color"

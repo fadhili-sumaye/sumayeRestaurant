@@ -37,7 +37,7 @@ public class CashierViewModel extends AndroidViewModel {
 
     private String currentFilter = "UNPAID"; // UNPAID, PAID, ALL
     private String searchQuery = "";
-    private Long branchId = 1L;
+    private Long branchId;
 
     public CashierViewModel(@NonNull Application application) {
         super(application);
@@ -48,6 +48,8 @@ public class CashierViewModel extends AndroidViewModel {
         User user = tokenManager.getUser();
         if (user != null && user.getBranchId() != null) {
             this.branchId = user.getBranchId();
+        } else {
+            errorMessageLiveData.setValue("Akaunti hii haina tawi lililowekwa.");
         }
     }
 

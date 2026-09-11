@@ -11,15 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.local.CartManager;
 import com.example.sumayerestaurant.data.model.MenuItem;
 import com.example.sumayerestaurant.data.repository.MenuRepository;
 import com.example.sumayerestaurant.ui.adapter.PublicMenuAdapter;
+import com.example.sumayerestaurant.util.ImageHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -92,7 +94,7 @@ public class PublicHomeActivity extends AppCompatActivity {
         cartManager = CartManager.getInstance();
         menuRepository = new MenuRepository(this);
 
-        // Setup RecyclerView with 2-column grid
+        // Setup RecyclerView with Pinterest-style staggered 2-column grid
         menuAdapter = new PublicMenuAdapter(this, new PublicMenuAdapter.ItemClickListener() {
             @Override
             public void onItemClick(MenuItem item) {
@@ -109,8 +111,16 @@ public class PublicHomeActivity extends AppCompatActivity {
                 Toast.makeText(PublicHomeActivity.this, "Imeongezwa kwenye kikapu", Toast.LENGTH_SHORT).show();
             }
         });
-        menuRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        menuRecyclerView.setLayoutManager(layoutManager);
         menuRecyclerView.setAdapter(menuAdapter);
+        menuRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(@androidx.annotation.NonNull android.graphics.Rect outRect, @androidx.annotation.NonNull android.view.View view, @androidx.annotation.NonNull RecyclerView parent, @androidx.annotation.NonNull RecyclerView.State state) {
+                outRect.set(6, 6, 6, 6);
+            }
+        });
 
         setupSearch();
         setupHero();
@@ -346,16 +356,17 @@ public class PublicHomeActivity extends AppCompatActivity {
                     ? item.getCategory().getName() : "");
         }
 
-        if (item.getImageUrl() != null && !item.getImageUrl().isEmpty()) {
-            Glide.with(this)
-                    .load(PublicMenuAdapter.resolveImageUrl(item.getImageUrl()))
-                    .transform(new CenterCrop())
-                    .placeholder(R.drawable.placeholder_food)
-                    .error(R.drawable.placeholder_food)
-                    .into(heroImage);
-        } else {
-            heroImage.setImageResource(R.drawable.placeholder_food);
-        }
+        int fallbackRes = ImageHelper.getFoodFallbackDrawable(item.getImageUrl(), item.getName());
+        String resolved = ImageHelper.resolveImageUrl(item.getImageUrl());
+        Object loadTarget = (resolved != null && !resolved.isEmpty()) ? resolved : fallbackRes;
+
+        Glide.with(this)
+                .load(loadTarget)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .transform(new CenterCrop())
+                .placeholder(fallbackRes)
+                .error(fallbackRes)
+                .into(heroImage);
 
         heroImage.setOnClickListener(v -> FoodDetailActivity.start(this, item));
     }

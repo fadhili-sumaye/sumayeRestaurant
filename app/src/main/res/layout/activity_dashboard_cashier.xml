@@ -11,11 +11,11 @@
         android:id="@+id/toolbarCashier"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
-        app:title="💰 Hazina - Ankara na Malipo"
-        app:titleTextColor="@color/white"
+        android:background="@color/surface"
+        app:title="Hazina - Ankara na Malipo"
+        app:titleTextColor="@color/text_primary"
         app:navigationIcon="@drawable/ic_menu_dots"
-        app:navigationIconTint="@color/white" />
+        app:navigationIconTint="@color/primary" />
 
     <!-- Connection Status Banner -->
     <LinearLayout
@@ -25,8 +25,8 @@
         android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:background="@color/status_success_background"
         android:gravity="center_vertical">
 
@@ -35,10 +35,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🟢 Mtandao umeunganishwa"
-            android:textColor="@color/primary_dark"
+            android:text="Mtandao umeunganishwa"
+            android:textColor="@color/primary"
             android:textSize="13sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_semibold" />
 
         <ImageButton
             android:id="@+id/btnRefreshCashier"
@@ -56,25 +56,24 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="@color/dark_blue_surface"
+        android:background="@color/surface"
         android:weightSum="3">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="8dp"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="2dp"
-            app:strokeColor="@color/primary_light"
-            app:strokeWidth="1dp"
-            android:backgroundTint="@color/status_success_background">
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="@color/card_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="12dp"
                 android:gravity="center">
 
                 <TextView
@@ -82,17 +81,19 @@
                     android:layout_height="wrap_content"
                     android:text="Mauzo ya Leo"
                     android:textSize="11sp"
-                    android:textColor="@color/primary_dark" />
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/secondary_text" />
 
                 <TextView
                     android:id="@+id/tvTodaySales"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TZS 0"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/primary"
-                    android:layout_marginTop="2dp" />
+                    android:layout_marginTop="4dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -100,18 +101,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="8dp"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="2dp"
-            app:strokeColor="@color/error_color"
-            app:strokeWidth="1dp"
-            android:backgroundTint="@color/status_error_background">
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="@color/card_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="12dp"
                 android:gravity="center">
 
                 <TextView
@@ -119,17 +119,19 @@
                     android:layout_height="wrap_content"
                     android:text="Hazijalipwa"
                     android:textSize="11sp"
-                    android:textColor="@color/error_color" />
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/secondary_text" />
 
                 <TextView
                     android:id="@+id/tvUnpaidBillsCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/error_color"
-                    android:layout_marginTop="2dp" />
+                    android:layout_marginTop="4dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -137,18 +139,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="3dp"
-            app:cardCornerRadius="8dp"
+            android:layout_margin="4dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="2dp"
-            app:strokeColor="@color/info_color"
-            app:strokeWidth="1dp"
-            android:backgroundTint="@color/card_secondary">
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="@color/card_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="12dp"
                 android:gravity="center">
 
                 <TextView
@@ -156,17 +157,19 @@
                     android:layout_height="wrap_content"
                     android:text="Zilizolipwa"
                     android:textSize="11sp"
-                    android:textColor="@color/info_color" />
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/secondary_text" />
 
                 <TextView
                     android:id="@+id/tvPaidBillsCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/info_color"
-                    android:layout_marginTop="2dp" />
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/success_color"
+                    android:layout_marginTop="4dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -181,7 +184,7 @@
         android:paddingEnd="12dp"
         android:paddingTop="8dp"
         android:paddingBottom="6dp"
-        android:background="@color/dark_blue_surface">
+        android:background="@color/surface">
 
         <!-- Filter Chips Row -->
         <LinearLayout
@@ -194,57 +197,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Zisizolipwa"
-                android:textColor="@color/white"
+                android:textColor="@color/pin_chip_active_text"
                 android:textSize="13sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_semibold"
                 android:background="@drawable/bg_chip_selected"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:layout_marginEnd="6dp" />
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginEnd="8dp" />
 
             <TextView
                 android:id="@+id/chipFilterPaid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Zilizolipwa"
-                android:textColor="@color/text_color"
+                android:textColor="@color/pin_chip_inactive_text"
                 android:textSize="13sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"
                 android:background="@drawable/bg_chip_unselected"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:layout_marginEnd="6dp" />
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginEnd="8dp" />
 
             <TextView
                 android:id="@+id/chipFilterAllBills"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Zote"
-                android:textColor="@color/text_color"
+                android:textColor="@color/pin_chip_inactive_text"
                 android:textSize="13sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"
                 android:background="@drawable/bg_chip_unselected"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp" />
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
         </LinearLayout>
 
         <!-- Search Input -->
         <EditText
             android:id="@+id/etSearchBills"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:hint="🔍 Tafuta kwa Meza au Namba ya Oda..."
+            android:layout_height="44dp"
+            android:hint="Tafuta kwa Meza au Namba ya Oda..."
             android:background="@drawable/bg_search_edittext"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
             android:textSize="13sp"
-            android:layout_marginTop="8dp" />
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/hint_color"
+            android:layout_marginTop="10dp" />
 
     </LinearLayout>
 
@@ -266,6 +272,7 @@
         android:textAlignment="center"
         android:textColor="@color/secondary_text"
         android:textSize="16sp"
+        android:fontFamily="@font/poppins_regular"
         android:layout_marginTop="64dp"
         android:visibility="gone" />
 
@@ -274,7 +281,7 @@
         android:id="@+id/recyclerViewBills"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="6dp"
+        android:padding="8dp"
         android:clipToPadding="false" />
 
 </LinearLayout>

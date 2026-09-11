@@ -9,12 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.sumayerestaurant.R;
 import com.example.sumayerestaurant.data.model.MenuItem;
 import com.example.sumayerestaurant.util.Constants;
+import com.example.sumayerestaurant.util.ImageHelper;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -22,8 +24,9 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Grid card adapter for the public customer menu. Cards show photo, name,
- * category, prep time and price with a quick add-to-cart button.
+ * Pinterest-style staggered grid card adapter for the public customer menu.
+ * Cards show photo with varying heights, name, category, prep time and price
+ * with a floating add-to-cart button.
  */
 public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.MenuViewHolder> {
 
@@ -37,6 +40,8 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
     private final List<MenuItem> menuItems = new ArrayList<>();
     private final NumberFormat currencyFormat = NumberFormat.getNumberInstance(Locale.US);
     private int lastAnimatedPosition = -1;
+
+    private static final int[] HEIGHT_VARIANTS = {120, 140, 160, 130, 150};
 
     public PublicMenuAdapter(Context context, ItemClickListener listener) {
         this.context = context;
@@ -70,6 +75,12 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
         holder.itemNameTextView.setText(item.getName());
         holder.itemPriceTextView.setText(String.format("TZS %s", currencyFormat.format(item.getPrice())));
 
+        // Pinterest waterfall effect: vary image heights by position
+        int variant = HEIGHT_VARIANTS[position % HEIGHT_VARIANTS.length];
+        ViewGroup.LayoutParams params = holder.itemImage.getLayoutParams();
+        params.height = (int) (variant * context.getResources().getDisplayMetrics().density);
+        holder.itemImage.setLayoutParams(params);
+
         // Category name
         if (item.getCategory() != null && item.getCategory().getName() != null) {
             holder.itemCategoryTextView.setText(item.getCategory().getName());
@@ -98,18 +109,19 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
             holder.itemView.setAlpha(0.7f);
         }
 
-        // Load image with crossfade animation and rounded corners
-        if (item.getImageUrl() != null && !item.getImageUrl().isEmpty()) {
-            Glide.with(context)
-                    .load(resolveImageUrl(item.getImageUrl()))
-                    .transform(new CenterCrop(), new RoundedCorners(20))
-                    .placeholder(R.drawable.placeholder_food)
-                    .error(R.drawable.placeholder_food)
-                    .transition(DrawableTransitionOptions.withCrossFade(300))
-                    .into(holder.itemImage);
-        } else {
-            holder.itemImage.setImageResource(R.drawable.placeholder_food);
-        }
+        // Load image with local high-res food photo fallback and crossfade animation
+        int fallbackRes = ImageHelper.getFoodFallbackDrawable(item.getImageUrl(), item.getName());
+        String resolved = resolveImageUrl(item.getImageUrl());
+        Object loadTarget = (resolved != null && !resolved.isEmpty()) ? resolved : fallbackRes;
+
+        Glide.with(context)
+                .load(loadTarget)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .transform(new CenterCrop(), new RoundedCorners(16))
+                .placeholder(fallbackRes)
+                .error(fallbackRes)
+                .transition(DrawableTransitionOptions.withCrossFade(300))
+                .into(holder.itemImage);
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) listener.onItemClick(item);
@@ -123,22 +135,10 @@ public class PublicMenuAdapter extends RecyclerView.Adapter<PublicMenuAdapter.Me
     }
 
     /**
-     * The API stores relative paths (e.g. "/images/pilau-kuku.png") so data stays
-     * portable across servers; Glide needs an absolute URL, so prefix the active
-     * backend base URL when one is missing.
+     * Resolves the image URL using ImageHelper.
      */
     public static String resolveImageUrl(String url) {
-        if (url.startsWith("http://") || url.startsWith("https://")) {
-            return url;
-        }
-        String base = Constants.BASE_URL;
-        if (base.endsWith("/") && url.startsWith("/")) {
-            return base.substring(0, base.length() - 1) + url;
-        }
-        if (!base.endsWith("/") && !url.startsWith("/")) {
-            return base + "/" + url;
-        }
-        return base + url;
+        return ImageHelper.resolveImageUrl(url);
     }
 
     private void animateCard(View view, int position) {

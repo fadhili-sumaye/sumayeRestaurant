@@ -42,7 +42,7 @@ public class MenuActivity extends AppCompatActivity {
     private MaterialCardView layoutCartBottomBar;
     private TextView tvCartBottomCount;
     private TextView tvCartBottomTotal;
-    private Long branchId = 1L;
+    private Long branchId;
     private RestaurantTable table;
     private final NumberFormat currencyFormat = NumberFormat.getNumberInstance(Locale.US);
 
@@ -55,6 +55,10 @@ public class MenuActivity extends AppCompatActivity {
         User user = tokenManager.getUser();
         if (user != null && user.getBranchId() != null) {
             branchId = user.getBranchId();
+        } else {
+            Toast.makeText(this, "Akaunti hii haina tawi lililowekwa.", Toast.LENGTH_LONG).show();
+            finish();
+            return;
         }
 
         table = (RestaurantTable) getIntent().getSerializableExtra("table");

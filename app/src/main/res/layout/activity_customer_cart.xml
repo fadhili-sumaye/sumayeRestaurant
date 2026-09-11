@@ -5,23 +5,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    android:fitsSystemWindows="true"
-    android:paddingHorizontal="16dp">
+    android:fitsSystemWindows="true">
 
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingTop="8dp"
-        android:paddingBottom="12dp">
+        android:paddingHorizontal="16dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/backButton"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            app:cardCornerRadius="21dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:cardCornerRadius="22dp"
             app:cardBackgroundColor="@color/card_secondary"
             app:strokeWidth="0dp"
             app:cardElevation="0dp">
@@ -29,7 +27,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="10dp"
+                android:padding="11dp"
                 android:src="@drawable/ic_back"
                 app:tint="@color/text_primary" />
 
@@ -43,14 +41,15 @@
             android:text="Kikapu Changu"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_bold" />
 
         <TextView
             android:id="@+id/itemCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/food_accent"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium" />
 
     </LinearLayout>
 
@@ -59,7 +58,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingVertical="4dp" />
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:clipToPadding="false" />
 
     <!-- Empty state -->
     <LinearLayout
@@ -72,8 +73,8 @@
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:src="@drawable/ic_cart"
             app:tint="@color/hint_color" />
 
@@ -85,26 +86,27 @@
             android:textColor="@color/secondary_text"
             android:textSize="15sp"
             android:gravity="center"
-            android:layout_marginTop="14dp" />
+            android:layout_marginTop="16dp" />
 
     </LinearLayout>
 
-    <!-- Summary -->
+    <!-- Summary card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/summaryCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
         android:layout_marginVertical="8dp"
-        app:cardCornerRadius="20dp"
-        app:cardBackgroundColor="@color/card_secondary"
+        app:cardCornerRadius="24dp"
+        app:cardBackgroundColor="@color/card_background"
         app:strokeWidth="0dp"
-        app:cardElevation="0dp">
+        app:cardElevation="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="18dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,23 +120,23 @@
                     android:layout_weight="1"
                     android:text="Jumla"
                     android:textColor="@color/text_primary"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold" />
 
                 <TextView
                     android:id="@+id/totalTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/food_accent"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="22sp"
+                    android:fontFamily="@font/poppins_bold" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:text="Oda itakamilishwa na wafanyakazi walioingia. Tumia kikapu kujaza mlo wako mapema."
                 android:textColor="@color/secondary_text"
                 android:textSize="12sp" />
@@ -142,14 +144,15 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnClear"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="@color/card_background"
+                android:layout_height="48dp"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="@android:color/transparent"
                 android:textColor="@color/secondary_text"
                 app:strokeColor="@color/divider"
                 app:strokeWidth="1dp"
                 android:text="Futa Kikapu"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium" />
 
         </LinearLayout>
 

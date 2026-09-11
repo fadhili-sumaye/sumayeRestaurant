@@ -41,7 +41,7 @@ public class CartManager {
         for (CartItem item : cartItems) {
             if (item.getMenuItem().getId().equals(menuItem.getId())) {
                 item.setQuantity(item.getQuantity() + quantity);
-                if (specialInstructions != null && !specialInstructions.isBlank()) {
+                if (specialInstructions != null && !specialInstructions.trim().isEmpty()) {
                     item.setSpecialInstructions(specialInstructions);
                 }
                 notifyChanges();

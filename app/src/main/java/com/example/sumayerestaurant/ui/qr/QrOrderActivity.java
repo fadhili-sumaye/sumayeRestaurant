@@ -157,7 +157,7 @@ public class QrOrderActivity extends AppCompatActivity {
         row.setOrientation(LinearLayout.VERTICAL);
         row.setPadding(0, 18, 0, 18);
         row.addView(text(item.getName() + " — TZS " + currency.format(item.getPrice()), 18));
-        if (item.getDescription() != null && !item.getDescription().isBlank()) {
+        if (item.getDescription() != null && !item.getDescription().trim().isEmpty()) {
             row.addView(text(item.getDescription(), 14));
         }
         LinearLayout controls = new LinearLayout(this);

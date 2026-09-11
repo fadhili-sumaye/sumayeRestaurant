@@ -7,15 +7,15 @@
 -->
 <network-security-config>
 
-    <!-- Allow cleartext (HTTP) for local development and LAN IP connections -->
-    <base-config cleartextTrafficPermitted="true">
+    <!-- Release builds require encrypted traffic everywhere. -->
+    <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
             <certificates src="system" />
             <certificates src="user" />
         </trust-anchors>
     </base-config>
 
-    <!-- Enforce HTTPS for the production cloud API -->
+    <!-- Explicit production endpoint rule. -->
     <domain-config cleartextTrafficPermitted="false">
         <!-- Replace with your actual domain when deploying to cloud -->
         <domain includeSubdomains="true">sumaye-backdb.onrender.com</domain>

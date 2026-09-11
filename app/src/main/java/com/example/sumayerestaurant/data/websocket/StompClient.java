@@ -145,7 +145,7 @@ public class StompClient {
         frame.append("CONNECT\n");
         frame.append("accept-version:1.1,1.2\n");
         frame.append("heart-beat:10000,10000\n");
-        if (authToken != null && !authToken.isBlank()) {
+        if (authToken != null && !authToken.trim().isEmpty()) {
             frame.append("Authorization:Bearer ").append(authToken).append("\n");
             frame.append("passcode:").append(authToken).append("\n");
         }

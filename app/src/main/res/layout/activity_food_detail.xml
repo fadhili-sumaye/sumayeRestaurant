@@ -9,7 +9,7 @@
     <FrameLayout
         android:id="@+id/heroFrame"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="340dp"
         android:fitsSystemWindows="true">
 
         <ImageView
@@ -27,41 +27,41 @@
         <!-- Floating back -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/backButton"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_margin="12dp"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_margin="16dp"
             android:layout_gravity="top|start"
-            app:cardCornerRadius="22dp"
-            app:cardBackgroundColor="#E6242424"
+            app:cardCornerRadius="23dp"
+            app:cardBackgroundColor="#E61E1E1E"
             app:strokeWidth="0dp"
-            app:cardElevation="2dp">
+            app:cardElevation="4dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="10dp"
+                android:padding="11dp"
                 android:src="@drawable/ic_back"
                 app:tint="@color/white" />
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Floating favorite -->
+        <!-- Floating favorite / save (Pinterest pin) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/favButton"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_margin="12dp"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_margin="16dp"
             android:layout_gravity="top|end"
-            app:cardCornerRadius="22dp"
-            app:cardBackgroundColor="#E6242424"
+            app:cardCornerRadius="23dp"
+            app:cardBackgroundColor="#E61E1E1E"
             app:strokeWidth="0dp"
-            app:cardElevation="2dp">
+            app:cardElevation="4dp">
 
             <ImageView
                 android:id="@+id/favHeartIcon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="10dp"
+                android:padding="11dp"
                 android:src="@drawable/ic_heart"
                 app:tint="@color/white" />
 
@@ -69,12 +69,12 @@
 
     </FrameLayout>
 
-    <!-- Overlapping detail card -->
+    <!-- Overlapping detail card (Pinterest bottom sheet style) -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-28dp"
-        android:paddingBottom="96dp"
+        android:layout_marginTop="-32dp"
+        android:paddingBottom="100dp"
         android:background="@drawable/bg_rounded_top_surface"
         android:fillViewport="true"
         android:clipToPadding="false">
@@ -84,8 +84,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingTop="24dp"
+            android:paddingTop="28dp"
             android:paddingBottom="24dp">
+
+            <!-- Drag indicator -->
+            <View
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_chip_selected" />
 
             <TextView
                 android:id="@+id/detailTitle"
@@ -93,21 +101,22 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
                 android:textSize="26sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/poppins_bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/detailCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondary_text"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_medium" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -121,7 +130,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondary_text"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_medium" />
 
             </LinearLayout>
 
@@ -129,15 +139,15 @@
                 android:id="@+id/detailPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:textColor="@color/food_accent"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textSize="32sp"
+                android:fontFamily="@font/poppins_bold" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginVertical="18dp"
+                android:layout_marginVertical="20dp"
                 android:background="@color/divider" />
 
             <TextView
@@ -146,45 +156,46 @@
                 android:text="Maelezo"
                 android:textColor="@color/text_primary"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/poppins_semibold" />
 
             <TextView
                 android:id="@+id/detailDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:lineSpacingMultiplier="1.3"
+                android:layout_marginTop="10dp"
+                android:lineSpacingMultiplier="1.35"
                 android:textColor="@color/secondary_text"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                app:cardCornerRadius="18dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="20dp"
                 app:cardBackgroundColor="@color/card_secondary"
                 app:strokeWidth="0dp"
-                app:cardElevation="0dp">
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Muhtasari"
                         android:textColor="@color/text_primary"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_semibold" />
 
                     <TextView
                         android:id="@+id/detailAvailability"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="8dp"
                         android:textColor="@color/secondary_text"
                         android:textSize="13sp" />
 
@@ -196,87 +207,97 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Sticky bottom bar -->
-    <LinearLayout
+    <!-- Sticky bottom bar (Pinterest-style rounded) -->
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="@color/surface"
-        android:elevation="12dp"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="12dp">
+        app:cardCornerRadius="28dp"
+        app:cardBackgroundColor="@color/surface"
+        app:strokeWidth="0dp"
+        app:cardElevation="16dp"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginBottom="0dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="46dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@color/card_secondary"
-            android:paddingHorizontal="6dp"
-            android:clipToOutline="true">
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="14dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/minusButton"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                app:cardCornerRadius="17dp"
-                app:cardBackgroundColor="@color/surface_raised"
-                app:strokeWidth="0dp"
-                app:cardElevation="0dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@color/card_secondary"
+                android:paddingHorizontal="4dp"
+                android:clipToOutline="true">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_remove"
-                    app:tint="@color/white" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/minusButton"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    app:cardCornerRadius="19dp"
+                    app:cardBackgroundColor="@color/surface_raised"
+                    app:strokeWidth="0dp"
+                    app:cardElevation="0dp">
 
-            </com.google.android.material.card.MaterialCardView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_remove"
+                        app:tint="@color/white" />
 
-            <TextView
-                android:id="@+id/quantityTextView"
-                android:layout_width="44dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/text_primary"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:text="1" />
+                </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/plusButton"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                app:cardCornerRadius="17dp"
-                app:cardBackgroundColor="@color/food_accent"
-                app:strokeWidth="0dp"
-                app:cardElevation="0dp">
+                <TextView
+                    android:id="@+id/quantityTextView"
+                    android:layout_width="44dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="1" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="7dp"
-                    android:src="@drawable/ic_add"
-                    app:tint="@color/food_on_accent" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/plusButton"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    app:cardCornerRadius="19dp"
+                    app:cardBackgroundColor="@color/food_accent"
+                    app:strokeWidth="0dp"
+                    app:cardElevation="0dp">
 
-            </com.google.android.material.card.MaterialCardView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_add"
+                        app:tint="@color/food_on_accent" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addToCartButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginStart="14dp"
+                android:backgroundTint="@color/food_accent"
+                android:textColor="@color/food_on_accent"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Ongeza Kwenye Kikapu" />
 
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/addToCartButton"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:layout_marginStart="14dp"
-            android:backgroundTint="@color/food_accent"
-            android:textColor="@color/food_on_accent"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:text="Ongeza Kwenye Kikapu" />
-
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </FrameLayout>
